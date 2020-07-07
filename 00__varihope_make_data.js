@@ -139,9 +139,10 @@ var FUNC00 = function( auth ){
 					zo = io[ z ];
 					if( _header[ z ] == "타입" )
 					{
+						var _tzo = zo.trim();
 						if( !d.ads_total[ io[0] ] ) d.ads_total[ io[0] ] = {};
-						if( !d.ads_total[ io[0] ][ zo ] ) d.ads_total[ io[0] ][ zo ] = 1;
-						else ++d.ads_total[ io[0] ][ zo ];
+						if( !d.ads_total[ io[0] ][ _tzo ] ) d.ads_total[ io[0] ][ _tzo ] = 1;
+						else ++d.ads_total[ io[0] ][ _tzo ];
 					}
 					o[ _header[ z ] ] = zo.trim();
 				}
@@ -345,11 +346,13 @@ var FUNC05 = function( auth ){
 			else
 			{
 				var z = 0,zLen = io.length,zo;
+				var o = {};
 				for(;z<zLen;++z){
 					zo = io[ z ];
-					if( !d.insight[ _header[ z ] ] ) d.insight[ _header[ z ] ] = [];
-					d.insight[ _header[ z ] ].push( zo );    
+					o[ _header[ z ] ] = zo;    
 				}
+				if( !d.insight[ io[0] ] ) d.insight[ io[0] ] = [];
+				d.insight[ io[0] ].push( o );
 			}
 		}
 		console.log( "[ E ] - FUNC05();" )

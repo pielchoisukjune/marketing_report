@@ -206,10 +206,36 @@ var make_kols_html = function( arr, html ){
 //-------------------------------------------------------;
 //인사이트생성;
 //-------------------------------------------------------;
-var make_insight_html = function( contents, html ){
-	var r = html.replace(/<!=TARGET_MONTH=!>/g,target_month )
-				.replace( "<!=CONTENTS__00=!>", contents[ 0 ].replace(/\r/g, "<br>").replace(/\n/g, "<br>")  )
-				.replace( "<!=CONTENTS__01=!>", contents[ 1 ].replace(/\r/g, "<br>").replace(/\n/g, "<br>")  )+ "\n"
+/*
+{
+	"월": "6",
+	"동향": "1. Marketing으로 인한 오피셜 계정의 유입 및 팔로워 증가 \n2. 오프라인 매장입점 및 판매 증가\n3. 온라인 판매자 증가 (07월 01일 shopee 기준 113업체 판매중.  ex. https://shopee.vn/search?keyword=varihope)\n4. SNS 구매 고객층 증가",
+	"제품관련": "  1. 제품 파손 및 포장상태 \n- 6월 제품불량으로 인한 반품건수 (104건 : 비타민앰플 (102건) 비타민크림 (2건))\n  2. WATSONS \n- 제품불량 증가로 complaint 발생. 제품 리뉴얼 진행요청 (리뉴얼 불가시 입점관련 취소)",
+	"진행상황": "해당 판매의 촉진으로 인한 complaint 증가 (1:1 맞교환으로 응대하고 있음)\nWATSONS complaint 관련 (본사요청으로 대응중)",
+	"코멘트": "",
+	"요청사항": "마케팅지원 (샘플링) 및 제품반품 및 불량 : 128개\n     1.뷰티유투버 및 인플루언서 : 12개\n     2.체험단 및 리뷰 : 12개\n     3. 제품파손 및 불량 : 104개 ",
+	"특이사항": "\nWATSONS 오프라인 입점완료 (호치민 Aeon Celadon)\n벽면 지정매대 설치완료\n\n주소: 30 Bo bao tan thang street, Son ky Ward, tan phu district,\n오픈 시간: 7월4일\n"
+}
+*/
+var make_insight_html = function( arr, html ){
+	var r = "";
+	var _html;
+   
+	var i = 0,iLen = arr.length,io;
+	for(;i<iLen;++i){
+		io = arr[ i ];
+		var s,so;
+		for( s in io ){
+			so = io[ s ];
+			
+			if( s == "월" ) continue;
+			if( so == "" ) continue;
+
+			_html = html.replace( "<!=TITLE=!>", s  )
+				.replace( "<!=CONTENTS=!>", so.replace(/\r/g, "<br>").replace(/\n/g, "<br>") );
+			r += _html + "\n"
+		}
+	}
 	return r;
 };
 
@@ -398,7 +424,7 @@ var make_location_html = function( data, html ){
 
 var logic = function(){
     var _cards_html = make_card_html( data.ads_list[ target_month ], cards_thtml );
-    var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml, "5" );
+    var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml );
     var _statistic_html = make_statistic_html( data.total[ target_month ], statistic_thtml );
 	var _ads_total_statistic_html = make_ads_total_statistic_html( data.ads_total[ target_month ], ads_total_thtml );
 	var _kols_html = make_kols_html( data.kols[ target_month ], kols_thtml );

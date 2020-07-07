@@ -1,16 +1,8 @@
-		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 Marketing Manager Insight</h3>
+		<h4 class="ui left aligned header"><!=TITLE=!></h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
-  				<!=CONTENTS__00=!>
-			</div>
-		  </div>
-		</div>
-		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 Marketing 특이사항</h3>
-		<div class="ui grid">
-		  <div class="sixteen wide column">
-		  	<div class="ui segment">
-  				<!=CONTENTS__01=!>
+  				<!=CONTENTS=!>
 			</div>
 		  </div>
 		</div>

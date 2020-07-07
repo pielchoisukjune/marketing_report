@@ -323,6 +323,8 @@ function drawVisualization(){
 		<!--h1 class="ui left aligned header"><!=BRAND_NM=!> <!=TARGET_MONTH=!>월</h1-->
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
+		
+		<h3  class="ui left aligned header"><!=TARGET_MONTH=!>월 ISSUE</h3>
 		<!=INSIGHT=!>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 광고 통계</h3>
 		<div class="ui grid">
@@ -367,19 +369,19 @@ function drawVisualization(){
 			  </div>
 			</div>
 		</div>
-		<div class="ui divider"></div>
-		<div class="ui four stackable cards">
-			<!=CARDS=!>
-		</div>
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 KOLs</h3>
 		<div class="ui grid">
 			<div class="ui grid">
 				<div class="sixteen wide column">
-					<div class="ui four stackable cards">
+					<div class="ui six stackable cards">
 						<!=KOLS=!>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui four stackable cards">
+			<!=CARDS=!>
 		</div>
 	</div>
 </body>
