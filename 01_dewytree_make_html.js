@@ -6,7 +6,7 @@ var fs = require( "fs" );
 //-------------------------------------------------------;
 // VARIABLE;
 //-------------------------------------------------------;
-var result_path = "./00_varihpoe/"
+var result_path = "./01_dewytree/"
 var FILE_PATH = result_path + "data.json";
 var THTML_PATHS = {
 	cards : "./THTML/card.thtml"
@@ -17,7 +17,7 @@ var THTML_PATHS = {
 	, location : "./THTML/location.thtml"
 	, kols : "./THTML/kols.thtml"
 };
-var brand_nm = "VARIL:HOPE";
+var brand_nm = "DEWYTREE";
 var target_year_month = "202006";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 var thumnail_icon = {
@@ -127,6 +127,7 @@ var make_card_html = function( arr, html ){
 			.replace( "<!=COMMENT=!>", bigo )
 			.replace( "<!=LINK=!>", io[ "해당링크" ] )
 			.replace( "<!=TITLE=!>", io[ "제목" ] )
+			.replace( "<!=TYPE=!>", io[ "타입" ] )
 			.replace( "<!=CATE_ICON=!>", thumnail_icon[ io[ "구분" ] ] )
 			.replace( "<!=DATE=!>", _update_col )
 			.replace( "<!=CNT_VIEW=!>", _view_col )
@@ -140,6 +141,31 @@ var make_card_html = function( arr, html ){
 
 	return r;
 };
+
+/*
+		<div class="ui four stackable cards">
+			<!=CARDS=!>
+		</div>
+*/
+var make_ads_list = function( o , html ){
+	
+	var r = "";
+	var s,so;
+	for( s in o ){
+		so = o[ s ];
+		var _html = '<h3  class="ui left aligned header">' + s + ' ( ' + so.length +  ' 건 )</h3>';
+			_html += `<div class="ui grid">`;
+			_html += `<div class="sixteen wide column">`;
+			_html += `<div class="ui four stackable cards">`;
+			_html += make_card_html( so, html )
+			_html += `</div>\n`;
+			_html += `</div>\n`;
+			_html += `</div>\n`;
+			r += _html;
+	}
+
+	return r;
+}
 
 //-------------------------------------------------------;
 //마케팅리스트카드생성;
@@ -423,7 +449,7 @@ var make_location_html = function( data, html ){
 };
 
 var logic = function(){
-    var _cards_html = make_card_html( data.ads_list[ target_month ], cards_thtml );
+    var _cards_html = make_ads_list( data.ads_list[ target_month ], cards_thtml );
     var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml );
     var _statistic_html = make_statistic_html( data.total[ target_month ], statistic_thtml );
 	var _ads_total_statistic_html = make_ads_total_statistic_html( data.ads_total[ target_month ], ads_total_thtml );

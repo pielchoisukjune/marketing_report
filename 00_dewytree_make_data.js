@@ -55,38 +55,38 @@ var getNewToken = function getNewToken( oAuth2Client, callback ){
 	});
   }
 
-var result_path = "./00_varihpoe/"
+var result_path = "./01_dewytree/"
 var OPTIONS = {
 	FUNC00 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '마케팅집행리스트!A:M'
 	}
 	, FUNC01 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '페이스북 STATISTIC!A:M'
 	}
 	, FUNC02 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '페이스북 연령 통계!A:M'
 	}
 	, FUNC03 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '페이스북 지역별 통계!A:M'
 	}
 	, FUNC04 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '페이스북 시간대별 통계!A:M'
 	}
 	, FUNC05 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : 'Manger Insight!A:M'
 	}
 	, FUNC06 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : '지역코드!A:M'
 	}
 	, FUNC07 : {
-		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
 		, range : 'KOLs!A:M'
 	}
 }
@@ -140,14 +140,24 @@ var FUNC00 = function( auth ){
 					if( _header[ z ] == "타입" )
 					{
 						var _tzo = zo.trim();
-						if( !d.ads_total[ io[0] ] ) d.ads_total[ io[0] ] = {};
-						if( !d.ads_total[ io[0] ][ _tzo ] ) d.ads_total[ io[0] ][ _tzo ] = 1;
+						if( !d.ads_total[ io[0] ] )
+						{
+							d.ads_total[ io[0] ] = {};
+							d.ads_list[ io[0] ] = {};
+						}
+						if( !d.ads_total[ io[0] ][ _tzo ] )
+						{
+							d.ads_total[ io[0] ][ _tzo ] = 1;
+						}
+						if( !d.ads_list[ io[0] ][ _tzo ] )
+						{
+							d.ads_list[ io[0] ][ _tzo ] = [];
+						}
 						else ++d.ads_total[ io[0] ][ _tzo ];
 					}
 					o[ _header[ z ] ] = zo.trim();
 				}
-				if( !d.ads_list[ io[0] ] ) d.ads_list[ io[0] ] = [];
-				d.ads_list[ io[0] ].push( o )
+				d.ads_list[ io[0] ][ o[ "타입" ] ].push( o )
 			}
 		}
 		console.log( "[ E ] - FUNC00();" )

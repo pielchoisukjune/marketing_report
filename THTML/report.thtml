@@ -329,27 +329,25 @@ function drawVisualization(){
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 광고 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-			  <div class="ui four stackable cards">
+			  <div class="ui six stackable cards">
 				<!=STATISTIC=!>
 			  </div>
 			</div>
 		</div>
 		<h3 class="ui dividing header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 광고 통계</h3>
 
-		  <div class="ui grid">
+		<div class="ui grid">
 			<div class="eight wide column"><div id="chartdiv00"></div></div>
 			<div class="eight wide column"><div id="chartdiv01"></div></div>
 			<div class="eight wide column"><div id="chartdiv02"></div></div>
 			<div class="eight wide column"><div id="chartdiv03"></div></div>
-		  </div>
-		<div class="ui divider"></div>
+		</div>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 시간별 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column"><div id="chartdiv04"></div></div>
-		  </div>
-		<div class="ui divider"></div>
-		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 지역별 통계</h3>
+		</div>
 
+		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 지역별 통계</h3>
 		<div class="ui grid">
           <!-- <div class="eight wide column"><div id="chartdiv05"></div></div> -->
           <div class="sixteen wide column"><div id="visualization" style="height: 100%;"> </div></div>
@@ -361,28 +359,24 @@ function drawVisualization(){
 			</div>
 		  </div>
 		</div>
+		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 KOLs</h3>
+		<div class="ui grid">
+			<div class="sixteen wide column">
+				<div class="ui six stackable cards">
+					<!=KOLS=!>
+				</div>
+			</div>
+		</div>
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 광고집행 내역</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-			  <div class="ui four stackable cards">
+			  <div class="ui six stackable cards">
 				<!=STATISTIC_ADS_LIST=!>
 			  </div>
 			</div>
 		</div>
-		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 KOLs</h3>
-		<div class="ui grid">
-			<div class="ui grid">
-				<div class="sixteen wide column">
-					<div class="ui six stackable cards">
-						<!=KOLS=!>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="ui divider"></div>
-		<div class="ui four stackable cards">
-			<!=CARDS=!>
-		</div>
+		<!=CARDS=!>
+		
 	</div>
 </body>
 </html>

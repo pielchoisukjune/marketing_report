@@ -9,7 +9,7 @@
             <br>
             <div class="icon_cate">
                 <i class="large <!=CATE_ICON=!> icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'><!=CATEGORY=!></span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'><!=CATEGORY=!> - <!=TYPE=!></span>
             </div>
         </div>
         <div class="ui divider"></div>
