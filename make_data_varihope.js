@@ -55,38 +55,38 @@ var getNewToken = function getNewToken( oAuth2Client, callback ){
 	});
   }
 
-var result_path = "./01_dewytree/"
+var result_path = "./brand/varihpoe/"
 var OPTIONS = {
 	FUNC00 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '마케팅집행리스트!A:M'
 	}
 	, FUNC01 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '페이스북 STATISTIC!A:M'
 	}
 	, FUNC02 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '페이스북 연령 통계!A:M'
 	}
 	, FUNC03 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '페이스북 지역별 통계!A:M'
 	}
 	, FUNC04 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '페이스북 시간대별 통계!A:M'
 	}
 	, FUNC05 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : 'Manger Insight!A:M'
 	}
 	, FUNC06 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : '지역코드!A:M'
 	}
 	, FUNC07 : {
-		spreadsheetId : '1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA'
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : 'KOLs!A:M'
 	}
 }

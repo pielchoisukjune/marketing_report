@@ -6,7 +6,7 @@ var fs = require( "fs" );
 //-------------------------------------------------------;
 // VARIABLE;
 //-------------------------------------------------------;
-var result_path = "./01_dewytree/"
+var result_path = "./brand/varihpoe/"
 var FILE_PATH = result_path + "data.json";
 var THTML_PATHS = {
 	cards : "./THTML/card.thtml"
@@ -17,7 +17,7 @@ var THTML_PATHS = {
 	, location : "./THTML/location.thtml"
 	, kols : "./THTML/kols.thtml"
 };
-var brand_nm = "DEWYTREE";
+var brand_nm = "VARIL:HOPE";
 var target_year_month = "202006";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 var thumnail_icon = {
