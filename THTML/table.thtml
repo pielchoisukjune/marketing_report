@@ -1,0 +1,7 @@
+<table class="ui very compact celled table">
+	<thead>
+	<!=TABLE_HEAD=!>
+	<tbody>
+	<!=TABLE_BODY=!>	
+	</tbody>
+</table>

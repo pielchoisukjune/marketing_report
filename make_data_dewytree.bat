@@ -1,4 +1,4 @@
 ::@Echo off
-<!=EXEC_COMMAND=!>
+node make_data_dewytree.js
 
 cmd/k

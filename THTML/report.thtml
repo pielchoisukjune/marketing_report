@@ -323,7 +323,12 @@ function drawVisualization(){
 		<!--h1 class="ui left aligned header"><!=BRAND_NM=!> <!=TARGET_MONTH=!>월</h1-->
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
-		
+		<h3  class="ui left aligned header">월간진행수량</h3>
+		<div class="ui grid">
+			<div class="sixteen wide column">
+				<!=MONTHLY_TABLE=!>
+			</div>
+		</div>
 		<h3  class="ui left aligned header"><!=TARGET_MONTH=!>월 ISSUE</h3>
 		<!=INSIGHT=!>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 광고 통계</h3>

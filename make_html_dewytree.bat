@@ -1,4 +1,4 @@
 ::@Echo off
-<!=EXEC_COMMAND=!>
+node make_html_dewytree.js
 
 cmd/k

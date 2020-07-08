@@ -16,6 +16,7 @@ var THTML_PATHS = {
 	, statistic : "./THTML/statistic.thtml"
 	, location : "./THTML/location.thtml"
 	, kols : "./THTML/kols.thtml"
+	, table : "./THTML/table.thtml"
 };
 var brand_nm = "DEWYTREE";
 var target_year_month = "202006";
@@ -39,6 +40,7 @@ var report_thtml = fs.readFileSync( THTML_PATHS[ "report" ] ).toString();
 var location_thtml = fs.readFileSync( THTML_PATHS[ "location" ] ).toString();
 var ads_total_thtml = fs.readFileSync( THTML_PATHS[ "ads_total" ] ).toString();
 var kols_thtml = fs.readFileSync( THTML_PATHS[ "kols" ] ).toString();
+var statistic_monthly_thtml = fs.readFileSync( THTML_PATHS[ "table" ] ).toString();
 
 //-------------------------------------------------------;
 // FUNCTION;
@@ -430,7 +432,7 @@ var make_location_data = function( arr, o ){
 };
 
 //-------------------------------------------------------;
-// 펭이스북지역통계카드생성;
+// 페이스북지역통계카드생성;
 //-------------------------------------------------------;
 var make_location_html = function( data, html ){
 	var i = 1,iLen = data.length,io;
@@ -448,13 +450,53 @@ var make_location_html = function( data, html ){
 	return r;
 };
 
+//-------------------------------------------------------;
+// 월별통계테이블생성;
+//-------------------------------------------------------;
+var make_monthly_table_html = function( data, html ){
+	var i = 0,iLen = data.length,io;
+	var _html0 = "";
+	var _html1 = "";
+	var r = ""; 
+	for(;i<iLen;i++){
+		io = data[ i ];
+		if( i == 0 ){
+			_html0 += "<tr>"
+			var _tidx = 0;
+			io.forEach(function(item){ 
+				if( _tidx == 0 )
+				{
+					_html0 += "<th style='width:18%;'>" + item + "</th>"; 
+				}
+				else if( _tidx == 1 ){
+					_html0 += "<th style='width:26%;'>" + item + "</th>"; 
+				}
+				else
+				{
+					_html0 += "<th style='width:8%;'>" + item + "</th>"; 
+				}
+				++_tidx;
+			})
+			_html0 += "</tr>\n"
+		}
+		else
+		{
+			_html1 += "<tr>"
+			io.forEach(function(item){ _html1 += "<td style='font-size:11px;'>" + item + "</td>"; })
+			_html1 += "</tr>\n"
+		}
+	}
+	r = html.replace( "<!=TABLE_HEAD=!>", _html0 ).replace( "<!=TABLE_BODY=!>", _html1 )
+	return r;
+};
+
 var logic = function(){
     var _cards_html = make_ads_list( data.ads_list[ target_month ], cards_thtml );
     var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml );
     var _statistic_html = make_statistic_html( data.total[ target_month ], statistic_thtml );
 	var _ads_total_statistic_html = make_ads_total_statistic_html( data.ads_total[ target_month ], ads_total_thtml );
 	var _kols_html = make_kols_html( data.kols[ target_month ], kols_thtml );
-	
+	var _monthly_table = make_monthly_table_html( data.statistic_monthly, statistic_monthly_thtml );
     var ages_data = make_ages_data( data.ages[ target_month ] );
     var time_data = make_time_data( data.time[ target_month ] );
     var location_data = make_location_data( data.location[ target_month ],data.geocode );
@@ -465,6 +507,7 @@ var logic = function(){
 		.replace( /<!=TARGET_MONTH=!>/g,target_month )
 		.replace( "<!=CARDS=!>",_cards_html)
 		.replace( "<!=KOLS=!>",_kols_html)
+		.replace( "<!=MONTHLY_TABLE=!>",_monthly_table)
 		.replace( "<!=INSIGHT=!>",_insight_html)
 		.replace( "<!=STATISTIC=!>",_statistic_html)
 		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ))

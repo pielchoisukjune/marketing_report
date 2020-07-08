@@ -105,7 +105,7 @@ var d = {
 	, insight : {}
 	, geocode : {}
 	, kols : {}
-	, statistic_monthly : {}
+	, statistic_monthly : []
 };
 
 //-------------------------------------------------------;
@@ -456,29 +456,25 @@ var FUNC08 = function( auth ){
 		if (err) return console.log('The API returned an error: ' + err);
 		const rows = res.data.values;
 		if (rows.length == 0 ) return console.log('ads list - No data found.');
-
+		var _ta = []
 		var i = 0,iLen = rows.length,io;
 		var _header = [];
 		for(;i<iLen;++i){
 			io = rows[ i ];
 			if( i == 0 )
 			{
-				io.forEach(function( item ){ 
-					_header.push( item ) 
-				});
+				io.forEach(function( item ){ _header.push( item ) });
 			} 
-			else
-			{
-				var z = 0,zLen = io.length,zo;
-				var o = {};
-				for(;z<zLen;++z){
-					zo = io[ z ];
-					o[ _header[ z ] ] = zo;    
-				}
-				console.log( o )
-				// if( !d.statistic_monthly[ io[0] ] ) d.kols[ io[0] ] = [];
-				// d.kols[ io[0] ].push( o );
+
+			var z = 0,zLen = _header.length,zo;
+			var a = [];
+			for(;z<zLen;++z){
+				zo = io[ z ];
+				if( !zo ) a.push( "" );
+				else a.push( zo );        
+				
 			}
+			d.statistic_monthly.push( a );
 		}
 		
 		console.log( "[ E ] - FUNC08();" )
