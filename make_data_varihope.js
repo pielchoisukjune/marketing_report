@@ -89,6 +89,10 @@ var OPTIONS = {
 		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
 		, range : 'KOLs!A:M'
 	}
+	, FUNC08 : {
+		spreadsheetId : '1F2AlIXsDem5POlAcCnrnIj6zuj_gJza7wpS7C8TbZ7A'
+		, range : '월간진행수량!A:M'
+	}
 }
 
 var d = {
@@ -101,6 +105,7 @@ var d = {
 	, insight : {}
 	, geocode : {}
 	, kols : {}
+	, statistic_monthly : {}
 };
 
 //-------------------------------------------------------;
@@ -433,9 +438,52 @@ var FUNC07 = function( auth ){
 			}
 		}
 		console.log( "[ E ] - FUNC07();" )
-		fs.writeFileSync( result_path + "data.json", JSON.stringify( d, null, 4 ), { flag : "w"});
+		FUNC08( auth );
 	});
 }
 
+/**
+ * Prints the names and majors of students in a sample spreadsheet:
+ * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
+ */
+var FUNC08 = function( auth ){
+	var key = "FUNC08"
+	
+	console.log( "[ S ] - FUNC08();" )
+	
+	google.sheets({version: 'v4', auth}).spreadsheets.values.get( OPTIONS[ key ], function(err, res){
+		if (err) return console.log('The API returned an error: ' + err);
+		const rows = res.data.values;
+		if (rows.length == 0 ) return console.log('ads list - No data found.');
+
+		var i = 0,iLen = rows.length,io;
+		var _header = [];
+		for(;i<iLen;++i){
+			io = rows[ i ];
+			if( i == 0 )
+			{
+				io.forEach(function( item ){ 
+					_header.push( item ) 
+				});
+			} 
+			else
+			{
+				var z = 0,zLen = io.length,zo;
+				var o = {};
+				for(;z<zLen;++z){
+					zo = io[ z ];
+					o[ _header[ z ] ] = zo;    
+				}
+				console.log( o )
+				// if( !d.statistic_monthly[ io[0] ] ) d.kols[ io[0] ] = [];
+				// d.kols[ io[0] ].push( o );
+			}
+		}
+		
+		console.log( "[ E ] - FUNC08();" )
+		fs.writeFileSync( result_path + "data.json", JSON.stringify( d, null, 4 ), { flag : "w"});
+	});
+}
 
 authorize( credentail, FUNC00 );
