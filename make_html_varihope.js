@@ -6,7 +6,7 @@ var fs = require( "fs" );
 //-------------------------------------------------------;
 // VARIABLE;
 //-------------------------------------------------------;
-var result_path = "./brand/varihpoe/"
+var result_path = "./brand/varihope/"
 var FILE_PATH = result_path + "data.json";
 var THTML_PATHS = {
 	cards : "./THTML/card.thtml"

@@ -23,8 +23,8 @@
 		font-family: 'NotoSansKR';
 		font-style: normal;
 		font-weight: 400;
-		src: local('NotoSansKR-Regular'), 
-			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'), 
+		src: local('NotoSansKR-Regular'),
+			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'),
 			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff') format('woff');
 		font-stretch: normal;
 		unicode-range: U+0021-33FF,U+A000-F8FF,U+FB00-F251;
@@ -35,12 +35,12 @@
 	#chartdiv00,#chartdiv01,#chartdiv02,#chartdiv03,#chartdiv04 {
 		width: 100%;
 		height: 400px;
-	}	
+	}
 
 	#chartdiv05, #chartdiv06 {
 		width: 100%;
 		height: 600px;
-	}	
+	}
 	body{
 		margin : 30px;
 		font-family: "Noto Sans KR", sans-serif;
@@ -74,12 +74,12 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	var arr = window.document.getElementsByTagName("iframe");
 
 	arr.forEach(function(item){
-		
+
 		item.parentElement.firstElementChild.style.height = "0px";
 		item.parentElement.firstElementChild.style.minHeight = "0px";
 
 		if( item.height == "266" ) return;
-		
+
 		var w00 = item.parentElement.offsetWidth;
 		var w01 = item.offsetWidth;
 		var h00 = ( item.offsetHeight * item.parentElement.offsetWidth ) / item.offsetWidth;
@@ -87,14 +87,14 @@ window.addEventListener('DOMContentLoaded', function( e ){
 
 		item.width = w00;
 		item.height = h00;
-		
+
 	})
 
 	var thumb_imgs_html = window.document.getElementsByClassName("ads_list_thumb");
 		thumb_imgs_html.forEach(function(item){
-		
+
 		if( item.height == "266" ) return;
-		
+
 		var w00 = item.parentElement.offsetWidth;
 		var w01 = item.offsetWidth;
 		var h00 = ( item.offsetHeight * item.parentElement.offsetWidth ) / item.offsetWidth;
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function( e ){
 
 		item.width = w00;
 		item.height = h00;
-		
+
 	})
 });
 
@@ -115,12 +115,12 @@ function drawVisualization(){
 
 	var data = google.visualization.arrayToDataTable([["State","도달","노출수"],[{"f":"Ho Chi Minh City","v":"VN-SG"},184,203]]);
 
-	var opts = { 
+	var opts = {
 		region: 'VN'
 		, displayMode: 'regions'
 		, resolution: 'provinces'
 		, colorAxis: {colors: ['yellow', 'red']}
-		, legend : {textStyle: {color: 'red', fontSize: 12}} 
+		, legend : {textStyle: {color: 'red', fontSize: 12}}
 		, sizeAxis: { minValue: 0, maxValue: 100 }
 	};
 	var geochart = new google.visualization.GeoChart(
@@ -146,7 +146,7 @@ function drawVisualization(){
 	title00.fontSize = 25;
 	title00.marginBottom = 30;
 	title00.marginTop = 30;
-	
+
 	title01.text = "연령별 노출";
 	title01.fontSize = 25;
 	title01.marginBottom = 30;
@@ -181,7 +181,7 @@ function drawVisualization(){
 	pieSeries00.hiddenState.properties.endAngle = -90;
 	pieSeries00.hiddenState.properties.startAngle = -90;
 	pieSeries00.labels.template.fontSize = 10;
-	
+
 
 	// Add and configure Series
 	var pieSeries01 = chart01.series.push(new am4charts.PieSeries());
@@ -221,7 +221,7 @@ function drawVisualization(){
 	pieSeries03.hiddenState.properties.opacity = 1;
 	pieSeries03.hiddenState.properties.endAngle = -90;
 	pieSeries03.hiddenState.properties.startAngle = -90;
-	
+
 	chart00.hiddenState.properties.radius = am4core.percent(70);
 	chart01.hiddenState.properties.radius = am4core.percent(70);
 	chart02.hiddenState.properties.radius = am4core.percent(20);
@@ -231,20 +231,20 @@ function drawVisualization(){
 <!-- Chart code -->
 <script>
 	am4core.ready(function() {
-	
+
 	// Themes begin
 	am4core.useTheme(am4themes_animated);
 	// Themes end
-	
+
 	// Create chart instance
 	var chart04 = am4core.create("chartdiv04", am4charts.XYChart);
 	chart04.legend = new am4charts.Legend();
 	// Export
 	chart04.exporting.menu = new am4core.ExportMenu();
-	
+
 	// Data for both series
 	var data = [{"time":"04:00:00 - 04:59:59","view":1,"like":null},{"time":"05:00:00 - 05:59:59","view":3,"like":null},{"time":"06:00:00 - 06:59:59","view":11,"like":null},{"time":"07:00:00 - 07:59:59","view":18,"like":0},{"time":"08:00:00 - 08:59:59","view":22,"like":null},{"time":"09:00:00 - 09:59:59","view":18,"like":null},{"time":"10:00:00 - 10:59:59","view":25,"like":null},{"time":"11:00:00 - 11:59:59","view":9,"like":null},{"time":"18:00:00 - 18:59:59","view":14,"like":null},{"time":"19:00:00 - 19:59:59","view":13,"like":null},{"time":"20:00:00 - 20:59:59","view":24,"like":0},{"time":"21:00:00 - 21:59:59","view":25,"like":0},{"time":"22:00:00 - 22:59:59","view":16,"like":0},{"time":"23:00:00 - 23:59:59","view":4,"like":null}];
-	
+
 	/* Create axes */
 	var categoryAxis = chart04.xAxes.push(new am4charts.CategoryAxis());
 	categoryAxis.dataFields.category = "time";
@@ -255,20 +255,20 @@ function drawVisualization(){
 
 	/* Create value axis */
 	var valueAxis = chart04.yAxes.push(new am4charts.ValueAxis());
-	
+
 	/* Create series */
 	var columnSeries = chart04.series.push(new am4charts.ColumnSeries());
 	columnSeries.name = "view";
 	columnSeries.dataFields.valueY = "view";
 	columnSeries.dataFields.categoryX = "time";
-	
+
 	columnSeries.columns.template.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
 	columnSeries.columns.template.propertyFields.fillOpacity = "fillOpacity";
 	columnSeries.columns.template.propertyFields.stroke = "stroke";
 	columnSeries.columns.template.propertyFields.strokeWidth = "strokeWidth";
 	columnSeries.columns.template.propertyFields.strokeDasharray = "columnDash";
 	columnSeries.tooltip.label.textAlign = "middle";
-	
+
 	// second value axis for quantity
 	var valueAxis2 = chart04.yAxes.push(new am4charts.ValueAxis());
 	valueAxis2.renderer.opposite = true;
@@ -279,14 +279,14 @@ function drawVisualization(){
 	lineSeries.name = "like";
 	lineSeries.dataFields.valueY = "like";
 	lineSeries.dataFields.categoryX = "time";
-	
+
 	lineSeries.yAxis = valueAxis2;
 
 	lineSeries.stroke = am4core.color("#fdd400");
 	lineSeries.strokeWidth = 3;
 	lineSeries.propertyFields.strokeDasharray = "lineDash";
 	lineSeries.tooltip.label.textAlign = "middle";
-	
+
 	var bullet = lineSeries.bullets.push(new am4charts.Bullet());
 	bullet.fill = am4core.color("#fdd400"); // tooltips grab fill from parent by default
 	bullet.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
@@ -294,9 +294,9 @@ function drawVisualization(){
 	circle.radius = 4;
 	circle.fill = am4core.color("#fff");
 	circle.strokeWidth = 3;
-	
+
 	chart04.data = data;
-	
+
 	}); // end am4core.ready()
 	</script>
 
@@ -2763,7 +2763,7 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
 </div>
 </div>
 
-		
+
 	</div>
 </body>
 </html>

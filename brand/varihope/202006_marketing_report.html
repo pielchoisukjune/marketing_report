@@ -23,8 +23,8 @@
 		font-family: 'NotoSansKR';
 		font-style: normal;
 		font-weight: 400;
-		src: local('NotoSansKR-Regular'), 
-			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'), 
+		src: local('NotoSansKR-Regular'),
+			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'),
 			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff') format('woff');
 		font-stretch: normal;
 		unicode-range: U+0021-33FF,U+A000-F8FF,U+FB00-F251;
@@ -35,12 +35,12 @@
 	#chartdiv00,#chartdiv01,#chartdiv02,#chartdiv03,#chartdiv04 {
 		width: 100%;
 		height: 400px;
-	}	
+	}
 
 	#chartdiv05, #chartdiv06 {
 		width: 100%;
 		height: 600px;
-	}	
+	}
 	body{
 		margin : 30px;
 		font-family: "Noto Sans KR", sans-serif;
@@ -74,12 +74,12 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	var arr = window.document.getElementsByTagName("iframe");
 
 	arr.forEach(function(item){
-		
+
 		item.parentElement.firstElementChild.style.height = "0px";
 		item.parentElement.firstElementChild.style.minHeight = "0px";
 
 		if( item.height == "266" ) return;
-		
+
 		var w00 = item.parentElement.offsetWidth;
 		var w01 = item.offsetWidth;
 		var h00 = ( item.offsetHeight * item.parentElement.offsetWidth ) / item.offsetWidth;
@@ -87,14 +87,14 @@ window.addEventListener('DOMContentLoaded', function( e ){
 
 		item.width = w00;
 		item.height = h00;
-		
+
 	})
 
 	var thumb_imgs_html = window.document.getElementsByClassName("ads_list_thumb");
 		thumb_imgs_html.forEach(function(item){
-		
+
 		if( item.height == "266" ) return;
-		
+
 		var w00 = item.parentElement.offsetWidth;
 		var w01 = item.offsetWidth;
 		var h00 = ( item.offsetHeight * item.parentElement.offsetWidth ) / item.offsetWidth;
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function( e ){
 
 		item.width = w00;
 		item.height = h00;
-		
+
 	})
 });
 
@@ -115,12 +115,12 @@ function drawVisualization(){
 
 	var data = google.visualization.arrayToDataTable([["State","도달","노출수"],[{"f":"Ho Chi Minh City","v":"VN-SG"},79232,159084],[{"f":"Hanoi","v":"VN-HN"},84992,185507],[{"f":"Thanh Hóa Province","v":"VN-21"},53504,160679],[{"f":"Thừa Thiên–Huế Province","v":"VN-26"},26496,98231],[{"f":"Đắk Lắk Province","v":"VN-33"},28928,83147],[{"f":"Đồng Nai Province","v":"VN-39"},33664,80928],[{"f":"Bình Dương Province","v":"VN-57"},38400,71182],[{"f":"Bình Định Province","v":"VN-31"},24576,69197],[{"f":"Haiphong","v":"VN-HP"},25472,65971],[{"f":"Nghệ An Province","v":"VN-22"},25472,65451],[{"f":"Cần Thơ","v":"VN-CT"},21504,61700],[{"f":"Bắc Ninh Province","v":"VN-56"},24576,58215],[{"f":"Da Nang","v":"VN-DN"},20736,50899],[{"f":"Khánh Hòa Province","v":"VN-34"},17408,48882],[{"f":"Bà Rịa–Vũng Tàu Province","v":"VN-43"},19840,46292],[{"f":"Bình Thuận Province","v":"VN-40"},17536,45636],[{"f":"Quảng Trị Province","v":"VN-25"},11648,31920],[{"f":"Vĩnh Phúc Province","v":"VN-70"},8576,27441],[{"f":"Bắc Giang Province","v":"VN-54"},14336,24011],[{"f":"Quảng Ninh Province","v":"VN-13"},9216,13505],[{"f":"Hải Dương Province","v":"VN-61"},12784,12784],[{"f":"Hưng Yên Province","v":"VN-66"},5120,10115],[{"f":"Nam Định Province","v":"VN-67"},7424,9940],[{"f":"Quảng Nam Province","v":"VN-27"},6784,9900],[{"f":"Lâm Đồng Province","v":"VN-35"},7168,9730],[{"f":"Thái Bình Province","v":"VN-20"},6400,9368],[{"f":"Hà Tĩnh Province","v":"VN-23"},5888,9327],[{"f":"Thái Nguyên Province","v":"VN-69"},6528,9041],[{"f":"Đồng Tháp Province","v":"VN-45"},4736,8615],[{"f":"Long An Province","v":"VN-41"},6784,8410],[{"f":"Gia Lai Province","v":"VN-30"},5248,7298],[{"f":"An Giang Province","v":"VN-44"},4736,6897],[{"f":"Quảng Ngãi Province","v":"VN-29"},5120,5991],[{"f":"Ninh Bình Province","v":"VN-18"},4096,5924],[{"f":"Quảng Bình Province","v":"VN-24"},5632,5910],[{"f":"Vĩnh Long Province","v":"VN-49"},3840,5834],[{"f":"Hòa Bình Province","v":"VN-14"},4736,5306],[{"f":"Phú Yên Province","v":"VN-32"},4864,5267],[{"f":"Tiền Giang Province","v":"VN-46"},3968,5223],[{"f":"Tây Ninh Province","v":"VN-37"},4480,5079],[{"f":"Đắk Nông Province","v":"VN-72"},4736,5070],[{"f":"Kiên Giang Province","v":"VN-47"},3968,4822],[{"f":"Phú Thọ Province","v":"VN-68"},3968,4795],[{"f":"Hà Nam Province","v":"VN-63"},2048,4162],[{"f":"Ninh Thuận Province","v":"VN-36"},3328,3671],[{"f":"Lạng Sơn Province","v":"VN-09"},2688,3588],[{"f":"Bình Phước Province","v":"VN-58"},2432,3491],[{"f":"Bến Tre Province","v":"VN-50"},2304,3411],[{"f":"Lào Cai Province","v":"VN-02"},3392,3392],[{"f":"Sơn La Province","v":"VN-05"},3177,3177],[{"f":"Sóc Trăng Province","v":"VN-52"},3072,3118],[{"f":"Tuyên Quang Province","v":"VN-07"},2688,3109],[{"f":"Cà Mau Province","v":"VN-59"},1920,3099],[{"f":"Trà Vinh Province","v":"VN-51"},1792,2805],[{"f":"Yên Bái Province","v":"VN-06"},1792,2771],[{"f":"Kon Tum Province","v":"VN-28"},2432,2755],[{"f":"Điện Biên Province","v":"VN-71"},1024,2516],[{"f":"Bạc Liêu Province","v":"VN-55"},1024,2293],[{"f":"Cao Bằng Province","v":"VN-04"},1280,2146],[{"f":"Hà Giang Province","v":"VN-03"},1732,1732],[{"f":"Bắc Kạn Province","v":"VN-53"},1024,1379],[{"f":"Hậu Giang Province","v":"VN-73"},768,1281],[{"f":"Lai Châu Province","v":"VN-01"},264,264]]);
 
-	var opts = { 
+	var opts = {
 		region: 'VN'
 		, displayMode: 'regions'
 		, resolution: 'provinces'
 		, colorAxis: {colors: ['yellow', 'red']}
-		, legend : {textStyle: {color: 'red', fontSize: 12}} 
+		, legend : {textStyle: {color: 'red', fontSize: 12}}
 		, sizeAxis: { minValue: 0, maxValue: 100 }
 	};
 	var geochart = new google.visualization.GeoChart(
@@ -146,7 +146,7 @@ function drawVisualization(){
 	title00.fontSize = 25;
 	title00.marginBottom = 30;
 	title00.marginTop = 30;
-	
+
 	title01.text = "연령별 노출";
 	title01.fontSize = 25;
 	title01.marginBottom = 30;
@@ -181,7 +181,7 @@ function drawVisualization(){
 	pieSeries00.hiddenState.properties.endAngle = -90;
 	pieSeries00.hiddenState.properties.startAngle = -90;
 	pieSeries00.labels.template.fontSize = 10;
-	
+
 
 	// Add and configure Series
 	var pieSeries01 = chart01.series.push(new am4charts.PieSeries());
@@ -221,7 +221,7 @@ function drawVisualization(){
 	pieSeries03.hiddenState.properties.opacity = 1;
 	pieSeries03.hiddenState.properties.endAngle = -90;
 	pieSeries03.hiddenState.properties.startAngle = -90;
-	
+
 	chart00.hiddenState.properties.radius = am4core.percent(70);
 	chart01.hiddenState.properties.radius = am4core.percent(70);
 	chart02.hiddenState.properties.radius = am4core.percent(20);
@@ -231,20 +231,20 @@ function drawVisualization(){
 <!-- Chart code -->
 <script>
 	am4core.ready(function() {
-	
+
 	// Themes begin
 	am4core.useTheme(am4themes_animated);
 	// Themes end
-	
+
 	// Create chart instance
 	var chart04 = am4core.create("chartdiv04", am4charts.XYChart);
 	chart04.legend = new am4charts.Legend();
 	// Export
 	chart04.exporting.menu = new am4core.ExportMenu();
-	
+
 	// Data for both series
 	var data = [{"time":"00:00:00 - 00:59:59","view":38307,"like":22},{"time":"01:00:00 - 01:59:59","view":15600,"like":8},{"time":"02:00:00 - 02:59:59","view":8134,"like":6},{"time":"03:00:00 - 03:59:59","view":5859,"like":4},{"time":"04:00:00 - 04:59:59","view":6749,"like":6},{"time":"05:00:00 - 05:59:59","view":21775,"like":32},{"time":"06:00:00 - 06:59:59","view":45679,"like":44},{"time":"07:00:00 - 07:59:59","view":54484,"like":40},{"time":"08:00:00 - 08:59:59","view":60514,"like":37},{"time":"09:00:00 - 09:59:59","view":70406,"like":37},{"time":"10:00:00 - 10:59:59","view":77709,"like":81},{"time":"11:00:00 - 11:59:59","view":95007,"like":84},{"time":"12:00:00 - 12:59:59","view":113940,"like":94},{"time":"13:00:00 - 13:59:59","view":85516,"like":61},{"time":"14:00:00 - 14:59:59","view":85819,"like":51},{"time":"15:00:00 - 15:59:59","view":90472,"like":55},{"time":"16:00:00 - 16:59:59","view":78196,"like":57},{"time":"17:00:00 - 17:59:59","view":80219,"like":75},{"time":"18:00:00 - 18:59:59","view":88565,"like":83},{"time":"19:00:00 - 19:59:59","view":101395,"like":74},{"time":"20:00:00 - 20:59:59","view":126625,"like":91},{"time":"21:00:00 - 21:59:59","view":144627,"like":96},{"time":"22:00:00 - 22:59:59","view":118227,"like":95},{"time":"23:00:00 - 23:59:59","view":58872,"like":131}];
-	
+
 	/* Create axes */
 	var categoryAxis = chart04.xAxes.push(new am4charts.CategoryAxis());
 	categoryAxis.dataFields.category = "time";
@@ -255,20 +255,20 @@ function drawVisualization(){
 
 	/* Create value axis */
 	var valueAxis = chart04.yAxes.push(new am4charts.ValueAxis());
-	
+
 	/* Create series */
 	var columnSeries = chart04.series.push(new am4charts.ColumnSeries());
 	columnSeries.name = "view";
 	columnSeries.dataFields.valueY = "view";
 	columnSeries.dataFields.categoryX = "time";
-	
+
 	columnSeries.columns.template.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
 	columnSeries.columns.template.propertyFields.fillOpacity = "fillOpacity";
 	columnSeries.columns.template.propertyFields.stroke = "stroke";
 	columnSeries.columns.template.propertyFields.strokeWidth = "strokeWidth";
 	columnSeries.columns.template.propertyFields.strokeDasharray = "columnDash";
 	columnSeries.tooltip.label.textAlign = "middle";
-	
+
 	// second value axis for quantity
 	var valueAxis2 = chart04.yAxes.push(new am4charts.ValueAxis());
 	valueAxis2.renderer.opposite = true;
@@ -279,14 +279,14 @@ function drawVisualization(){
 	lineSeries.name = "like";
 	lineSeries.dataFields.valueY = "like";
 	lineSeries.dataFields.categoryX = "time";
-	
+
 	lineSeries.yAxis = valueAxis2;
 
 	lineSeries.stroke = am4core.color("#fdd400");
 	lineSeries.strokeWidth = 3;
 	lineSeries.propertyFields.strokeDasharray = "lineDash";
 	lineSeries.tooltip.label.textAlign = "middle";
-	
+
 	var bullet = lineSeries.bullets.push(new am4charts.Bullet());
 	bullet.fill = am4core.color("#fdd400"); // tooltips grab fill from parent by default
 	bullet.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
@@ -294,9 +294,9 @@ function drawVisualization(){
 	circle.radius = 4;
 	circle.fill = am4core.color("#fff");
 	circle.strokeWidth = 3;
-	
+
 	chart04.data = data;
-	
+
 	}); // end am4core.ready()
 	</script>
 
@@ -333,15 +333,15 @@ function drawVisualization(){
 	<tbody>
 	<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 본사 미러링</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>27</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 <tr><td style='font-size:11px;'>컨텐츠 (영상) : 본사 미러링 - 번역</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>2</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
-<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>28</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
-<tr><td style='font-size:11px;'>컨텐츠 (영상) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>6</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
+<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>24</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
+<tr><td style='font-size:11px;'>컨텐츠 (영상) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>12</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 <tr><td style='font-size:11px;'>SEO</td><td style='font-size:11px;'>Google , Review wed page, Homepage</td><td style='font-size:11px;'>4</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 <tr><td style='font-size:11px;'>리뷰</td><td style='font-size:11px;'>fimi ,Facebook beauty review web page</td><td style='font-size:11px;'>14</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
-<tr><td style='font-size:11px;'>체험단 이벤트</td><td style='font-size:11px;'>Facebook event , Facebook mini game</td><td style='font-size:11px;'>2</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
+<tr><td style='font-size:11px;'>체험단 이벤트</td><td style='font-size:11px;'>Facebook event , Facebook mini game</td><td style='font-size:11px;'>5</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 <tr><td style='font-size:11px;'>뷰티유투버</td><td style='font-size:11px;'>beauty youtuber</td><td style='font-size:11px;'>6</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 <tr><td style='font-size:11px;'>인플루언서</td><td style='font-size:11px;'>Influencer</td><td style='font-size:11px;'>0</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
-<tr><td style='font-size:11px;'>언론사</td><td style='font-size:11px;'>News paper</td><td style='font-size:11px;'>3</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
-<tr><td style='font-size:11px;'>영상제작</td><td style='font-size:11px;'>Video clip</td><td style='font-size:11px;'>2</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
+<tr><td style='font-size:11px;'>언론사</td><td style='font-size:11px;'>News paper</td><td style='font-size:11px;'>6</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
+<tr><td style='font-size:11px;'>영상제작</td><td style='font-size:11px;'>Video clip</td><td style='font-size:11px;'>4</td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td><td style='font-size:11px;'></td></tr>
 	
 	</tbody>
 </table>
@@ -1183,20 +1183,26 @@ function drawVisualization(){
 			  <div class="ui six stackable cards">
 				<div class="card">
 	<div class="content">
-		<div class="header" style="font-size : 12px;">비나피엘제작</div>
-		<div class="description" style="font-size : 20px;color:#000;"><b>34</b></div>
+		<div class="header" style="font-size : 12px;">컨텐츠 (이미지) : 비나피엘 제작</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>24</b></div>
 	</div>
 </div>
 <div class="card">
 	<div class="content">
-		<div class="header" style="font-size : 12px;">본사 미러링</div>
-		<div class="description" style="font-size : 20px;color:#000;"><b>29</b></div>
+		<div class="header" style="font-size : 12px;">컨텐츠 (이미지) : 본사 미러링</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>27</b></div>
 	</div>
 </div>
 <div class="card">
 	<div class="content">
-		<div class="header" style="font-size : 12px;">뷰티유튜버</div>
-		<div class="description" style="font-size : 20px;color:#000;"><b>13</b></div>
+		<div class="header" style="font-size : 12px;">컨텐츠 (영상) : 비나피엘 제작</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>12</b></div>
+	</div>
+</div>
+<div class="card">
+	<div class="content">
+		<div class="header" style="font-size : 12px;">체험단 이벤트</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>5</b></div>
 	</div>
 </div>
 <div class="card">
@@ -1207,8 +1213,20 @@ function drawVisualization(){
 </div>
 <div class="card">
 	<div class="content">
+		<div class="header" style="font-size : 12px;">뷰티유튜버</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>6</b></div>
+	</div>
+</div>
+<div class="card">
+	<div class="content">
 		<div class="header" style="font-size : 12px;">리뷰</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>14</b></div>
+	</div>
+</div>
+<div class="card">
+	<div class="content">
+		<div class="header" style="font-size : 12px;">컨텐츠 (영상) : 본사 미러링</div>
+		<div class="description" style="font-size : 20px;color:#000;"><b>2</b></div>
 	</div>
 </div>
 <div class="card">
@@ -1221,7 +1239,7 @@ function drawVisualization(){
 			  </div>
 			</div>
 		</div>
-		<h3  class="ui left aligned header">비나피엘제작 ( 34 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+		<h3  class="ui left aligned header">컨텐츠 (이미지) : 비나피엘 제작 ( 24 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         <img class="ads_list_thumb" src="https://www.instagram.com/p/CA4eNUAplob/media/?size=l" style='max-height : 400px;'></img>
     </div>
@@ -1233,7 +1251,7 @@ Làn da bạn ngày hôm nay có tràn đầy năng lượng tích cực từ �
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1267,210 +1285,6 @@ Làn da bạn ngày hôm nay có tràn đầy năng lượng tích cực từ �
 </div>
 <div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/84306260_294818941920236_3098959615782551552_o.jpg?_nc_cat=108&_nc_sid=730e14&_nc_oc=AQkrABgz-TSyHfctWedYFatALnQQKYaqScxL-8XjOtshyhjKwK0THmP1sU0PSonLy2w&_nc_ht=scontent-ssn1-1.xx&oh=bc588d0a62791cd4fd66d012b47eae0d&oe=5F294667" style='max-height : 400px;'></img>
-    </div>
-    
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>REVIEW CÙNG VARI:HOPE - NHẬN QUÀ SIÊU TO KHỔNG LỒ
-(review kem dưỡng Vitamin C Cream)</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">5,312</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">269</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">76</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">114</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">41</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-03</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/294818931920237/?type=3&__xts__%5B0%5D=68.ARBG5Pn4zomeB55gbvUW1axVOVIAz_tCymLPpzeREp3XEM1IIpSw0uZbqZ0tuSzepfPqQ-GH-NmwDgorcJIe2kEOm76jyTpZOL53EaiDSX6voIaELH1qYZv-P6DWzm76csQAZFTo_X7Mt1IclPxmysHC_Wr8RspAXAYi0XcZ8jgP3V0K3rkW42UM_JYFH40k7szYp3Qh_VAIVZ5vjyjAUaypIvWWEA6mCbNAMhWjLtE91RehfBGgDiJRtys6SDvBNDP8S4Y0y7PxTWYOfTL1v_pXZdlOEkVZusePNgro0lW32AWT5X9FgVoAqRR4iMdwCTls-H9bCi65tC97Rx_SfOc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F270084424042426%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Với mỗi làn da khác nhau sẽ đem đến nhiều trải nghiệm khác nhau nhưng chắc chắn sẽ đều sẽ hướng đến cùng một mục đích là #hiệu_quả sau khi sử dụng sẽ như thế nào️⁉</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">7,115</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">150</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">1</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">28</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">1</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-04</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/270084424042426/?__xts__%5B0%5D=68.ARBvnfIRr7Zx5sqWr0gF8cIoMhYFUUmGK9WmCUAWBePJV_0Zp7WllYT7pqgASFyn9pbUx91RGxUU_N3oaQu9oMfLdcGpd5II96NW1c1HKox9JpDhZqWbyK-KK1S-oK1vNi5huRbSw4CIAp3bO4j3GearMj1kXMroc4mPk-Uuj_vXIcrf3re8BSnHz3bhKbCRkortmp9beQfrCeQHjfl61HdB_XN0iJo7Bvj0K9dPItxB7dI3IP4ilJkwthS0gZdtyMnsDX9fQUtmV6Xg8XJfaYU6-e1I_5oeHaTGWH7STrN0DaHOm7Ph2k_SYacXWmZVPQFXJFv9zhtg966Ab_up3_75_Csgao9_vTw_2UZnpmmlzAe3v2gg4gvg&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F956101641508418%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>🍊 𝐕𝐢𝐭𝐚𝐦𝐢𝐧 𝐂 𝐀𝐦𝐩𝐨𝐮𝐥𝐞 của Vari:Hope đã "hạ gục" Đỗ Khánh Vân ngay từ lần chạm đầu tiên.</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">4,478</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">236</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">4</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">48</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-05</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/956101641508418/?__xts__%5B0%5D=68.ARBi5RaHcXJ9V5MNGIYvYwU37Aie1EqdQOBeHOjYuS29Zmrsdmkt7edGpuXd5cd7NI8xnAt0WikOjmUROPYpcy57Fs08BNtHrUq3nFwpW_hWL_jtX53IUL2635ShR-UyIpc5v36jnsE4Rh9jIMOpTnK33oKul0jPdJ8b90Ghys_FjjQgrGliPY9IPaCevY3PdmGHqjjq77wspx0JbuqTc2zH4MkzRUheXcQd82Ii_qMu9eHhDH3HLIbbT-KeY0ePCoT54ayvpmpWp_iTyNGmBLbHGQnO-CsiN6np71YX7_9viR096jMaohKlofNA-_89yLzv9Ev0Ea4ck5iEwxmQhpmSl4t1SS2-Wv4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F701269443992583%2F&show_text=0&width=634" width="634" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Da MỊN MÀNG hơn sau 8 ngày với REFINING BOOTS SERUM
-Bật mí thành phần trong tinh chất 𝟖 𝐃𝐚𝐲𝐬 𝐑𝐞𝐟𝐢𝐧𝐢𝐧𝐠 𝐁𝐨𝐨𝐬𝐭 𝐒𝐞𝐫𝐮𝐦</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">1,480</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">42</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">25</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-06</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/701269443992583/?__xts__%5B0%5D=68.ARANB-EALoWSfJnFPwGDKvjzc0iXxaUeBvFXJe0Zi-kYRDXfLuJ08hdOzKZL7SRZCYYJT-HjO_oh4jyva3IRPxhLDQuIyS5Uh8ap-bZnsTma5HnRXDsqXI0iyAHGruNMK5_x1dHjKWuWNeu0sNyjBbp6dq6FnGjyw35-h63pWdgmnbkhskVLsKo4YAHbOkoO8RDHGVFLQzXkOH77e3fKmn4KNI6rRN-Fw87QeBVLMkRdZ5xVF_EcSKKjW6YJXz9s23viqR9K4hfrqtjzcsOj4G9RjXW28dhRf53S3fcSU9z5SA5MOUl7gcr764eX6n2FVsLEN-_KgsWMSUxI-7W0Oaxch9x60wM06bc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/78100619_295591625176301_996670731817320448_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_oc=AQmjyju9_LAAx3_y24qtr8nHP-_iJtKOYdXuHNuVSk42pFfRe1yD7uA0ufLdtMmvbPyf_S0aHffOs0u_ZsdV5c2F&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=a9eee2fdda9f4dd24e72db57dec0b78a&oe=5F29639C" style='max-height : 400px;'></img>
     </div>
     
@@ -1481,7 +1295,7 @@ Bật mí thành phần trong tinh chất 𝟖 𝐃𝐚𝐲𝐬 𝐑𝐞𝐟𝐢
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1530,7 +1344,7 @@ Bật mí thành phần trong tinh chất 𝟖 𝐃𝐚𝐲𝐬 𝐑𝐞𝐟𝐢
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1580,7 +1394,7 @@ Bật mí thành phần trong tinh chất 𝟖 𝐃𝐚𝐲𝐬 𝐑𝐞𝐟𝐢
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1621,7 +1435,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1661,16 +1475,16 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
 </div>
 <div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/p960x960/103754618_299840738084723_5674075120672789372_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQnb_reWIGcf5CcGC9xrYVprIMPDniXciCBxWkVUAb1QXPO5qOLBUlShB4zS4pnI81srh-mfdbEtRg8OqptEzkul&_nc_ht=scontent.fhan3-3.fna&_nc_tp=6&oh=a8a53a47fecfb9bd661b56b980c96cc5&oe=5F289A00" style='max-height : 400px;'></img>
+        
     </div>
-    
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F3066994450010114%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>[𝐄𝐕𝐄𝐍𝐓 𝐑𝐄𝐕𝐈𝐄𝐖] CÔNG BỐ DANH SÁCH CÁC BẠN TRÚNG GIẢI THƯỞNG REVIEW REFINING BOOST SERUM 🥳🥳🥳</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>‼ Sẽ không có một sản phẩm nào HOÀN HẢO, tất nhiên rằng sẽ luôn có #ƯUĐIỂM và #NHƯỢCĐIỂM điểm rõ ràng.</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1680,27 +1494,27 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">2,984</span></td>
+	<td><span class="font12px">1,772</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">231</span><br></td>
+	<td><span class="font12px">159</span><br></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">7</span></td>
+	<td><span class="font12px">2</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">51</span></td>
+	<td><span class="font12px">27</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">3</span></td>
+	<td><span class="font12px">1</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-09</span></td>
+	<td><span class="font12px">2020-06-08</span></td>
 	</tr>
                 </tbody>
             </table>
@@ -1708,7 +1522,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/299840734751390/?type=3&__xts__%5B0%5D=68.ARB8fRhTWgDIHoAXCTFaeJHfb9rYhBmm9scCgU--oZ87-pM1vPtE9NRc-ItXQNTCXqKuutYJ74qXzOhwtHzUpd7J786bqZiwYOWHghvmiePSfvpy2L6QnzhrMXyuxOQQadzJpVwhFhqgccAcglQwFBbUsyUv_zsot5E81YSodHG0c4iP5AtEZ_5oNYktsRPs_0AGM9bZrl0qD20d7f8rr60amyXBSnEGhAGSoWQgR8sL38VWciJKHPjDUN9zae4Et-_FOa1f7C9OiuDoC3ONoI6lJ4ic39f0vbwFtaFCbB_3GPF9NQJTq1j6blHgik4lmRQJWY5-y2cv3SQ5xxhQmYc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/3066994450010114/?__xts__%5B0%5D=68.ARD6f5HrZOrZazofesdwi4jUZL1ps1vPEyhJoHb0QFeRefC1Mui7lHv5SDVZ-HObnjV1g4PdrKTAR4HTbehCCy5hiQFA9D70uPGaQ3NrpKCVt_5JvfEbTpcNjKYmKje3zLBYD9occgkgA7SwmzQXWuEQZr8HWW43kKit35tBRADMjLxn3-F2B5L-rpDdq44cM_GthxYdZbqq-lxdFMduV-ROyI3N0TzZNIzuTCOwDvlmF7-kg12TAm3ZVD_OA_5pKhm-97WaxHoqRRAsUcxE84T_CIP7UgFKLfcSPfzHn_YkTTxKY2zPgLxYj6mCij5Sy9ncCY7Pnb6P9g3_adg0s1U91yjAZJKdXi4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
@@ -1723,7 +1537,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1772,7 +1586,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1812,58 +1626,6 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
 </div>
 <div class="card">
     <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F269454290827254%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>CÁM DỖ TỪ VARI:HOPE PURE VITAMIN C 💘 💘</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">186,808</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">5,387</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">31</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-10</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/269454290827254/?__xts__%5B0%5D=68.ARBbPDC14ZFoG7cJycKtkNuK2Or5Gl5Ef8lPkwW4kn2_vIok5N8JLbFx3Z0ue_GcioSdLveOMT1WyZsxtCKN5xbYKWAUmsKYKvHJEpbZj_oRyaavHTcpyH_tgRkPPB0E6SGmC2xzhGefynjea9UrVurIitJVSKxP1yD1X3LIpN4uasWM02KggoN5i8Oyd7WVOEmpgi2PUj4xzNsagJfZ_vFTWIUvFPM6J17eu_BXQjM9xindFy1zMWWfS1xT2ITpXLxRNoK6p_HI7FdKQRl4A-gkd7ZzqDAZoKAmzLrAcrtkjxqQHP0hjIcC33WofjwZo8uHHZf8cpbjQG75bClLT1l_YRDm7BxAvEI&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/p960x960/102421726_301488014586662_4918546787353000092_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQkMXHHjkA1qNPeh6YVeiA6oH7WcJb0rflcdy8tYhMfjpHhR4dnBV_l93NTTpCT-xT44GK5oCkvs8_Zt-777Cghm&_nc_ht=scontent.fhan3-2.fna&_nc_tp=6&oh=1ee9ceaf79b6077bbeac53e3e5c683b3&oe=5F282624" style='max-height : 400px;'></img>
     </div>
     
@@ -1873,7 +1635,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -1913,58 +1675,6 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
 </div>
 <div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102754328_302360967832700_8907606596175812671_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQlJc0QB1_uqdgu-HYGYYxZFbDdn3WR85S1BnvZIr1Pix_ENO78f8WsK-tGsiIT1DlwTmRT7hYA_9UGRojBidetz&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=fc9c44e5dfd81305f694d385b038740c&oe=5F27FC1F" style='max-height : 400px;'></img>
-    </div>
-    
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>VARI:HOPE #CHÚC_MỪNG KHÁCH HÀNG ĐÃ NHẬN ĐƯỢC SET TRẢI NGHIỆM 𝟖 𝐃𝐀𝐘𝐒 𝐏𝐔𝐑𝐄 𝐕𝐈𝐓𝐀𝐌𝐈𝐍 𝐂 𝐂𝐑𝐄𝐀𝐌 🥳🥳🥳</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">1,948</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">96</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">1</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">34</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">3</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-12</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/302360964499367/?type=3&__xts__%5B0%5D=68.ARDXz1ExnMulm4oNmUhTXZMDWos-SeNkhhqjCrV5KJdJbT1BHGKgdhrL_1SOKummq9LdKtLTp1eVmmWLNTU0OC-FMbesgDe0nqO45SX5N0B5tzkqWQUsLIbNmyWIWkGwoUXn1Cfj4zy0W19-pL0yLWl0wXHnqhJ2ZbHAbn72andxcjMvXWauWqXS_XMQoGHbt9daI6MJrB2EsVfbRzIqeEbbqEZT3rVei6k_evMYyP-LvU7PqLilw0iIWKlUynPelCW0PHTyswCEB2fhgrsrbOsu5XX0Aaq-Yl3PIQMdRA6wSPGtFbxqE6jhW9IFoW51Ejp2fjRTJGPKpj9PqyC7Rxw&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103453568_302615334473930_921317398849214792_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQnQ8tif5g5NoWfvL-OHcNRIdB1fMLX0vuWNOniw8WSsGZjgHy_uA4knaE2_Urt8ZHJm9vLoLsk2GxUV8zJtrAFk&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=6a89405c8e475fc4f97ecc067aefa755&oe=5F29D58D" style='max-height : 400px;'></img>
     </div>
     
@@ -1974,7 +1684,7 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2014,52 +1724,6 @@ Vari:Hope chào bạn ngày mới ~ 💛</div>
 </div>
 <div class="card">
     <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F1092788904429123%2F&show_text=0&width=268" width="268" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Tại #HànQuốc, cơn sốt về bộ đôi 𝐑𝐞𝐟𝐢𝐧𝐢𝐧𝐠 𝐁𝐨𝐨𝐬𝐭 𝐒𝐞𝐫𝐮𝐦 và 𝐕𝐢𝐭𝐚𝐦𝐢𝐧 𝐂 𝐀𝐦𝐩𝐨𝐮𝐥𝐞 vẫn chưa hạ nhiệt. 😲 😲 😲</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">971</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">26</span><br></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">20</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-13</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/1092788904429123/?__xts__%5B0%5D=68.ARCTQwwnFBJWitO2SBW4wvTprj5hYKt0xuv_EeKeUa7h0Zk2UO6Gn63Hyx05fGxQwRtW2pQPN8pp-3BRfRoHgLrtZbcIM4LOR1uZ0EKa8_NHjNlsLGhr6FlMQcodcM2jv0aepYTsseErDeVztXgDeLXjgDfnaR83Kg0tGCOGTrSkwUWPWC5_GPGz1QzXfO5xg-pcxRo6YCcxSlg10la03WqWAfLmBkE1nDSkB0gzoCg7movyvxbR2ZfCx_hpt0frI_VMJnjKoEOWUYwgBAzFqnrcYVxjYMA_LQ2DsRl1lITn0gdPUkPT9FdlRUqDI-UHthwu9hyw2vUfcatgvAGTj-UyFIGSG5qeryM&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/103584954_303378887730908_8140580751962859329_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_oc=AQlzzKZFfurmSgQVQ8b4m8ms3IzK5o9BEv3cV11Akqj5peyqMKuRftsK6ZiBN7wh_-yrzxYzRjhuaE6pZyWGxYjd&_nc_ht=scontent.fhan4-1.fna&oh=d83e97bb1971d1b6cf422a89815c321c&oe=5F273C14" style='max-height : 400px;'></img>
     </div>
     
@@ -2070,7 +1734,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2122,7 +1786,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2174,7 +1838,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2214,7 +1878,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2263,7 +1927,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2313,7 +1977,7 @@ Vari:Hope chào bạn ngày mới.</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2360,7 +2024,7 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2403,111 +2067,6 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
 </div>
 <div class="card">
     <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F661094361111307%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>𝑅𝑒𝑓𝑟𝑒𝑠ℎ 𝑆𝑘𝑖𝑛! ✌ ✌ ✌
-Đầu tuần cùng Vari:Hope nạp thêm năng lượng tươi mới cho làn da với #VitaminC_Cream 7% nhé!</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">2,225</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">47</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">33</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-22</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/661094361111307/?__xts__%5B0%5D=68.ARA-t39GPysiOQbpJnj24siFWz8SAGNmjaSDXiD2AqDCZI6YJyjbzZDdn4J6gxspbIMUxLr-ZaxqIh_IoEFb4ucUHx9CAuezf16-zDyuwySYu1rAaACn6mWhZeffC0iJeHHiP_Z5gMQr3GVpAi6o8KSBbporN2xKyxAA6TPZRa5-U0k-bNlf0U4FU1JsZMs0MLycDKH3SCvXogayKh4bQ8zTW1Y80fnq-DRc5IW2VLllA0sFFIunEwyuTtxFP4kMkgTNY-bgFP55Im_Sb6T9EonoYqt3cXDkmSAgiehc1rWDHw7mpS2l2ZRlDwk_F9CXMU3XTEN8zY8lT90XLXV_1gyBoWHEl-3q7waWJeAiF4PsuWPpIgRAlKk&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/s960x960/104489517_310582040343926_2255929836125352965_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_oc=AQkpJbRHKeClfltG1pJHvP0uHfknX-nKibuDYeZ68wNoSMjk74rcrQJtP8JHi48XLyCtxgWG_VazDWJZopFQPZcn&_nc_ht=scontent.fhan4-1.fna&_nc_tp=7&oh=bfcc19956ee9feb1b08319c744daeaba&oe=5F2A0AD8" style='max-height : 400px;'></img>
-    </div>
-    
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>#𝐌𝐈𝐍𝐈𝐆𝐀𝐌𝐄 - 𝐒𝐞𝐥𝐟𝐢𝐞 𝐜𝐮̀𝐧𝐠 #𝐌𝐞𝐢𝐜𝐡𝐚𝐧 - #𝐍𝐡𝐚̣̂𝐧𝐪𝐮𝐚̀ 𝐜𝐮̉𝐚 𝐕𝐚𝐫𝐢:𝐇𝐨𝐩𝐞 ~ ♡</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">1,775</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">74</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">7</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">112</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">6</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-22</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/310582037010593/?type=3&__xts__%5B0%5D=68.ARDpWwCS49NAaPVJum5D8RIZ7g9wI0Ejtj_sfx_6KrShA2jQjjAFVzvRXiOs8YJ3_baj39isFU3e6KXNBBBvDbL0InNOTBAPM8uAAOp42exEwy_gDnoS5M26oCXPWSDGDTUjZV4XD2F4RjClFtXYdOfxcK9KbX-DNvVmU9HiVOekZzBmdT5KSjPFYaNFLwxfnTYFGq02Fl0c_xUe47M7wYNVaVzKOfVmh2Du2XT_AkJoSXGig7rSlO595C2vFOQqW11fT74pvxggjM_bTXNB0GMibmehzakEtAOF5vDoVkfVJ8KDISDAAhRpT249MnXT__hkuxV3RzARoRTWQ-WxsoU&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/s960x960/104163231_311330043602459_7745551287830442265_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQm35RG1nMYqomG10KNBRoa0tC_nPf3CiIBSooU8yl4Jg6oNRqY4KDKV9EsZ44WiyEPSiMCBDtNk38GuDlVPWKe3&_nc_ht=scontent.fvca1-1.fna&_nc_tp=7&oh=b7b6527fbac1786c7693a421b42bf6b3&oe=5F276C57" style='max-height : 400px;'></img>
     </div>
     
@@ -2517,7 +2076,7 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2569,7 +2128,7 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2618,7 +2177,7 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2670,7 +2229,7 @@ Bạn lựa chọn điều gì cho da vào hôm nay?</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2717,7 +2276,7 @@ Lý do vì sao? 😤 😤 😤</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2769,7 +2328,7 @@ Lý do vì sao? 😤 😤 😤</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2818,7 +2377,7 @@ Lý do vì sao? 😤 😤 😤</div>
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 비나피엘제작</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2847,63 +2406,10 @@ Lý do vì sao? 😤 😤 😤</div>
         <span><a href="https://www.instagram.com/p/CCDJS7HprnY/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
-<div class="card">
-    <div class="image">
-        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/104742067_316787823056681_3000469346746812531_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_oc=AQnpDTrI2BCnbQX4gvgrD6Y4jnpsy-CqysmecHrhubW4WnKXy1y9A6DerAuiQ8ObVtw&_nc_ht=scontent-ssn1-1.xx&oh=d3c3eb558afddbeebc4f2999d81fa22b&oe=5F26A041" style='max-height : 400px;'></img>
-    </div>
-    
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>CÔNG BỐ CÁC BẠN TRÚNG GIẢI THƯỞNG 🥳🥳🥳
-MINIGAME - SELFIE CÙNG VARI:HOPE</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 비나피엘제작</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">2,288</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">118</span><br></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">3</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">35</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-30</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/316787819723348/?type=3&__xts__%5B0%5D=68.ARDBPbEj1vZXJl8YdS1ylN-3zih15Q70YT_pI2GZU2jJJ_Kra1MOf17VjaVxt3-T0Pt8zYs8ssr7QDcm78DhHtjXZvILN8h1WOaHty3erPK1xbO3bb8T9ZcxahT-x9gF4fvVyaqfQL6NQi8eapfgh_eNWSgzCrw-8ivZKb3-E9icd-HkJ3BtoC1CQADaTZpX-E00WlsTM6g-gfzrgRr-OKbHQYz_sQL_EzRmWDiL3qkXXsgdeWTwQ71m63-OEmNuzlOfh0dIVIfxfVXqRpWEfiI8t_YGsxTt03CE_pXofCK85BfJZSw4IUVzojDu8nMFu4dm0UAMny7X-5RKfJyGAPE&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
 </div>
 </div>
 </div>
-</div>
-<h3  class="ui left aligned header">본사 미러링 ( 29 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+<h3  class="ui left aligned header">컨텐츠 (이미지) : 본사 미러링 ( 27 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/72098420_952148975184136_3352629253391777792_o.jpg?_nc_cat=106&_nc_sid=825194&_nc_oc=AQkk4jaUbjH9ESoAvG2X6VSfFqRBJaaYEtLtS5r1fpwfr2rwf_5WVwokQr8KY4tzIlRrs-oVSZ9p3lZ8j5thllcf&_nc_ht=scontent.fvca1-1.fna&oh=d1272f81de83f4ffb4c8d6f8b9aa3e1b&oe=5F28D723" style='max-height : 400px;'></img>
     </div>
@@ -2914,7 +2420,7 @@ MINIGAME - SELFIE CÙNG VARI:HOPE</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -2957,7 +2463,7 @@ MINIGAME - SELFIE CÙNG VARI:HOPE</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3007,7 +2513,7 @@ Sử dụng kết hợp AHA BHA PHA Serum và Vitamin C Ampoule</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3059,7 +2565,7 @@ Sử dụng kết hợp AHA BHA PHA Serum và Vitamin C Ampoule</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3105,7 +2611,7 @@ Sử dụng kết hợp AHA BHA PHA Serum và Vitamin C Ampoule</div>
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3145,7 +2651,7 @@ Sử dụng kết hợp AHA BHA PHA Serum và Vitamin C Ampoule</div>
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3185,7 +2691,7 @@ Sử dụng kết hợp AHA BHA PHA Serum và Vitamin C Ampoule</div>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3239,7 +2745,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3288,7 +2794,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3328,7 +2834,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3381,7 +2887,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3421,7 +2927,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3461,55 +2967,6 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
 </div>
 <div class="card">
     <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F699962190792428%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Hãy cùng xem video để gặp gỡ nhà nghiên cứu #ChoByungKi – một nhà nghiên cứu có hơn 40 năm kinh nghiệm trong lĩnh vực mỹ phẩm và đã đạt được hơn 225 bằng sáng chế mỹ phẩm để lắng nghe Giáo sư chia sẻ về công nghệ và Vitamin C có trong Vari:Hope nhé! 🤗 🤗 🤗</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">41,940</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">3,415</span><br></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">366</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">2</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-14</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/699962190792428/?__xts__%5B0%5D=68.ARCOVFqFrZdOK-Yin1u6bobtXKAMo9na3jfBbz0V3BsDyzgMz2-Hv0S9dfenZzF5WAjPnoVFJCVwu5vFQ7A1PGV1I3Eaf9aW7oYCaV5XUNNXb3Sz0WlG2kJAupYjBRud796ZYHtcikaftV4u9AzfZYjtGoTC4K4uU2EOXC4WIAz3GdBiObF88twu_-k2qY-9Kl3WAeBg0rSewNV55dJwHdztjavAj0-TLP-V4Htoc2uDsgjSolyobJ1oRVWl8ZKChGcHLDvhjhQkXcrjXX4-QVECqH-PsysE5ADTYyG7oxd2hkKnKQSfjCbAq0BqKe12thQWaoCrYLymbfAm9ieQDo4KyVoQhrZc_C4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/p960x960/103592453_304377267631070_1395414927670691872_o.jpg?_nc_cat=109&_nc_sid=8024bb&_nc_oc=AQl_PqrpLtn4Lye6X6KN-siCdMiY0cFkdC332vubKoF90EwF7995aNbxOIj1V0X1Z5_DJot7r-98PnGO0Tzirj7_&_nc_ht=scontent.fhan4-1.fna&_nc_tp=6&oh=137a8391f9e432d7c29516a4d4df3568&oe=5F287491" style='max-height : 400px;'></img>
     </div>
     
@@ -3519,7 +2976,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3568,7 +3025,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3608,7 +3065,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3654,7 +3111,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3703,7 +3160,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3755,7 +3212,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3786,52 +3243,6 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
 </div>
 <div class="card">
     <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F309519937109992%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Làm sạch da là bước cơ bản đầu tiên và quan trọng nhất trong chu trình skincare. Sử dụng tẩy trang và sữa rửa mặt mỗi ngày cũng không loại bỏ hết bụi bẩn, bã nhờn và tế bào chết trên da. Điều này làm cho Vitamin C khó có khả năng hấp thụ, không phát huy tác dụng, dễ bị oxy hóa trên bề mặt da. 😓</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">1,541</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">56</span><br></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">20</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-20</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/309519937109992/?__xts__%5B0%5D=68.ARDtEAQRzrSGM-_QsZnyMSdLqOM7OgRfdp8bRviGF_T13r-yn7xwKTLVuL8yL0UdK0FFHSv3r9dYF4_k-8x60vYNuKmqhUdmgw5ErIu7JMyxHxIWa8JV5cac42ZA9NOOMX1na3H-B2WHHzXUjCcZUAu3uMwoS3tyF4yN09EjTLhOc6GVAHUG_SxJUkicUaYM8jHOiRdFVFLq-QqjUK05v4hWrzhCpw5YwEL2HqFiF9u0lva2W9S1i3WODjJaWYY2DfpLiEfz9fV7vXPG2S2VHV864GXwMG6YUdLLPekmK2mNKKLocYo_MTH0GnLVWREBdN1d8527jcUvfggfYwVF0qZHK3x16FSKz4k&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
         <img class="ads_list_thumb" src="https://www.instagram.com/p/CBwsbw4JHUa/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
@@ -3841,7 +3252,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3881,7 +3292,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3930,7 +3341,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -3976,7 +3387,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4016,7 +3427,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4062,7 +3473,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4111,7 +3522,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4157,7 +3568,7 @@ Da bạn đang cần: 𝟖 𝐃𝐚𝐲𝐬 𝐏𝐮𝐫𝐞 𝐕𝐢𝐭𝐚�
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4208,7 +3619,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 본사 미러링</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4249,7 +3660,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
 </div>
 </div>
 </div>
-<h3  class="ui left aligned header">뷰티유튜버 ( 13 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+<h3  class="ui left aligned header">컨텐츠 (영상) : 비나피엘 제작 ( 12 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
     </div>
@@ -4260,7 +3671,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4312,7 +3723,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4354,14 +3765,14 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     <div class="image">
         
     </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qNbdT6PpzcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F270084424042426%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Bóc mẽ Serum giảm thâm ,sáng da chỉ trong 8 ngày... SỰ THẬT hay HƯ CẤU | Review không nể nang ai 😎 |</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Với mỗi làn da khác nhau sẽ đem đến nhiều trải nghiệm khác nhau nhưng chắc chắn sẽ đều sẽ hướng đến cùng một mục đích là #hiệu_quả sau khi sử dụng sẽ như thế nào️⁉</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4371,16 +3782,71 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">11,000</span></td>
+	<td><span class="font12px">7,115</span></td>
 	</tr>
-                    
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">150</span><br></td>
+	</tr>
                     <tr>
 	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">81</span></td>
+	<td><span class="font12px">1</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">439</span></td>
+	<td><span class="font12px">28</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">1</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-04</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/270084424042426/?__xts__%5B0%5D=68.ARBvnfIRr7Zx5sqWr0gF8cIoMhYFUUmGK9WmCUAWBePJV_0Zp7WllYT7pqgASFyn9pbUx91RGxUU_N3oaQu9oMfLdcGpd5II96NW1c1HKox9JpDhZqWbyK-KK1S-oK1vNi5huRbSw4CIAp3bO4j3GearMj1kXMroc4mPk-Uuj_vXIcrf3re8BSnHz3bhKbCRkortmp9beQfrCeQHjfl61HdB_XN0iJo7Bvj0K9dPItxB7dI3IP4ilJkwthS0gZdtyMnsDX9fQUtmV6Xg8XJfaYU6-e1I_5oeHaTGWH7STrN0DaHOm7Ph2k_SYacXWmZVPQFXJFv9zhtg966Ab_up3_75_Csgao9_vTw_2UZnpmmlzAe3v2gg4gvg&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F956101641508418%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>🍊 𝐕𝐢𝐭𝐚𝐦𝐢𝐧 𝐂 𝐀𝐦𝐩𝐨𝐮𝐥𝐞 của Vari:Hope đã "hạ gục" Đỗ Khánh Vân ngay từ lần chạm đầu tiên.</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">4,478</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">236</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">4</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">48</span></td>
 	</tr>
                     
                     <tr>
@@ -4393,64 +3859,22 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="https://www.youtube.com/watch?v=qNbdT6PpzcU&t=2s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/956101641508418/?__xts__%5B0%5D=68.ARBi5RaHcXJ9V5MNGIYvYwU37Aie1EqdQOBeHOjYuS29Zmrsdmkt7edGpuXd5cd7NI8xnAt0WikOjmUROPYpcy57Fs08BNtHrUq3nFwpW_hWL_jtX53IUL2635ShR-UyIpc5v36jnsE4Rh9jIMOpTnK33oKul0jPdJ8b90Ghys_FjjQgrGliPY9IPaCevY3PdmGHqjjq77wspx0JbuqTc2zH4MkzRUheXcQd82Ii_qMu9eHhDH3HLIbbT-KeY0ePCoT54ayvpmpWp_iTyNGmBLbHGQnO-CsiN6np71YX7_9viR096jMaohKlofNA-_89yLzv9Ev0Ea4ck5iEwxmQhpmSl4t1SS2-Wv4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
     <div class="image">
         
     </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ok3UpRRBK-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F701269443992583%2F&show_text=0&width=634" width="634" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Dưỡng Trắng Sáng Da 8 ngày với Vitamin C??? Có thật sự hiệu quả 🤔 | Mailovesbeauty TV</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">6,830</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">29</span></td>
-	</tr>
-                    
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-07</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://www.youtube.com/watch?v=ok3UpRRBK-s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        
-    </div>
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F3066994450010114%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>‼ Sẽ không có một sản phẩm nào HOÀN HẢO, tất nhiên rằng sẽ luôn có #ƯUĐIỂM và #NHƯỢCĐIỂM điểm rõ ràng.</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Da MỊN MÀNG hơn sau 8 ngày với REFINING BOOTS SERUM
+Bật mí thành phần trong tinh chất 𝟖 𝐃𝐚𝐲𝐬 𝐑𝐞𝐟𝐢𝐧𝐢𝐧𝐠 𝐁𝐨𝐨𝐬𝐭 𝐒𝐞𝐫𝐮𝐦</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4460,11 +3884,11 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">1,772</span></td>
+	<td><span class="font12px">1,480</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px">159</span><br></td>
+	<td><span class="font12px">42</span><br></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
@@ -4472,15 +3896,12 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">27</span></td>
+	<td><span class="font12px">25</span></td>
 	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px">1</span></td>
-	</tr>
+                    
                     <tr>
 	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-08</span></td>
+	<td><span class="font12px">2020-06-06</span></td>
 	</tr>
                 </tbody>
             </table>
@@ -4488,21 +3909,21 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="https://facebook.com/Varihopecosmetic/videos/3066994450010114/?__xts__%5B0%5D=68.ARD6f5HrZOrZazofesdwi4jUZL1ps1vPEyhJoHb0QFeRefC1Mui7lHv5SDVZ-HObnjV1g4PdrKTAR4HTbehCCy5hiQFA9D70uPGaQ3NrpKCVt_5JvfEbTpcNjKYmKje3zLBYD9occgkgA7SwmzQXWuEQZr8HWW43kKit35tBRADMjLxn3-F2B5L-rpDdq44cM_GthxYdZbqq-lxdFMduV-ROyI3N0TzZNIzuTCOwDvlmF7-kg12TAm3ZVD_OA_5pKhm-97WaxHoqRRAsUcxE84T_CIP7UgFKLfcSPfzHn_YkTTxKY2zPgLxYj6mCij5Sy9ncCY7Pnb6P9g3_adg0s1U91yjAZJKdXi4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/701269443992583/?__xts__%5B0%5D=68.ARANB-EALoWSfJnFPwGDKvjzc0iXxaUeBvFXJe0Zi-kYRDXfLuJ08hdOzKZL7SRZCYYJT-HjO_oh4jyva3IRPxhLDQuIyS5Uh8ap-bZnsTma5HnRXDsqXI0iyAHGruNMK5_x1dHjKWuWNeu0sNyjBbp6dq6FnGjyw35-h63pWdgmnbkhskVLsKo4YAHbOkoO8RDHGVFLQzXkOH77e3fKmn4KNI6rRN-Fw87QeBVLMkRdZ5xVF_EcSKKjW6YJXz9s23viqR9K4hfrqtjzcsOj4G9RjXW28dhRf53S3fcSU9z5SA5MOUl7gcr764eX6n2FVsLEN-_KgsWMSUxI-7W0Oaxch9x60wM06bc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
     <div class="image">
         
     </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/v0wbmozSvUk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F269454290827254%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>(Chân thực) Buổi tối trong căn nhà 13m2 của du học sinh: tập tành, ăn uống, skincare, học tập v.v</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>CÁM DỖ TỪ VARI:HOPE PURE VITAMIN C 💘 💘</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4512,18 +3933,24 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">136,576</span></td>
+	<td><span class="font12px">186,808</span></td>
 	</tr>
-                    
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">5,387</span><br></td>
+	</tr>
                     <tr>
 	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">475</span></td>
+	<td><span class="font12px">2</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">6,600</span></td>
+	<td><span class="font12px">31</span></td>
 	</tr>
-                    
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">2</span></td>
+	</tr>
                     <tr>
 	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
 	<td><span class="font12px">2020-06-10</span></td>
@@ -4534,7 +3961,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="https://www.youtube.com/watch?v=v0wbmozSvUk&feature=youtu.be&fbclid=IwAR1UbfAljVVEdwEPIUq6T78rup-vEnbMacS12ZPdnWanAQvVjgpGDGIKzwk" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/269454290827254/?__xts__%5B0%5D=68.ARBbPDC14ZFoG7cJycKtkNuK2Or5Gl5Ef8lPkwW4kn2_vIok5N8JLbFx3Z0ue_GcioSdLveOMT1WyZsxtCKN5xbYKWAUmsKYKvHJEpbZj_oRyaavHTcpyH_tgRkPPB0E6SGmC2xzhGefynjea9UrVurIitJVSKxP1yD1X3LIpN4uasWM02KggoN5i8Oyd7WVOEmpgi2PUj4xzNsagJfZ_vFTWIUvFPM6J17eu_BXQjM9xindFy1zMWWfS1xT2ITpXLxRNoK6p_HI7FdKQRl4A-gkd7ZzqDAZoKAmzLrAcrtkjxqQHP0hjIcC33WofjwZo8uHHZf8cpbjQG75bClLT1l_YRDm7BxAvEI&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
@@ -4548,7 +3975,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4590,14 +4017,14 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     <div class="image">
         
     </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/1dsVQZESDiM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F1092788904429123%2F&show_text=0&width=268" width="268" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>[GIVE AWAY] VARI:HOPE Sáng da, trị thâm trong 8 ngày??? Sự thật hay chém gió</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Tại #HànQuốc, cơn sốt về bộ đôi 𝐑𝐞𝐟𝐢𝐧𝐢𝐧𝐠 𝐁𝐨𝐨𝐬𝐭 𝐒𝐞𝐫𝐮𝐦 và 𝐕𝐢𝐭𝐚𝐦𝐢𝐧 𝐂 𝐀𝐦𝐩𝐨𝐮𝐥𝐞 vẫn chưa hạ nhiệt. 😲 😲 😲</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4607,21 +4034,21 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">35,486</span></td>
+	<td><span class="font12px">971</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">26</span><br></td>
 	</tr>
                     
                     <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">1,500</span></td>
-	</tr>
-                    <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">320</span></td>
+	<td><span class="font12px">20</span></td>
 	</tr>
                     
                     <tr>
 	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-17</span></td>
+	<td><span class="font12px">2020-06-13</span></td>
 	</tr>
                 </tbody>
             </table>
@@ -4629,7 +4056,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="https://www.youtube.com/watch?v=1dsVQZESDiM" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/1092788904429123/?__xts__%5B0%5D=68.ARCTQwwnFBJWitO2SBW4wvTprj5hYKt0xuv_EeKeUa7h0Zk2UO6Gn63Hyx05fGxQwRtW2pQPN8pp-3BRfRoHgLrtZbcIM4LOR1uZ0EKa8_NHjNlsLGhr6FlMQcodcM2jv0aepYTsseErDeVztXgDeLXjgDfnaR83Kg0tGCOGTrSkwUWPWC5_GPGz1QzXfO5xg-pcxRo6YCcxSlg10la03WqWAfLmBkE1nDSkB0gzoCg7movyvxbR2ZfCx_hpt0frI_VMJnjKoEOWUYwgBAzFqnrcYVxjYMA_LQ2DsRl1lITn0gdPUkPT9FdlRUqDI-UHthwu9hyw2vUfcatgvAGTj-UyFIGSG5qeryM&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
@@ -4643,7 +4070,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4688,14 +4115,15 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     <div class="image">
         
     </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/4CyQd1bBnOg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F661094361111307%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>“Tắm trắng” tại nhà theo những bí kíp trên mạng | Châu Giang nè!</div>
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>𝑅𝑒𝑓𝑟𝑒𝑠ℎ 𝑆𝑘𝑖𝑛! ✌ ✌ ✌
+Đầu tuần cùng Vari:Hope nạp thêm năng lượng tươi mới cho làn da với #VitaminC_Cream 7% nhé!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4705,21 +4133,27 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">59,893</span></td>
+	<td><span class="font12px">2,225</span></td>
 	</tr>
-                    
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">47</span><br></td>
+	</tr>
                     <tr>
 	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">2,000</span></td>
+	<td><span class="font12px">2</span></td>
 	</tr>
                     <tr>
 	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">82</span></td>
+	<td><span class="font12px">33</span></td>
 	</tr>
-                    
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">2</span></td>
+	</tr>
                     <tr>
 	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-23</span></td>
+	<td><span class="font12px">2020-06-22</span></td>
 	</tr>
                 </tbody>
             </table>
@@ -4727,53 +4161,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     </div>
     <div class="extra content">
         <span class="right floated"></span>
-        <span><a href="" target="_blank"><button class="mini ui button">바로가기</button></a></span>
-    </div>
-</div>
-<div class="card">
-    <div class="image">
-        
-    </div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/T1te6G5qrTQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div class="content">
-        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Mình ăn gì uống gì trong 1 tuần để da SÁNG KHỎE ĐẸP? | Chi Sally</div>
-        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
-            <br>
-            <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
-                <tbody>
-                    <tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px">88,627</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px">2,400</span></td>
-	</tr>
-                    <tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px">61</span></td>
-	</tr>
-                    
-                    <tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px">2020-06-24</span></td>
-	</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="extra content">
-        <span class="right floated"></span>
-        <span><a href="https://www.youtube.com/watch?v=T1te6G5qrTQ&t=226s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/661094361111307/?__xts__%5B0%5D=68.ARA-t39GPysiOQbpJnj24siFWz8SAGNmjaSDXiD2AqDCZI6YJyjbzZDdn4J6gxspbIMUxLr-ZaxqIh_IoEFb4ucUHx9CAuezf16-zDyuwySYu1rAaACn6mWhZeffC0iJeHHiP_Z5gMQr3GVpAi6o8KSBbporN2xKyxAA6TPZRa5-U0k-bNlf0U4FU1JsZMs0MLycDKH3SCvXogayKh4bQ8zTW1Y80fnq-DRc5IW2VLllA0sFFIunEwyuTtxFP4kMkgTNY-bgFP55Im_Sb6T9EonoYqt3cXDkmSAgiehc1rWDHw7mpS2l2ZRlDwk_F9CXMU3XTEN8zY8lT90XLXV_1gyBoWHEl-3q7waWJeAiF4PsuWPpIgRAlKk&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 <div class="card">
@@ -4787,7 +4175,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4836,7 +4224,7 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
             <br>
             <div class="icon_cate">
                 <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 뷰티유튜버</span>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
@@ -4872,6 +4260,271 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     <div class="extra content">
         <span class="right floated"></span>
         <span><a href="https://facebook.com/Varihopecosmetic/videos/3022536391195888/?__xts__%5B0%5D=68.ARB5nGgNvbmihPJK6iRq6Ab9VXtKS-xtSwkrr_Y1peupJ3yfvP7L0CDBUasQatQIe_rI8GY3jcFUD61kXKNnBM007DyucLRhnU13YFSzzd-6p_I7i9KCk2kESzffMzVYRvYGZVBsxCe8lrUGNl7dU2eSFX_OGIuSdb18mlvc5YJvk7kUXxQCN2yifYSjkAgeutgYIsDzhZJg8HUuVZauX42RxXoeX5RkV63qEUGW4TLkVRg4AyFXOrvF34BFo-09YzXRcP6HfQb3Aa8_fjqxdsLH9gegQFn28xlmqT3wWskej6rmNDUPbxKFLUephy4jpAadGbySWl4M_Rd0na5plMfqBVtxmF82ODk&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<h3  class="ui left aligned header">체험단 이벤트 ( 5 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+    <div class="image">
+        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/84306260_294818941920236_3098959615782551552_o.jpg?_nc_cat=108&_nc_sid=730e14&_nc_oc=AQkrABgz-TSyHfctWedYFatALnQQKYaqScxL-8XjOtshyhjKwK0THmP1sU0PSonLy2w&_nc_ht=scontent-ssn1-1.xx&oh=bc588d0a62791cd4fd66d012b47eae0d&oe=5F294667" style='max-height : 400px;'></img>
+    </div>
+    
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>REVIEW CÙNG VARI:HOPE - NHẬN QUÀ SIÊU TO KHỔNG LỒ
+(review kem dưỡng Vitamin C Cream)</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 체험단 이벤트</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">5,312</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">269</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">76</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">114</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">41</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-03</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/294818931920237/?type=3&__xts__%5B0%5D=68.ARBG5Pn4zomeB55gbvUW1axVOVIAz_tCymLPpzeREp3XEM1IIpSw0uZbqZ0tuSzepfPqQ-GH-NmwDgorcJIe2kEOm76jyTpZOL53EaiDSX6voIaELH1qYZv-P6DWzm76csQAZFTo_X7Mt1IclPxmysHC_Wr8RspAXAYi0XcZ8jgP3V0K3rkW42UM_JYFH40k7szYp3Qh_VAIVZ5vjyjAUaypIvWWEA6mCbNAMhWjLtE91RehfBGgDiJRtys6SDvBNDP8S4Y0y7PxTWYOfTL1v_pXZdlOEkVZusePNgro0lW32AWT5X9FgVoAqRR4iMdwCTls-H9bCi65tC97Rx_SfOc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        <img class="ads_list_thumb" src="https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/p960x960/103754618_299840738084723_5674075120672789372_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQnb_reWIGcf5CcGC9xrYVprIMPDniXciCBxWkVUAb1QXPO5qOLBUlShB4zS4pnI81srh-mfdbEtRg8OqptEzkul&_nc_ht=scontent.fhan3-3.fna&_nc_tp=6&oh=a8a53a47fecfb9bd661b56b980c96cc5&oe=5F289A00" style='max-height : 400px;'></img>
+    </div>
+    
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>[𝐄𝐕𝐄𝐍𝐓 𝐑𝐄𝐕𝐈𝐄𝐖] CÔNG BỐ DANH SÁCH CÁC BẠN TRÚNG GIẢI THƯỞNG REVIEW REFINING BOOST SERUM 🥳🥳🥳</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 체험단 이벤트</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">2,984</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">231</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">7</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">51</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">3</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-09</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/299840734751390/?type=3&__xts__%5B0%5D=68.ARB8fRhTWgDIHoAXCTFaeJHfb9rYhBmm9scCgU--oZ87-pM1vPtE9NRc-ItXQNTCXqKuutYJ74qXzOhwtHzUpd7J786bqZiwYOWHghvmiePSfvpy2L6QnzhrMXyuxOQQadzJpVwhFhqgccAcglQwFBbUsyUv_zsot5E81YSodHG0c4iP5AtEZ_5oNYktsRPs_0AGM9bZrl0qD20d7f8rr60amyXBSnEGhAGSoWQgR8sL38VWciJKHPjDUN9zae4Et-_FOa1f7C9OiuDoC3ONoI6lJ4ic39f0vbwFtaFCbB_3GPF9NQJTq1j6blHgik4lmRQJWY5-y2cv3SQ5xxhQmYc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102754328_302360967832700_8907606596175812671_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQlJc0QB1_uqdgu-HYGYYxZFbDdn3WR85S1BnvZIr1Pix_ENO78f8WsK-tGsiIT1DlwTmRT7hYA_9UGRojBidetz&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=fc9c44e5dfd81305f694d385b038740c&oe=5F27FC1F" style='max-height : 400px;'></img>
+    </div>
+    
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>VARI:HOPE #CHÚC_MỪNG KHÁCH HÀNG ĐÃ NHẬN ĐƯỢC SET TRẢI NGHIỆM 𝟖 𝐃𝐀𝐘𝐒 𝐏𝐔𝐑𝐄 𝐕𝐈𝐓𝐀𝐌𝐈𝐍 𝐂 𝐂𝐑𝐄𝐀𝐌 🥳🥳🥳</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 체험단 이벤트</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">1,948</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">96</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">1</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">34</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">3</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-12</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/302360964499367/?type=3&__xts__%5B0%5D=68.ARDXz1ExnMulm4oNmUhTXZMDWos-SeNkhhqjCrV5KJdJbT1BHGKgdhrL_1SOKummq9LdKtLTp1eVmmWLNTU0OC-FMbesgDe0nqO45SX5N0B5tzkqWQUsLIbNmyWIWkGwoUXn1Cfj4zy0W19-pL0yLWl0wXHnqhJ2ZbHAbn72andxcjMvXWauWqXS_XMQoGHbt9daI6MJrB2EsVfbRzIqeEbbqEZT3rVei6k_evMYyP-LvU7PqLilw0iIWKlUynPelCW0PHTyswCEB2fhgrsrbOsu5XX0Aaq-Yl3PIQMdRA6wSPGtFbxqE6jhW9IFoW51Ejp2fjRTJGPKpj9PqyC7Rxw&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        <img class="ads_list_thumb" src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/s960x960/104489517_310582040343926_2255929836125352965_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_oc=AQkpJbRHKeClfltG1pJHvP0uHfknX-nKibuDYeZ68wNoSMjk74rcrQJtP8JHi48XLyCtxgWG_VazDWJZopFQPZcn&_nc_ht=scontent.fhan4-1.fna&_nc_tp=7&oh=bfcc19956ee9feb1b08319c744daeaba&oe=5F2A0AD8" style='max-height : 400px;'></img>
+    </div>
+    
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>#𝐌𝐈𝐍𝐈𝐆𝐀𝐌𝐄 - 𝐒𝐞𝐥𝐟𝐢𝐞 𝐜𝐮̀𝐧𝐠 #𝐌𝐞𝐢𝐜𝐡𝐚𝐧 - #𝐍𝐡𝐚̣̂𝐧𝐪𝐮𝐚̀ 𝐜𝐮̉𝐚 𝐕𝐚𝐫𝐢:𝐇𝐨𝐩𝐞 ~ ♡</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 체험단 이벤트</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">1,775</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">74</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">7</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">112</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">6</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-22</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/310582037010593/?type=3&__xts__%5B0%5D=68.ARDpWwCS49NAaPVJum5D8RIZ7g9wI0Ejtj_sfx_6KrShA2jQjjAFVzvRXiOs8YJ3_baj39isFU3e6KXNBBBvDbL0InNOTBAPM8uAAOp42exEwy_gDnoS5M26oCXPWSDGDTUjZV4XD2F4RjClFtXYdOfxcK9KbX-DNvVmU9HiVOekZzBmdT5KSjPFYaNFLwxfnTYFGq02Fl0c_xUe47M7wYNVaVzKOfVmh2Du2XT_AkJoSXGig7rSlO595C2vFOQqW11fT74pvxggjM_bTXNB0GMibmehzakEtAOF5vDoVkfVJ8KDISDAAhRpT249MnXT__hkuxV3RzARoRTWQ-WxsoU&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/104742067_316787823056681_3000469346746812531_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_oc=AQnpDTrI2BCnbQX4gvgrD6Y4jnpsy-CqysmecHrhubW4WnKXy1y9A6DerAuiQ8ObVtw&_nc_ht=scontent-ssn1-1.xx&oh=d3c3eb558afddbeebc4f2999d81fa22b&oe=5F26A041" style='max-height : 400px;'></img>
+    </div>
+    
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>CÔNG BỐ CÁC BẠN TRÚNG GIẢI THƯỞNG 🥳🥳🥳
+MINIGAME - SELFIE CÙNG VARI:HOPE</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 체험단 이벤트</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">2,288</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">118</span><br></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">3</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">35</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">2</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-30</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/photos/a.191921542209977/316787819723348/?type=3&__xts__%5B0%5D=68.ARDBPbEj1vZXJl8YdS1ylN-3zih15Q70YT_pI2GZU2jJJ_Kra1MOf17VjaVxt3-T0Pt8zYs8ssr7QDcm78DhHtjXZvILN8h1WOaHty3erPK1xbO3bb8T9ZcxahT-x9gF4fvVyaqfQL6NQi8eapfgh_eNWSgzCrw-8ivZKb3-E9icd-HkJ3BtoC1CQADaTZpX-E00WlsTM6g-gfzrgRr-OKbHQYz_sQL_EzRmWDiL3qkXXsgdeWTwQ71m63-OEmNuzlOfh0dIVIfxfVXqRpWEfiI8t_YGsxTt03CE_pXofCK85BfJZSw4IUVzojDu8nMFu4dm0UAMny7X-5RKfJyGAPE&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 </div>
@@ -5148,6 +4801,282 @@ Này cô gái, bạn đã khởi đầu ngày mới cho thứ 2 hôm nay như th
     <div class="extra content">
         <span class="right floated"></span>
         <span><a href="https://facebook.com/Varihopecosmetic/posts/307055164029947?__xts__%5B0%5D=68.ARDd_0LFfP5cIi7ikwfq2Eb2WQlY96iPPYjrWaLgneUsCntM8jIJZv8sVvx1HvLeZ_UH_nNC3EVyn8USDbgODxCeib5436oro-0KuS4GNzf3YaOmozkWJAZgKAYoO9PoyXF2Da4gwJYB8QKJ_KHtOgNxmd41Rt6rw29kMCv7a0Gm8AhXbFr00L3QJJ3OftJy0eTV63Zch3Ni28LuZPiEprVzv8gGG0A5SgtzpT70E3GFeaiu-MIj6I0qSpU4GXUSadRtRt14f7QGDV-ejP4zOpnoGU9RCi0uyNyF47Kp0eOjo82VFG-8Q-EoOCgN-oO5Mk9-EnXZRapnSa6ND8XZeHU&__tn__=-RR" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<h3  class="ui left aligned header">뷰티유튜버 ( 6 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qNbdT6PpzcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Bóc mẽ Serum giảm thâm ,sáng da chỉ trong 8 ngày... SỰ THẬT hay HƯ CẤU | Review không nể nang ai 😎 |</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">11,000</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">81</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">439</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-05</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://www.youtube.com/watch?v=qNbdT6PpzcU&t=2s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ok3UpRRBK-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Dưỡng Trắng Sáng Da 8 ngày với Vitamin C??? Có thật sự hiệu quả 🤔 | Mailovesbeauty TV</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">6,830</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">29</span></td>
+	</tr>
+                    
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-07</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://www.youtube.com/watch?v=ok3UpRRBK-s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/v0wbmozSvUk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>(Chân thực) Buổi tối trong căn nhà 13m2 của du học sinh: tập tành, ăn uống, skincare, học tập v.v</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">136,576</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">475</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">6,600</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-10</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://www.youtube.com/watch?v=v0wbmozSvUk&feature=youtu.be&fbclid=IwAR1UbfAljVVEdwEPIUq6T78rup-vEnbMacS12ZPdnWanAQvVjgpGDGIKzwk" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/1dsVQZESDiM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>[GIVE AWAY] VARI:HOPE Sáng da, trị thâm trong 8 ngày??? Sự thật hay chém gió</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">35,486</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">1,500</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">320</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-17</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://www.youtube.com/watch?v=1dsVQZESDiM" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4CyQd1bBnOg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>“Tắm trắng” tại nhà theo những bí kíp trên mạng | Châu Giang nè!</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">59,893</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">2,000</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">82</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-23</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/T1te6G5qrTQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Mình ăn gì uống gì trong 1 tuần để da SÁNG KHỎE ĐẸP? | Chi Sally</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large red youtube icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 - 뷰티유튜버</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">88,627</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
+	<td><span class="font12px">2,400</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">61</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-24</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://www.youtube.com/watch?v=T1te6G5qrTQ&t=226s" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
 </div>
 </div>
@@ -5759,6 +5688,104 @@ Tinh Chất Dưỡng Trắng, Làm Mờ Thâm VARI:HOPE 8 Days Pure Vitamin C Am
 </div>
 </div>
 </div>
+<h3  class="ui left aligned header">컨텐츠 (영상) : 본사 미러링 ( 2 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F699962190792428%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Hãy cùng xem video để gặp gỡ nhà nghiên cứu #ChoByungKi – một nhà nghiên cứu có hơn 40 năm kinh nghiệm trong lĩnh vực mỹ phẩm và đã đạt được hơn 225 bằng sáng chế mỹ phẩm để lắng nghe Giáo sư chia sẻ về công nghệ và Vitamin C có trong Vari:Hope nhé! 🤗 🤗 🤗</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 본사 미러링</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">41,940</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">3,415</span><br></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">366</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
+	<td><span class="font12px">2</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-14</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/699962190792428/?__xts__%5B0%5D=68.ARCOVFqFrZdOK-Yin1u6bobtXKAMo9na3jfBbz0V3BsDyzgMz2-Hv0S9dfenZzF5WAjPnoVFJCVwu5vFQ7A1PGV1I3Eaf9aW7oYCaV5XUNNXb3Sz0WlG2kJAupYjBRud796ZYHtcikaftV4u9AzfZYjtGoTC4K4uU2EOXC4WIAz3GdBiObF88twu_-k2qY-9Kl3WAeBg0rSewNV55dJwHdztjavAj0-TLP-V4Htoc2uDsgjSolyobJ1oRVWl8ZKChGcHLDvhjhQkXcrjXX4-QVECqH-PsysE5ADTYyG7oxd2hkKnKQSfjCbAq0BqKe12thQWaoCrYLymbfAm9ieQDo4KyVoQhrZc_C4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+<div class="card">
+    <div class="image">
+        
+    </div>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVarihopecosmetic%2Fvideos%2F309519937109992%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+    <div class="content">
+        <div style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>Làm sạch da là bước cơ bản đầu tiên và quan trọng nhất trong chu trình skincare. Sử dụng tẩy trang và sữa rửa mặt mỗi ngày cũng không loại bỏ hết bụi bẩn, bã nhờn và tế bào chết trên da. Điều này làm cho Vitamin C khó có khả năng hấp thụ, không phát huy tác dụng, dễ bị oxy hóa trên bề mặt da. 😓</div>
+        <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
+            <br>
+            <div class="icon_cate">
+                <i class="large blue facebook square icon" style="margin : 0px"></i>
+                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 - 컨텐츠 (영상) : 본사 미러링</span>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="description">
+            <span class="font12px"></span>
+            <table class="ui very compact full-width celled table">
+                <tbody>
+                    <tr>
+	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
+	<td><span class="font12px">1,541</span></td>
+	</tr>
+                    <tr>
+	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
+	<td><span class="font12px">56</span><br></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
+	<td><span class="font12px">20</span></td>
+	</tr>
+                    
+                    <tr>
+	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
+	<td><span class="font12px">2020-06-20</span></td>
+	</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated"></span>
+        <span><a href="https://facebook.com/Varihopecosmetic/videos/309519937109992/?__xts__%5B0%5D=68.ARDtEAQRzrSGM-_QsZnyMSdLqOM7OgRfdp8bRviGF_T13r-yn7xwKTLVuL8yL0UdK0FFHSv3r9dYF4_k-8x60vYNuKmqhUdmgw5ErIu7JMyxHxIWa8JV5cac42ZA9NOOMX1na3H-B2WHHzXUjCcZUAu3uMwoS3tyF4yN09EjTLhOc6GVAHUG_SxJUkicUaYM8jHOiRdFVFLq-QqjUK05v4hWrzhCpw5YwEL2HqFiF9u0lva2W9S1i3WODjJaWYY2DfpLiEfz9fV7vXPG2S2VHV864GXwMG6YUdLLPekmK2mNKKLocYo_MTH0GnLVWREBdN1d8527jcUvfggfYwVF0qZHK3x16FSKz4k&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
+    </div>
+</div>
+</div>
+</div>
+</div>
 <h3  class="ui left aligned header">영상제작 ( 4 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
@@ -5949,7 +5976,7 @@ Phải chăng bạn đã quá #mệtmỏi và #phiềnlòng về vết thâm do 
 </div>
 </div>
 
-		
+
 	</div>
 </body>
 </html>
