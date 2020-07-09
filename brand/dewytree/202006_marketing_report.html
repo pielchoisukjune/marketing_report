@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Standard Meta -->
+ <!-- Standard Meta -->
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -19,45 +19,48 @@
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Styles -->
 <style>
-	@font-face {
-		font-family: 'NotoSansKR';
-		font-style: normal;
-		font-weight: 400;
-		src: local('NotoSansKR-Regular'),
-			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'),
-			url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff') format('woff');
-		font-stretch: normal;
-		unicode-range: U+0021-33FF,U+A000-F8FF,U+FB00-F251;
-	}
-	.comment{
-		padding : 0px 15px 0px 0px!important;
-	}
-	#chartdiv00,#chartdiv01,#chartdiv02,#chartdiv03,#chartdiv04 {
-		width: 100%;
-		height: 400px;
-	}
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 400;
+	src: local('NotoSansKR-Regular'),
+		url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff2') format('woff2'),
+		url('//cdn.jsdelivr.net/korean-webfonts/latest/corps/google/NotoSansKR/NotoSansKR-Regular-Hangul.woff') format('woff');
+	font-stretch: normal;
+	unicode-range: U+0021-33FF,U+A000-F8FF,U+FB00-F251;
+}
+.comment{
+	padding : 0px 15px 0px 0px!important;
+}
+#chartdiv00,#chartdiv01,#chartdiv02,#chartdiv03,#chartdiv04 {
+	width: 100%;
+	height: 400px;
+}
 
-	#chartdiv05, #chartdiv06 {
-		width: 100%;
-		height: 600px;
-	}
-	body{
-		margin : 30px;
-		font-family: "Noto Sans KR", sans-serif;
-	}
-	/*.icon_cate{
-		position: absolute;
-		background: rgba(255,255,255,.05);
-		padding: 5px;
-		left: 5px;
-		top: 5px;
-	}*/
-	h1,h2,h3,h4{
-		font-family: "Noto Sans KR", sans-serif;
-	}
-	.content{
-		font-family: 'Be Vietnam', sans-serif!important;
-	}
+#chartdiv05, #chartdiv06 {
+	width: 100%;
+	height: 600px;
+}
+body{
+	margin : 30px;
+	font-family: "Noto Sans KR", sans-serif;
+}
+/*.icon_cate{
+	position: absolute;
+	background: rgba(255,255,255,.05);
+	padding: 5px;
+	left: 5px;
+	top: 5px;
+}*/
+h1,h2,h3,h4{
+	font-family: "Noto Sans KR", sans-serif;
+}
+.content{
+	font-family: 'Be Vietnam', sans-serif!important;
+}
+iframe{
+	background: rgba(0,0,0,.0);
+}
 </style>
 
 <script>
@@ -72,7 +75,6 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	}
 
 	var arr = window.document.getElementsByTagName("iframe");
-
 	arr.forEach(function(item){
 
 		item.parentElement.firstElementChild.style.height = "0px";
@@ -91,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	})
 
 	var thumb_imgs_html = window.document.getElementsByClassName("ads_list_thumb");
-		thumb_imgs_html.forEach(function(item){
+	thumb_imgs_html.forEach(function(item){
 
 		if( item.height == "266" ) return;
 
@@ -107,69 +109,64 @@ window.addEventListener('DOMContentLoaded', function( e ){
 });
 
 
-
-google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
-google.setOnLoadCallback(drawVisualization);
-
-function drawVisualization(){
-
-	var data = google.visualization.arrayToDataTable([["State","도달","노출수"],[{"f":"Ho Chi Minh City","v":"VN-SG"},184,203]]);
-
-	var opts = {
-		region: 'VN'
-		, displayMode: 'regions'
-		, resolution: 'provinces'
-		, colorAxis: {colors: ['yellow', 'red']}
-		, legend : {textStyle: {color: 'red', fontSize: 12}}
-		, sizeAxis: { minValue: 0, maxValue: 100 }
-	};
-	var geochart = new google.visualization.GeoChart(
-		document.getElementById('visualization'));
-		geochart.draw(data, opts);
-	};
-
-</script>
-<script>
-	am4core.ready(function() {
-	am4core.useTheme(am4themes_animated);
-	var chart00 = am4core.create("chartdiv00", am4charts.PieChart);
-	var chart01 = am4core.create("chartdiv01", am4charts.PieChart);
-	var chart02 = am4core.create("chartdiv02", am4charts.PieChart);
-	var chart03 = am4core.create("chartdiv03", am4charts.PieChart);
-
-	var title00 = chart00.titles.create();
-	var title01 = chart01.titles.create();
-	var title02 = chart02.titles.create();
-	var title03 = chart03.titles.create();
-
-	title00.text = "연령별 도달";
-	title00.fontSize = 25;
-	title00.marginBottom = 30;
-	title00.marginTop = 30;
-
-	title01.text = "연령별 노출";
-	title01.fontSize = 25;
-	title01.marginBottom = 30;
-	title01.marginTop = 30;
-
-	title02.text = "연령별 게시물 참여";
-	title02.fontSize = 25;
-	title02.marginBottom = 30;
-	title02.marginTop = 30;
-
-	title03.text = "연령별 페이지 좋아요";
+/*
+ *
+ */
+var emptyPieChart = function( domId, title ){
+	var chart = am4core.create( domId, am4charts.PieChart);
+	var title03 = chart.titles.create();
+	title03.text = title;
 	title03.fontSize = 25;
 	title03.marginBottom = 30;
 	title03.marginTop = 30;
 
-	// Add data
-	chart00.data = [{"ages":"18-24","value":86},{"ages":"25-34","value":72},{"ages":"35-44","value":18},{"ages":"45-54","value":4},{"ages":"55-64","value":3},{"ages":"65+","value":1}];
-	chart01.data = [{"ages":"18-24","value":94},{"ages":"25-34","value":80},{"ages":"35-44","value":19},{"ages":"45-54","value":4},{"ages":"55-64","value":5},{"ages":"65+","value":1}];
-	chart02.data = [{"ages":"18-24","value":15},{"ages":"25-34","value":4},{"ages":"35-44","value":6},{"ages":"45-54","value":0},{"ages":"55-64","value":0},{"ages":"65+","value":0}];
-	chart03.data = [{"ages":"18-24","value":0},{"ages":"25-34","value":0},{"ages":"35-44","value":0},{"ages":"45-54","value":0},{"ages":"55-64","value":0},{"ages":"65+","value":0}];
+	chart.data = [{
+	  "country": "Dummy",
+	  "disabled": true,
+	  "value": 1000,
+	  "color": am4core.color("#dadada"),
+	  "opacity": 0.3,
+	  "strokeDasharray": "4,4",
+	  "tooltip": ""
+	}];
 
+	/* Create series */
+	var series = chart.series.push(new am4charts.PieSeries());
+	series.dataFields.value = "value";
+	series.dataFields.category = "country";
+
+	/* Set tup slice appearance */
+	var slice = series.slices.template;
+	slice.propertyFields.fill = "color";
+	slice.propertyFields.fillOpacity = "opacity";
+	slice.propertyFields.stroke = "color";
+	slice.propertyFields.strokeDasharray = "strokeDasharray";
+	slice.propertyFields.tooltipText = "tooltip";
+
+	series.labels.template.propertyFields.disabled = "disabled";
+	series.ticks.template.propertyFields.disabled = "disabled";
+};
+
+/*
+ *
+ */
+var pieChartAge = function( domId, title, arr ){
+	if( arr.length == 0 )
+	{
+		return emptyPieChart( domId, title );
+	}
+
+	var chart = am4core.create(domId, am4charts.PieChart);
+	var title00 = chart.titles.create();
+	title00.text = title;
+	title00.fontSize = 25;
+	title00.marginBottom = 30;
+	title00.marginTop = 30;
+	
+	chart.data = pieChartData00;
+	
 	// Add and configure Series
-	var pieSeries00 = chart00.series.push(new am4charts.PieSeries());
+	var pieSeries00 = chart.series.push(new am4charts.PieSeries());
 
 	pieSeries00.dataFields.value = "value";
 	pieSeries00.dataFields.category = "ages";
@@ -182,71 +179,40 @@ function drawVisualization(){
 	pieSeries00.hiddenState.properties.startAngle = -90;
 	pieSeries00.labels.template.fontSize = 10;
 
+	chart.hiddenState.properties.radius = am4core.percent(70);
 
-	// Add and configure Series
-	var pieSeries01 = chart01.series.push(new am4charts.PieSeries());
-	pieSeries01.dataFields.value = "value";
-	pieSeries01.dataFields.category = "ages";
-	pieSeries01.slices.template.stroke = am4core.color("#fff");
-	pieSeries01.slices.template.strokeOpacity = 1;
+	pieSeries00.ticks.template.events.on("ready", hideSmall);
+	pieSeries00.ticks.template.events.on("visibilitychanged", hideSmall);
+	pieSeries00.labels.template.events.on("ready", hideSmall);
+	pieSeries00.labels.template.events.on("visibilitychanged", hideSmall);
 
-	// This creates initial animation
-	pieSeries01.hiddenState.properties.opacity = 1;
-	pieSeries01.hiddenState.properties.endAngle = -90;
-	pieSeries01.hiddenState.properties.startAngle = -90;
-	pieSeries01.labels.template.fontSize = 10;
+	function hideSmall(ev) {
+	  if (ev.target.dataItem && (ev.target.dataItem.values.value.percent == 0)) {
+	    ev.target.hide();
+	  }
+	  else {
+	    ev.target.show();
+	  }
+	}
 
-	// Add and configure Series
-	var pieSeries02 = chart02.series.push(new am4charts.PieSeries());
-	pieSeries02.dataFields.value = "value";
-	pieSeries02.dataFields.category = "ages";
-	pieSeries02.slices.template.stroke = am4core.color("#fff");
-	pieSeries02.slices.template.strokeOpacity = 1;
-	pieSeries02.labels.template.fontSize = 10;
+	return chart;
+}
 
-	// This creates initial animation
-	pieSeries02.hiddenState.properties.opacity = 1;
-	pieSeries02.hiddenState.properties.endAngle = -90;
-	pieSeries02.hiddenState.properties.startAngle = -90;
-
-
-	var pieSeries03 = chart03.series.push(new am4charts.PieSeries());
-	pieSeries03.dataFields.value = "value";
-	pieSeries03.dataFields.category = "ages";
-	pieSeries03.slices.template.stroke = am4core.color("#fff");
-	pieSeries03.slices.template.strokeOpacity = 1;
-	pieSeries03.labels.template.fontSize = 10;
-
-	// This creates initial animation
-	pieSeries03.hiddenState.properties.opacity = 1;
-	pieSeries03.hiddenState.properties.endAngle = -90;
-	pieSeries03.hiddenState.properties.startAngle = -90;
-
-	chart00.hiddenState.properties.radius = am4core.percent(70);
-	chart01.hiddenState.properties.radius = am4core.percent(70);
-	chart02.hiddenState.properties.radius = am4core.percent(20);
-	chart03.hiddenState.properties.radius = am4core.percent(20);
-}); // end am4core.ready()
-</script>
-<!-- Chart code -->
-<script>
-	am4core.ready(function() {
-
-	// Themes begin
-	am4core.useTheme(am4themes_animated);
-	// Themes end
+/*
+ *
+ */
+var barChartTime = function( domId, title, arr ){
 
 	// Create chart instance
-	var chart04 = am4core.create("chartdiv04", am4charts.XYChart);
-	chart04.legend = new am4charts.Legend();
+	var chart = am4core.create( domId , am4charts.XYChart);
+	
+	chart.legend = new am4charts.Legend();
 	// Export
-	chart04.exporting.menu = new am4core.ExportMenu();
-
-	// Data for both series
-	var data = [{"time":"04:00:00 - 04:59:59","view":1,"like":null},{"time":"05:00:00 - 05:59:59","view":3,"like":null},{"time":"06:00:00 - 06:59:59","view":11,"like":null},{"time":"07:00:00 - 07:59:59","view":18,"like":0},{"time":"08:00:00 - 08:59:59","view":22,"like":null},{"time":"09:00:00 - 09:59:59","view":18,"like":null},{"time":"10:00:00 - 10:59:59","view":25,"like":null},{"time":"11:00:00 - 11:59:59","view":9,"like":null},{"time":"18:00:00 - 18:59:59","view":14,"like":null},{"time":"19:00:00 - 19:59:59","view":13,"like":null},{"time":"20:00:00 - 20:59:59","view":24,"like":0},{"time":"21:00:00 - 21:59:59","view":25,"like":0},{"time":"22:00:00 - 22:59:59","view":16,"like":0},{"time":"23:00:00 - 23:59:59","view":4,"like":null}];
+	
+	chart.exporting.menu = new am4core.ExportMenu();
 
 	/* Create axes */
-	var categoryAxis = chart04.xAxes.push(new am4charts.CategoryAxis());
+	var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 	categoryAxis.dataFields.category = "time";
 	categoryAxis.renderer.minGridDistance = 30;
 	categoryAxis.renderer.labels.template.horizontalCenter = "right";
@@ -254,10 +220,10 @@ function drawVisualization(){
 	categoryAxis.renderer.labels.template.rotation = 300
 
 	/* Create value axis */
-	var valueAxis = chart04.yAxes.push(new am4charts.ValueAxis());
+	var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
 	/* Create series */
-	var columnSeries = chart04.series.push(new am4charts.ColumnSeries());
+	var columnSeries = chart.series.push(new am4charts.ColumnSeries());
 	columnSeries.name = "view";
 	columnSeries.dataFields.valueY = "view";
 	columnSeries.dataFields.categoryX = "time";
@@ -270,12 +236,12 @@ function drawVisualization(){
 	columnSeries.tooltip.label.textAlign = "middle";
 
 	// second value axis for quantity
-	var valueAxis2 = chart04.yAxes.push(new am4charts.ValueAxis());
+	var valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
 	valueAxis2.renderer.opposite = true;
 	valueAxis2.syncWithAxis = valueAxis;
 	valueAxis2.tooltip.disabled = true;
 
-	var lineSeries = chart04.series.push(new am4charts.LineSeries());
+	var lineSeries = chart.series.push(new am4charts.LineSeries());
 	lineSeries.name = "like";
 	lineSeries.dataFields.valueY = "like";
 	lineSeries.dataFields.categoryX = "time";
@@ -295,58 +261,94 @@ function drawVisualization(){
 	circle.fill = am4core.color("#fff");
 	circle.strokeWidth = 3;
 
-	chart04.data = data;
+	chart.data = arr;
+	
+	return chart;
+};
 
-	}); // end am4core.ready()
-	</script>
+/*
+ *
+ */
+var drawVisualization = function(){
+
+	var data = google.visualization.arrayToDataTable([["State","도달","노출수"],[{"f":"Ho Chi Minh City","v":"VN-SG"},184,203]]);
+
+	var opts = {
+		region: 'VN'
+		, displayMode: 'regions'
+		, resolution: 'provinces'
+		, colorAxis: {colors: ['yellow', 'red']}
+		, legend : {textStyle: {color: 'red', fontSize: 12}}
+		, sizeAxis: { minValue: 0, maxValue: 100 }
+	};
+	var geochart = new google.visualization.GeoChart( document.getElementById('visualization'));
+	google.visualization.events.addListener(geochart, 'ready', function() {
+		//debugger;
+		var mpa_chart_loader = window.document.getElementById( "map_chart_loader" );
+		map_chart_loader.classList.remove("active");
+		return;
+	});
+	geochart.draw(data, opts);
+};
+
+var pieChartData00 = [{"ages":"18-24","value":86},{"ages":"25-34","value":72},{"ages":"35-44","value":18},{"ages":"45-54","value":4},{"ages":"55-64","value":3},{"ages":"65+","value":1}];
+var pieChartData01 = [{"ages":"18-24","value":94},{"ages":"25-34","value":80},{"ages":"35-44","value":19},{"ages":"45-54","value":4},{"ages":"55-64","value":5},{"ages":"65+","value":1}];
+var pieChartData02 = [{"ages":"18-24","value":15},{"ages":"25-34","value":4},{"ages":"35-44","value":6}];
+var pieChartData03 = [];
+
+var barChartData00 = [{"time":"04:00:00 - 04:59:59","view":1,"like":null},{"time":"05:00:00 - 05:59:59","view":3,"like":null},{"time":"06:00:00 - 06:59:59","view":11,"like":null},{"time":"07:00:00 - 07:59:59","view":18,"like":0},{"time":"08:00:00 - 08:59:59","view":22,"like":null},{"time":"09:00:00 - 09:59:59","view":18,"like":null},{"time":"10:00:00 - 10:59:59","view":25,"like":null},{"time":"11:00:00 - 11:59:59","view":9,"like":null},{"time":"18:00:00 - 18:59:59","view":14,"like":null},{"time":"19:00:00 - 19:59:59","view":13,"like":null},{"time":"20:00:00 - 20:59:59","view":24,"like":0},{"time":"21:00:00 - 21:59:59","view":25,"like":0},{"time":"22:00:00 - 22:59:59","view":16,"like":0},{"time":"23:00:00 - 23:59:59","view":4,"like":null}];
+
+am4core.ready(function() {
+	am4core.useTheme(am4themes_animated);
+
+	pieChartAge( "chartdiv00", "연령별 도달", pieChartData00 );
+	pieChartAge( "chartdiv01", "연령별 노출", pieChartData01 );
+	pieChartAge( "chartdiv02", "연령별 게시물 참여", pieChartData02 );
+	pieChartAge( "chartdiv03", "연령별 페이지 좋아요", pieChartData03 );
+
+	barChartTime( "chartdiv04", "", barChartData00 );
+	
+});
+
+google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
+google.setOnLoadCallback(drawVisualization);
+</script>
 
 </head>
-<style>
-	body{
-		margin : 30px;
-		font-family: "Noto Sans KR", sans-serif;
-	}
-	.font12px{
-		font-size: 11px;
-	}
-	h1,h2,h3,h4{
-		font-family: "Noto Sans KR", sans-serif;
-	}
-	iframe{
-		background: rgba(0,0,0,.0);
-	}
-</style>
-
 <body>
-    <div class="ui container">
+	<div class="ui container">
 
 		<!--h1 class="ui left aligned header">DEWYTREE 6월</h1-->
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
+		
+		<!--월간진행수량--!>
 		<h3  class="ui left aligned header">월간진행수량</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
 				<table class="ui very compact celled table">
 	<thead>
-	<tr><th style='width:18%;'>목록</th><th style='width:26%;'>세부사항</th><th style='width:8%;'>6월</th><th style='width:8%;'>7월</th><th style='width:8%;'>8월</th><th style='width:8%;'>9월</th><th style='width:8%;'>10월</th><th style='width:8%;'>11월</th><th style='width:8%;'>12월</th></tr>
+	<tr><th style='width:18%;'>목록</th><th style='width:26%;'>세부사항</th><th style='width:8%;background-color : red;color:#fff;'>6월</th><th style='width:8%;'>7월</th><th style='width:8%;'>8월</th><th style='width:8%;'>9월</th><th style='width:8%;'>10월</th><th style='width:8%;'>11월</th><th style='width:8%;'>12월</th></tr>
 
 	<tbody>
-	<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 본사 미러링</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>11</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>컨텐츠 (영상) : 본사 미러링 - 번역</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>2</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>18</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>컨텐츠 (영상) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>SEO</td><td style='font-size:11px;'>Google , Review wed page, Homepage</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>리뷰</td><td style='font-size:11px;'>fimi ,Facebook beauty review web page</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>체험단 이벤트</td><td style='font-size:11px;'>Facebook event , Facebook mini game</td><td style='font-size:11px;'>3</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>뷰티유투버</td><td style='font-size:11px;'>beauty youtuber</td><td style='font-size:11px;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>인플루언서</td><td style='font-size:11px;'>Influencer</td><td style='font-size:11px;'>12</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>언론사</td><td style='font-size:11px;'>News paper</td><td style='font-size:11px;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
-<tr><td style='font-size:11px;'>영상제작</td><td style='font-size:11px;'>Video clip</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+	<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 본사 미러링</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;background-color : red;color:#fff;'>11</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>컨텐츠 (영상) : 본사 미러링 - 번역</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;background-color : red;color:#fff;'>2</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>컨텐츠 (이미지) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;background-color : red;color:#fff;'>18</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>컨텐츠 (영상) : 비나피엘 제작</td><td style='font-size:11px;'>Facebook , Instagram</td><td style='font-size:11px;background-color : red;color:#fff;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>SEO</td><td style='font-size:11px;'>Google , Review wed page, Homepage</td><td style='font-size:11px;background-color : red;color:#fff;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>리뷰</td><td style='font-size:11px;'>fimi ,Facebook beauty review web page</td><td style='font-size:11px;background-color : red;color:#fff;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>체험단 이벤트</td><td style='font-size:11px;'>Facebook event , Facebook mini game</td><td style='font-size:11px;background-color : red;color:#fff;'>3</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>뷰티유투버</td><td style='font-size:11px;'>beauty youtuber</td><td style='font-size:11px;background-color : red;color:#fff;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>인플루언서</td><td style='font-size:11px;'>Influencer</td><td style='font-size:11px;background-color : red;color:#fff;'>12</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>언론사</td><td style='font-size:11px;'>News paper</td><td style='font-size:11px;background-color : red;color:#fff;'>1</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
+<tr><td style='font-size:11px;'>영상제작</td><td style='font-size:11px;'>Video clip</td><td style='font-size:11px;background-color : red;color:#fff;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td><td style='font-size:11px;'>-</td></tr>
 	
 	</tbody>
 </table>
 			</div>
 		</div>
+
+		<!--월간이슈--!>
 		<h3  class="ui left aligned header">6월 ISSUE</h3>
 				<h4 class="ui left aligned header">동향</h4>
 		<div class="ui grid">
@@ -397,11 +399,12 @@ function drawVisualization(){
 		  </div>
 		</div>
 
+
+		<!--페이스북 광고 통계--!>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 광고 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-			  <div class="ui six stackable cards">
-				<div class="card">
+				<div class="ui six stackable cards"><div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">도달 (명)</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>184</b></div>
@@ -431,32 +434,40 @@ function drawVisualization(){
 		<div class="description" style="font-size : 20px;color:#000;"><b>3</b></div>
 	</div>
 </div>
-
-			  </div>
+</div>
 			</div>
 		</div>
-		<h3 class="ui dividing header"><i class="large facebook square icon"></i>6월 페이스북 광고 통계</h3>
-
+		
+		<!--페이스북 연령별 통계--!>
+		<h3 class="ui dividing header"><i class="large facebook square icon"></i>6월 페이스북 연령별 통계</h3>
 		<div class="ui grid">
 			<div class="eight wide column"><div id="chartdiv00"></div></div>
 			<div class="eight wide column"><div id="chartdiv01"></div></div>
 			<div class="eight wide column"><div id="chartdiv02"></div></div>
 			<div class="eight wide column"><div id="chartdiv03"></div></div>
 		</div>
+
+		<!--페이스북 연령별 통계--!>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 시간별 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column"><div id="chartdiv04"></div></div>
 		</div>
 
+
+		<!--페이스북 지역별 통계--!>
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 지역별 통계</h3>
 		<div class="ui grid">
-          <!-- <div class="eight wide column"><div id="chartdiv05"></div></div> -->
-          <div class="sixteen wide column"><div id="visualization" style="height: 100%;"> </div></div>
-		  <!-- <div class="eight wide column"><div id="chartdiv06"></div></div-->
-		  <h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 지역별</h3>
-          <div class="sixteen wide column">
-			<div class="ui ten stackable cards">
-				  <div class="card">
+			<div class="sixteen wide column" style="min-height : 600px;">
+				<div id="map_chart_loader" class="ui active inverted dimmer">
+					<div class="ui text loader">Loading</div>
+				</div>
+				<div id="visualization" style="height: 100%;"></div>
+			</div>
+
+		<!--페이스북 지역별 데이터--!>
+			<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 지역별</h3>
+			<div class="sixteen wide column">
+				<div class="ui ten stackable cards">  <div class="card">
     <div class="content">
       <div class="header" style="font-size : 12px;">Ho Chi Minh City</div>
       <div class="description" style="font-size : 11px;">
@@ -465,15 +476,15 @@ function drawVisualization(){
       </div>
     </div>
   </div>
-
+</div>
 			</div>
-		  </div>
 		</div>
+		
+		<!--KOLs--!>
 		<h3 class="ui left aligned header">6월 KOLs</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-				<div class="ui six stackable cards">
-					<div class="card">
+				<div class="ui six stackable cards"><div class="card">
     <div class="image">
         <img src="https://cdn.vietnammoi.vn/stores/news_dataimages/longdm/052018/11/08/5317_32207816_1006182142869047_2759838618817134592_n.jpg"></img>
     </div>
@@ -498,15 +509,15 @@ function drawVisualization(){
 </div>
 
 			
-
-				</div>
+</div>
 			</div>
 		</div>
+
+		<!--광고집행 내역--!>
 		<h3 class="ui left aligned header">6월 광고집행 내역</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-			  <div class="ui four stackable cards">
-				<div class="card">
+				<div class="ui four stackable cards"><div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">컨텐츠 (이미지) : 비나피엘 제작</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>18</b></div>
@@ -554,10 +565,10 @@ function drawVisualization(){
 		<div class="description" style="font-size : 20px;color:#000;"><b>1</b></div>
 	</div>
 </div>
-
-			  </div>
+</div>
 			</div>
 		</div>
+		
 		<h3  class="ui left aligned header">컨텐츠 (이미지) : 비나피엘 제작 ( 18 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102433127_177401250468179_6349215626434707456_n.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_oc=AQmj2_v3BPF0NIyNfh87U7fN0NQJxxbB98jau6QJCe0owNlNPZ5MZdahEKMj5ecU64jRNbXXMA71uUZEAvcr61_U&_nc_ht=scontent.fvca1-2.fna&oh=52e48cecd78a14ff1ffb4c3d083ee11b&oe=5F26E038" style='max-height : 400px;'></img>
@@ -568,14 +579,13 @@ function drawVisualization(){
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -612,14 +622,13 @@ function drawVisualization(){
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -655,14 +664,13 @@ function drawVisualization(){
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -702,14 +710,13 @@ function drawVisualization(){
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -746,14 +753,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -787,14 +793,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -830,14 +835,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -879,14 +883,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -925,14 +928,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -965,14 +967,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1012,14 +1013,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -1053,14 +1053,13 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1097,14 +1096,13 @@ Chống nắng là chuyện phải làm nàng nha! 👌 👌 👌</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1146,14 +1144,13 @@ Chống nắng là chuyện phải làm nàng nha! 👌 👌 👌</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1190,14 +1187,13 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -1230,14 +1226,13 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1276,14 +1271,13 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1322,14 +1316,13 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -1365,14 +1358,13 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1409,14 +1401,13 @@ Mặt nạ làm dịu da chiết xuất từ rau má 100% tự nhiên.🌿 🌿 
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1452,14 +1443,13 @@ Mặt nạ làm dịu da chiết xuất từ rau má 100% tự nhiên.🌿 🌿 
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1499,14 +1489,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1542,14 +1531,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1588,14 +1576,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1631,14 +1618,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1677,14 +1663,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1724,14 +1709,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1770,14 +1754,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1817,14 +1800,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 컨텐츠 (이미지) : 본사 미러링</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 컨텐츠 (이미지) : 본사 미러링</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -1860,14 +1842,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 언론사</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 언론사</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1910,14 +1891,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -1956,14 +1936,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -1997,14 +1976,13 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2044,14 +2022,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2087,14 +2064,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red instagram icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>인스타그램 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red instagram icon" style="margin : 0px"></i> 인스타그램 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     
                     
@@ -2127,14 +2103,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2173,14 +2148,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2220,14 +2194,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2266,14 +2239,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2309,14 +2281,13 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2356,14 +2327,13 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2399,14 +2369,13 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 인플루언서</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 인플루언서</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2448,14 +2417,13 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (영상) : 본사 미러링 - 번역</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (영상) : 본사 미러링 - 번역</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2498,14 +2466,13 @@ Tấm khiên bảo vệ da trong thời tiết nóng ẩm 𝐃𝐞𝐰𝐲𝐭�
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (영상) : 본사 미러링 - 번역</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (영상) : 본사 미러링 - 번역</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2551,14 +2518,13 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 체험단 이벤트</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 체험단 이벤트</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2603,14 +2569,13 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 체험단 이벤트</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 체험단 이벤트</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2655,14 +2620,13 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 체험단 이벤트</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 체험단 이벤트</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2710,14 +2674,13 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large blue facebook square icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>페이스북 | 컨텐츠 (영상) : 비나피엘 제작</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large blue facebook square icon" style="margin : 0px"></i> 페이스북 - 컨텐츠 (영상) : 비나피엘 제작</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
@@ -2759,14 +2722,13 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <div class="meta" style='font-size : 12px;font-family: "Noto Sans KR", sans-serif;'>
             <br>
             <div class="icon_cate">
-                <i class="large red youtube icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'>뷰티유튜버 | 뷰티유투버</span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'> <i class="large red youtube icon" style="margin : 0px"></i> 뷰티유튜버 - 뷰티유투버</span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"></span>
-            <table class="ui very compact full-width celled table">
+            <span></span>
+            <table class="ui very compact full-width celled table" style="font-size:11px;">
                 <tbody>
                     <tr>
 	<td><span class="font12px"><i class="eye icon"></i>View</span></td>

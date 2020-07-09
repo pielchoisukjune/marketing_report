@@ -144,6 +144,7 @@ var make_card_html = function( arr, html ){
 
 		r += _html + "\n"
 	}
+
 	return r;
 };
 
@@ -358,10 +359,10 @@ var make_ages_data = function( arr ){
         var o01 = {"ages" : io[ "연령" ], value : Number(io[ "노출 수" ] )};
         var o02 = {"ages" : io[ "연령" ], value : Number(io[ "게시물 참여" ] )};
         var o03 = {"ages" : io[ "연령" ] , value : Number(io[ "페이지 좋아요" ] )};
-        r.d00.push( o00 );
-        r.d01.push( o01 );
-        r.d02.push( o02 );
-        r.d03.push( o03 );
+        if( Number( io[ "도달" ] ) ) r.d00.push( o00 );
+        if( Number( io[ "노출 수" ] ) ) r.d01.push( o01 );
+        if( Number( io[ "게시물 참여" ] ) ) r.d02.push( o02 );
+        if( Number( io[ "페이지 좋아요" ] ) ) r.d03.push( o03 );
 	}
 	return r;
 };
@@ -459,9 +460,12 @@ var make_monthly_table_html = function( data, html ){
 	var _html0 = "";
 	var _html1 = "";
 	var r = "";
+	var _bg_check = -1;
 	for(;i<iLen;i++){
 		io = data[ i ];
+		
 		if( i == 0 ){
+			_bg_check = io.indexOf( target_month + "월" );
 			_html0 += "<tr>"
 			var _tidx = 0;
 			io.forEach(function(item){
@@ -474,7 +478,9 @@ var make_monthly_table_html = function( data, html ){
 				}
 				else
 				{
-					_html0 += "<th style='width:8%;'>" + item + "</th>";
+					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;'>" + item + "</th>";
+					else _html0 += "<th style='width:8%;'>" + item + "</th>";
+
 				}
 				++_tidx;
 			})
@@ -483,7 +489,13 @@ var make_monthly_table_html = function( data, html ){
 		else
 		{
 			_html1 += "<tr>"
-			io.forEach(function(item){ _html1 += "<td style='font-size:11px;'>" + item + "</td>"; })
+			var _tidx = 0;
+			io.forEach(function(item){ 
+
+				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>";
+				else _html1 += "<td style='font-size:11px;'>" + item + "</td>"; 
+				++_tidx;
+			})
 			_html1 += "</tr>\n"
 		}
 	}

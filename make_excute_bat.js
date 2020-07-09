@@ -30,7 +30,7 @@ for(;i<iLen;++i){
     fileNm_02 = _fileNm_02.replace( "<!=BRAND_NM=!>", io );
     
     var all_command = "call node " + fileNm_00 + ".js\n"
-        + "call node " + fileNm_01 + ".js\n";
+        + "call node " + fileNm_01 + ".js\n cmd/k";
     
     bat03 =  _bat.replace( "<!=EXEC_COMMAND=!>",  all_command );
     fs.writeFileSync( "./" + fileNm_02 + ".bat", bat03, fsWriteOption )

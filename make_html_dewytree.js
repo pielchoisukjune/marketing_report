@@ -47,6 +47,9 @@ var statistic_monthly_thtml = fs.readFileSync( THTML_PATHS[ "table" ] ).toString
 // FUNCTION;
 //-------------------------------------------------------;
 
+/*
+ * 숫자에3자리마다 콤마를 직어주는 함수;
+ */
 var numberWithCommas = function(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -87,7 +90,7 @@ var make_card_html = function( arr, html ){
 
 	var thumb = `<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style='max-height : 400px;'></img>`;
 	var iframe = `<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>`;
-	
+
 	for(;i<iLen;i++){
 		io = arr[ i ];
 		_html = "";
@@ -107,7 +110,7 @@ var make_card_html = function( arr, html ){
 		if( io[ "댓글수" ] ) _comment_col = comment_col.replace( "<!=CNT_COMMENT=!>", numberWithCommas( io[ "댓글수" ] ) )
 		if( io[ "좋아요" ] ) _like_col = like_col.replace( "<!=CNT_LIKE=!>", numberWithCommas( io[ "좋아요" ] ) )
 		if( io[ "공유" ] ) _share_col = share_col.replace( "<!=CNT_SHARE=!>", numberWithCommas( io[ "공유" ] ) )
-		
+
 		var thumb_url = thumb.replace( "<!=THUMBNAIL=!>", io[ "이미지" ] );
 		var iframe_url = "";
 
@@ -115,8 +118,8 @@ var make_card_html = function( arr, html ){
 		{
 			thumb_url = thumb.replace( "<!=THUMBNAIL=!>", io[ "해당링크" ] +  "media/?size=l" );
 		}
-		
-		
+
+
 		if( io[ "이미지" ].indexOf( "<iframe" ) != -1 )
 		{
 			//iframe_url = iframe.replace( "<!=FB_URL=!>", io[ "해당링크" ] )
@@ -145,13 +148,11 @@ var make_card_html = function( arr, html ){
 	return r;
 };
 
-/*
-		<div class="ui four stackable cards">
-			<!=CARDS=!>
-		</div>
-*/
+//-------------------------------------------------------;
+// 광고집행리스트생성;
+//-------------------------------------------------------;
 var make_ads_list = function( o , html ){
-	
+
 	var r = "";
 	var s,so;
 	for( s in o ){
@@ -191,7 +192,7 @@ var make_ads_list = function( o , html ){
 var gender_icon = {
 	"남" : "blue mars stroke vertical"
 	, "여" : "red venus"
-}
+};
 var make_kols_html = function( arr, html ){
 	var i = 0,iLen = arr.length,io;
 	var r = "";
@@ -202,11 +203,11 @@ var make_kols_html = function( arr, html ){
 	var instagram_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="red instagram icon"></i></a></span>`;
 
 	var thumb = `<img src="<!=THUMBNAIL=!>"></img>`;
-	
+
 	for(;i<iLen;i++){
 		io = arr[ i ];
 		_html = "";
-	
+
 		var _facebook_icon_html = "";
 		var _youtube_icon_html = "";
 		var _instagram_icon_html = "";
@@ -216,7 +217,7 @@ var make_kols_html = function( arr, html ){
 		if( io[ "인스타그램" ] != "" ) _instagram_icon_html = instagram_icon_html.replace( "<!=LINK=!>", io[ "인스타그램" ] );
 
 		var thumb_url = thumb.replace( "<!=THUMBNAIL=!>", io[ "이미지" ] );
-	
+
 		_html = html.replace( "<!=THUMNAIL_CONTENTS=!>", thumb_url )
 			.replace( "<!=CATEGORY=!>", io[ "구분" ] )
 			.replace( "<!=LINK=!>", io[ "유튜브" ] )
@@ -249,14 +250,14 @@ var make_kols_html = function( arr, html ){
 var make_insight_html = function( arr, html ){
 	var r = "";
 	var _html;
-   
+
 	var i = 0,iLen = arr.length,io;
 	for(;i<iLen;++i){
 		io = arr[ i ];
 		var s,so;
 		for( s in io ){
 			so = io[ s ];
-			
+
 			if( s == "월" ) continue;
 			if( so == "" ) continue;
 
@@ -274,7 +275,7 @@ var make_insight_html = function( arr, html ){
 var make_ads_total_statistic_html = function( o, html ){
 	var r = "";
 	var _html;
-   
+
     var s,so;
 	for( s in o ){
 		so = o[ s ];
@@ -310,7 +311,7 @@ var make_statistic_html = function( arr, html ){
     for(;i<iLen;i++){
 		io = arr[ i ];
         _html = "";
-        
+
         var s,so;
         for( s in io ){
             so = io[ s ];
@@ -358,10 +359,10 @@ var make_ages_data = function( arr ){
         var o01 = {"ages" : io[ "연령" ], value : Number(io[ "노출 수" ] )};
         var o02 = {"ages" : io[ "연령" ], value : Number(io[ "게시물 참여" ] )};
         var o03 = {"ages" : io[ "연령" ] , value : Number(io[ "페이지 좋아요" ] )};
-        r.d00.push( o00 );
-        r.d01.push( o01 );
-        r.d02.push( o02 );
-        r.d03.push( o03 );
+        if( Number( io[ "도달" ] ) ) r.d00.push( o00 );
+        if( Number( io[ "노출 수" ] ) ) r.d01.push( o01 );
+        if( Number( io[ "게시물 참여" ] ) ) r.d02.push( o02 );
+        if( Number( io[ "페이지 좋아요" ] ) ) r.d03.push( o03 );
 	}
 	return r;
 };
@@ -399,12 +400,12 @@ var make_time_data = function( arr ){
 // 페이스북지역통계 생성;
 //-------------------------------------------------------;
 var make_location_data = function( arr, o ){
-	
+
 	var r = [
 		['State', '도달', '노출수']
 	];
 
-	var i = 0,iLen = arr.length,io; 
+	var i = 0,iLen = arr.length,io;
 	/*
 		"도시": "Bắc Ninh Province",
 		"도달": "39,936",
@@ -438,15 +439,15 @@ var make_location_data = function( arr, o ){
 var make_location_html = function( data, html ){
 	var i = 1,iLen = data.length,io;
 	var _html = "";
-	var r = ""; 
+	var r = "";
 	for(;i<iLen;i++){
 		io = data[ i ];
-		
+
 		_html =  html.replace( "<!=city=!>" , io[0].f )
 		.replace( "<!=reach=!>" , numberWithCommas( io[1] ) )
 		.replace( "<!=view=!>" , numberWithCommas ( io[2] ) );
 		r += _html + "\n";
-		
+
 	}
 	return r;
 };
@@ -458,23 +459,28 @@ var make_monthly_table_html = function( data, html ){
 	var i = 0,iLen = data.length,io;
 	var _html0 = "";
 	var _html1 = "";
-	var r = ""; 
+	var r = "";
+	var _bg_check = -1;
 	for(;i<iLen;i++){
 		io = data[ i ];
+		
 		if( i == 0 ){
+			_bg_check = io.indexOf( target_month + "월" );
 			_html0 += "<tr>"
 			var _tidx = 0;
-			io.forEach(function(item){ 
+			io.forEach(function(item){
 				if( _tidx == 0 )
 				{
-					_html0 += "<th style='width:18%;'>" + item + "</th>"; 
+					_html0 += "<th style='width:18%;'>" + item + "</th>";
 				}
 				else if( _tidx == 1 ){
-					_html0 += "<th style='width:26%;'>" + item + "</th>"; 
+					_html0 += "<th style='width:26%;'>" + item + "</th>";
 				}
 				else
 				{
-					_html0 += "<th style='width:8%;'>" + item + "</th>"; 
+					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;'>" + item + "</th>";
+					else _html0 += "<th style='width:8%;'>" + item + "</th>";
+
 				}
 				++_tidx;
 			})
@@ -483,7 +489,13 @@ var make_monthly_table_html = function( data, html ){
 		else
 		{
 			_html1 += "<tr>"
-			io.forEach(function(item){ _html1 += "<td style='font-size:11px;'>" + item + "</td>"; })
+			var _tidx = 0;
+			io.forEach(function(item){ 
+
+				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>";
+				else _html1 += "<td style='font-size:11px;'>" + item + "</td>"; 
+				++_tidx;
+			})
 			_html1 += "</tr>\n"
 		}
 	}
@@ -519,7 +531,7 @@ var logic = function(){
 		.replace( "<!=MAP_DATA_00=!>",JSON.stringify( location_data ) )
 		.replace( "<!=LOCATION_TABLE=!>", _location_html )
 		.replace( "<!=STATISTIC_ADS_LIST=!>", _ads_total_statistic_html );
-    
+
     fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w"})
 }
 
