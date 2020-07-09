@@ -375,7 +375,7 @@ function drawVisualization(){
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 광고집행 내역</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
-			  <div class="ui six stackable cards">
+			  <div class="ui four stackable cards">
 				<!=STATISTIC_ADS_LIST=!>
 			  </div>
 			</div>
