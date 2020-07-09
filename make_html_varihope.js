@@ -23,11 +23,12 @@ var target_year_month = "202006";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 var thumnail_icon = {
 	"뷰티유튜버" : "red youtube"
-	,"페이스북그룹" : "blue facebook square"
-	,"페이스북" : "blue facebook square"
-	,"인스타그램" : "red instagram"
-	,"언론사노출" : "red newspaper outline"
-	,"언론사 노출" : "red newspaper outline"
+	, "페이스북그룹" : "blue facebook square"
+	, "페이스북" : "blue facebook square"
+	, "인스타그램" : "red instagram"
+	, "언론사노출" : "red newspaper outline"
+	, "언론사 노출" : "red newspaper outline"
+	, "Fime.vn" : "red edit outline"
 };
 //-------------------------------------------------------;
 // FILEPATH;

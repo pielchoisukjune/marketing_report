@@ -9,12 +9,12 @@
             <br>
             <div class="icon_cate">
                 <i class="large <!=CATE_ICON=!> icon" style="margin : 0px"></i>
-                <span style='font-size : 12px; font-family: "Noto Sans KR", sans-serif;'><!=CATEGORY=!> - <!=TYPE=!></span>
+                <span style='font-size : 11px; font-family: "Noto Sans KR", sans-serif;'><!=CATEGORY=!> - <!=TYPE=!></span>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="description">
-            <span class="font12px"><!=COMMENT=!></span>
+            <span><!=COMMENT=!></span>
             <table class="ui very compact full-width celled table">
                 <tbody>
                     <!=CNT_VIEW=!>
