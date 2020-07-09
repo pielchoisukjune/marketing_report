@@ -322,7 +322,7 @@ google.setOnLoadCallback(drawVisualization);
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
 		
-		<!--월간진행수량--!>
+		<!--월간진행수량-->
 		<h3  class="ui left aligned header">월간진행수량</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
@@ -330,11 +330,11 @@ google.setOnLoadCallback(drawVisualization);
 			</div>
 		</div>
 
-		<!--월간이슈--!>
+		<!--월간이슈-->
 		<h3  class="ui left aligned header"><!=TARGET_MONTH=!>월 ISSUE</h3>
 		<!=INSIGHT=!>
 
-		<!--페이스북 광고 통계--!>
+		<!--페이스북 광고 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 광고 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
@@ -342,7 +342,7 @@ google.setOnLoadCallback(drawVisualization);
 			</div>
 		</div>
 		
-		<!--페이스북 연령별 통계--!>
+		<!--페이스북 연령별 통계-->
 		<h3 class="ui dividing header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 연령별 통계</h3>
 		<div class="ui grid">
 			<div class="eight wide column"><div id="chartdiv00"></div></div>
@@ -351,14 +351,14 @@ google.setOnLoadCallback(drawVisualization);
 			<div class="eight wide column"><div id="chartdiv03"></div></div>
 		</div>
 
-		<!--페이스북 연령별 통계--!>
+		<!--페이스북 연령별 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 시간별 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column"><div id="chartdiv04"></div></div>
 		</div>
 
 
-		<!--페이스북 지역별 통계--!>
+		<!--페이스북 지역별 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 지역별 통계</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column" style="min-height : 600px;">
@@ -368,14 +368,14 @@ google.setOnLoadCallback(drawVisualization);
 				<div id="visualization" style="height: 100%;"></div>
 			</div>
 
-		<!--페이스북 지역별 데이터--!>
+		<!--페이스북 지역별 데이터-->
 			<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 지역별</h3>
 			<div class="sixteen wide column">
 				<div class="ui ten stackable cards"><!=LOCATION_TABLE=!></div>
 			</div>
 		</div>
 		
-		<!--KOLs--!>
+		<!--KOLs-->
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 KOLs</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
@@ -383,7 +383,7 @@ google.setOnLoadCallback(drawVisualization);
 			</div>
 		</div>
 
-		<!--광고집행 내역--!>
+		<!--광고집행 내역-->
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 광고집행 내역</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">

@@ -63,33 +63,15 @@ var make_card_html = function( arr, html ){
 	var r = "";
 	var _html;
 
-	var view_col = `<tr>
-	<td><span class="font12px"><i class="eye icon"></i>View</span></td>
-	<td><span class="font12px"><!=CNT_VIEW=!></span></td>
-	</tr>`;
-	var click_col = `<tr>
-	<td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td>
-	<td><span class="font12px"><!=CNT_CLICK=!></span><br></td>
-	</tr>`;
-	var comment_col = `<tr>
-	<td><span class="font12px"><i class="comment icon"></i>Comment</span></td>
-	<td><span class="font12px"><!=CNT_COMMENT=!></span></td>
-	</tr>`;
-	var like_col = `<tr>
-	<td><span class="font12px"><i class="heart icon"></i>Like</span></td>
-	<td><span class="font12px"><!=CNT_LIKE=!></span></td>
-	</tr>`;
-	var share_col = `<tr>
-	<td><span class="font12px"><i class="share alternate icon"></i>Share</span></td>
-	<td><span class="font12px"><!=CNT_SHARE=!></span></td>
-	</tr>`;
-	var update_col = `<tr>
-	<td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td>
-	<td><span class="font12px"><!=DATE=!></span></td>
-	</tr>`;
+	var view_col = '<tr><td><span class="font12px"><i class="eye icon"></i>View</span></td><td><span class="font12px"><!=CNT_VIEW=!></span></td></tr>';
+	var click_col = '<tr><td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td><td><span class="font12px"><!=CNT_CLICK=!></span><br></td></tr>';
+	var comment_col = '<tr><td><span class="font12px"><i class="comment icon"></i>Comment</span></td><td><span class="font12px"><!=CNT_COMMENT=!></span></td></tr>';
+	var like_col = '<tr><td><span class="font12px"><i class="heart icon"></i>Like</span></td><td><span class="font12px"><!=CNT_LIKE=!></span></td></tr>';
+	var share_col = '<tr><td><span class="font12px"><i class="share alternate icon"></i>Share</span></td><td><span class="font12px"><!=CNT_SHARE=!></span></td></tr>';
+	var update_col = '<tr><td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td><td><span class="font12px"><!=DATE=!></span></td></tr>';
 
-	var thumb = `<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style='max-height : 400px;'></img>`;
-	var iframe = `<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>`;
+	var thumb = '<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style="max-height : 400px;"></img>';
+	var iframe = '<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>';
 
 	for(;i<iLen;i++){
 		io = arr[ i ];
@@ -142,10 +124,10 @@ var make_card_html = function( arr, html ){
 			.replace( "<!=CNT_LIKE=!>", _like_col )
 			.replace( "<!=CNT_SHARE=!>", _share_col );
 
-		r += _html + "\n"
+		r += _html;
 	}
 
-	return r;
+	return r.toString("utf8");
 };
 
 //-------------------------------------------------------;
@@ -158,13 +140,13 @@ var make_ads_list = function( o , html ){
 	for( s in o ){
 		so = o[ s ];
 		var _html = '<h3  class="ui left aligned header">' + s + ' ( ' + so.length +  ' 건 )</h3>';
-			_html += `<div class="ui grid">`;
-			_html += `<div class="sixteen wide column">`;
-			_html += `<div class="ui four stackable cards">`;
+			_html += '<div class="ui grid">';
+			_html += '<div class="sixteen wide column">';
+			_html += '<div class="ui four stackable cards">';
 			_html += make_card_html( so, html )
-			_html += `</div>\n`;
-			_html += `</div>\n`;
-			_html += `</div>\n`;
+			_html += '</div>';
+			_html += '</div>';
+			_html += '</div>';
 			r += _html;
 	}
 
@@ -198,11 +180,11 @@ var make_kols_html = function( arr, html ){
 	var r = "";
 	var _html;
 
-	var facebook_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="blue facebook square icon"></i></a></span>`;
-	var youtube_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="red youtube icon"></i></a></span>`;
-	var instagram_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="red instagram icon"></i></a></span>`;
+	var facebook_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="blue facebook square icon"></i></a></span>';
+	var youtube_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="red youtube icon"></i></a></span>';
+	var instagram_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="red instagram icon"></i></a></span>';
 
-	var thumb = `<img src="<!=THUMBNAIL=!>"></img>`;
+	var thumb = '<img src="<!=THUMBNAIL=!>"></img>';
 
 	for(;i<iLen;i++){
 		io = arr[ i ];
@@ -228,7 +210,7 @@ var make_kols_html = function( arr, html ){
 			.replace( "<!=GENDER_ICON=!>", gender_icon[ io[ "성별" ] ] )
 			.replace( "<!=FOLLOWER=!>", numberWithCommas( io[ "팔로워" ] ) );
 
-		r += _html + "\n"
+		r += _html
 	}
 	return r;
 };
@@ -263,7 +245,7 @@ var make_insight_html = function( arr, html ){
 
 			_html = html.replace( "<!=TITLE=!>", s  )
 				.replace( "<!=CONTENTS=!>", so.replace(/\r/g, "<br>").replace(/\n/g, "<br>") );
-			r += _html + "\n"
+			r += _html;
 		}
 	}
 	return r;
@@ -281,7 +263,7 @@ var make_ads_total_statistic_html = function( o, html ){
 		so = o[ s ];
 		_html = html.replace( "<!=LABEL=!>", s  )
 			.replace( "<!=VALUE=!>", numberWithCommas( so )  );
-		r += _html + "\n"
+		r += _html
 	}
 	return r;
 };
@@ -319,7 +301,7 @@ var make_statistic_html = function( arr, html ){
             {
                 _html = html.replace( "<!=LABEL=!>", s  )
                     .replace( "<!=VALUE=!>", numberWithCommas( so ) );
-                r += _html + "\n"
+                r += _html;
             }
         }
 	}
@@ -446,7 +428,7 @@ var make_location_html = function( data, html ){
 		_html =  html.replace( "<!=city=!>" , io[0].f )
 		.replace( "<!=reach=!>" , numberWithCommas( io[1] ) )
 		.replace( "<!=view=!>" , numberWithCommas ( io[2] ) );
-		r += _html + "\n";
+		r += _html;
 
 	}
 	return r;
@@ -471,15 +453,15 @@ var make_monthly_table_html = function( data, html ){
 			io.forEach(function(item){
 				if( _tidx == 0 )
 				{
-					_html0 += "<th style='width:18%;'>" + item + "</th>";
+					_html0 += "<th style='width:18%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 				}
 				else if( _tidx == 1 ){
-					_html0 += "<th style='width:26%;'>" + item + "</th>";
+					_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 				}
 				else
 				{
-					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;'>" + item + "</th>";
-					else _html0 += "<th style='width:8%;'>" + item + "</th>";
+					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
+					else _html0 += "<th style='width:8%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 
 				}
 				++_tidx;
@@ -492,8 +474,8 @@ var make_monthly_table_html = function( data, html ){
 			var _tidx = 0;
 			io.forEach(function(item){ 
 
-				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>";
-				else _html1 += "<td style='font-size:11px;'>" + item + "</td>"; 
+				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>\n";
+				else _html1 += "<td style='font-size:11px;'>" + item + "</td>\n"; 
 				++_tidx;
 			})
 			_html1 += "</tr>\n"
@@ -523,7 +505,7 @@ var logic = function(){
 		.replace( "<!=MONTHLY_TABLE=!>",_monthly_table)
 		.replace( "<!=INSIGHT=!>",_insight_html)
 		.replace( "<!=STATISTIC=!>",_statistic_html)
-		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ))
+		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ) )
 		.replace( "<!=AGES01_DATA=!>",JSON.stringify( ages_data.d01 ) )
 		.replace( "<!=AGES02_DATA=!>",JSON.stringify( ages_data.d02 ) )
 		.replace( "<!=AGES03_DATA=!>",JSON.stringify( ages_data.d03 ) )
@@ -532,7 +514,7 @@ var logic = function(){
 		.replace( "<!=LOCATION_TABLE=!>", _location_html )
 		.replace( "<!=STATISTIC_ADS_LIST=!>", _ads_total_statistic_html );
 
-    fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w"})
+    fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w" })
 }
 
 logic();
