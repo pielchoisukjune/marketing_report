@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,6 +144,14 @@ var emptyPieChart = function( domId, title ){
 
 	series.labels.template.propertyFields.disabled = "disabled";
 	series.ticks.template.propertyFields.disabled = "disabled";
+
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var pie_chart_loader = window.document.getElementById( domId + "_loader" );
+		pie_chart_loader.classList.remove("active");
+	});
+	
+	return chart;
 };
 
 /*
@@ -162,9 +169,12 @@ var pieChartAge = function( domId, title, arr ){
 	title00.fontSize = 25;
 	title00.marginBottom = 30;
 	title00.marginTop = 30;
+
+	//loading;
+	chart.preloader.disabled = true;
 	
-	chart.data = pieChartData00;
-	
+	chart.data = arr;
+
 	// Add and configure Series
 	var pieSeries00 = chart.series.push(new am4charts.PieSeries());
 
@@ -195,6 +205,12 @@ var pieChartAge = function( domId, title, arr ){
 	  }
 	}
 
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var pie_chart_loader = window.document.getElementById( domId + "_loader" );
+		pie_chart_loader.classList.remove("active");
+	});
+	
 	return chart;
 }
 
@@ -205,10 +221,15 @@ var barChartTime = function( domId, title, arr ){
 
 	// Create chart instance
 	var chart = am4core.create( domId , am4charts.XYChart);
-	
+	var title00 = chart.titles.create();
+	title00.text = title;
+	title00.fontSize = 25;
+	title00.marginBottom = 30;
+	title00.marginTop = 30;
+
 	chart.legend = new am4charts.Legend();
 	// Export
-	
+
 	chart.exporting.menu = new am4core.ExportMenu();
 
 	/* Create axes */
@@ -217,7 +238,8 @@ var barChartTime = function( domId, title, arr ){
 	categoryAxis.renderer.minGridDistance = 30;
 	categoryAxis.renderer.labels.template.horizontalCenter = "right";
 	categoryAxis.renderer.labels.template.verticalCenter = "middle";
-	categoryAxis.renderer.labels.template.rotation = 300
+	categoryAxis.renderer.labels.template.rotation = 300;
+	categoryAxis.renderer.labels.template.fontSize = 11;
 
 	/* Create value axis */
 	var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -262,7 +284,13 @@ var barChartTime = function( domId, title, arr ){
 	circle.strokeWidth = 3;
 
 	chart.data = arr;
-	
+
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var bar_chart_loader = window.document.getElementById( domId + "_loader" );
+		bar_chart_loader.classList.remove("active");
+	});
+
 	return chart;
 };
 
@@ -307,7 +335,7 @@ am4core.ready(function() {
 	pieChartAge( "chartdiv03", "연령별 페이지 좋아요", pieChartData03 );
 
 	barChartTime( "chartdiv04", "", barChartData00 );
-	
+
 });
 
 google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
@@ -321,8 +349,8 @@ google.setOnLoadCallback(drawVisualization);
 		<!--h1 class="ui left aligned header"><!=BRAND_NM=!> <!=TARGET_MONTH=!>월</h1-->
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
-		
-		<!--월간진행수량-->
+
+		월간진행수량
 		<h3  class="ui left aligned header">월간진행수량</h3>
 		<div class="ui grid">
 			<div class="sixteen wide column">
@@ -341,20 +369,20 @@ google.setOnLoadCallback(drawVisualization);
 				<div class="ui six stackable cards"><!=STATISTIC=!></div>
 			</div>
 		</div>
-		
+
 		<!--페이스북 연령별 통계-->
 		<h3 class="ui dividing header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 연령별 통계</h3>
 		<div class="ui grid">
-			<div class="eight wide column"><div id="chartdiv00"></div></div>
-			<div class="eight wide column"><div id="chartdiv01"></div></div>
-			<div class="eight wide column"><div id="chartdiv02"></div></div>
-			<div class="eight wide column"><div id="chartdiv03"></div></div>
+			<div class="eight wide column"><div id="chartdiv00_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv00"></div></div>
+			<div class="eight wide column"><div id="chartdiv01_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv01"></div></div>
+			<div class="eight wide column"><div id="chartdiv02_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv02"></div></div>
+			<div class="eight wide column"><div id="chartdiv03_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv03"></div></div>
 		</div>
 
 		<!--페이스북 연령별 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i><!=TARGET_MONTH=!>월 페이스북 시간별 통계</h3>
 		<div class="ui grid">
-			<div class="sixteen wide column"><div id="chartdiv04"></div></div>
+			<div class="sixteen wide column"><div id="chartdiv04_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv04"></div></div>
 		</div>
 
 
@@ -374,7 +402,7 @@ google.setOnLoadCallback(drawVisualization);
 				<div class="ui ten stackable cards"><!=LOCATION_TABLE=!></div>
 			</div>
 		</div>
-		
+
 		<!--KOLs-->
 		<h3 class="ui left aligned header"><!=TARGET_MONTH=!>월 KOLs</h3>
 		<div class="ui grid">
@@ -390,7 +418,7 @@ google.setOnLoadCallback(drawVisualization);
 				<div class="ui four stackable cards"><!=STATISTIC_ADS_LIST=!></div>
 			</div>
 		</div>
-		
+
 		<!=CARDS=!>
 
 	</div>

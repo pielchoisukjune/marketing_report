@@ -2,11 +2,7 @@ var fs = require( "fs" );
 
 
 
-var a = "aaaaaaaaa" + "\n";
-	a += "aaaaaaaaa" + "\n";
-	a += "aaaaaaaaa" + "\n";
-	a += "aaaaaaaaa" + "\n";
-	a += "aaaaaaaaa" + "\n";
-	a += "aaaaaaaaa" + "\n";
-
-fs.writeFileSync( "a.html", a , { flag : "w"})
+var a = fs.readFileSync( "./THTML/report.thtml" ).toString()
+var b = a
+	b += "\n"
+fs.writeFileSync( "a.html", b , { flag : "w"})

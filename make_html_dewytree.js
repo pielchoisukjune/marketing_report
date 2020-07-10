@@ -70,8 +70,8 @@ var make_card_html = function( arr, html ){
 	var share_col = '<tr><td><span class="font12px"><i class="share alternate icon"></i>Share</span></td><td><span class="font12px"><!=CNT_SHARE=!></span></td></tr>';
 	var update_col = '<tr><td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td><td><span class="font12px"><!=DATE=!></span></td></tr>';
 
-	var thumb = '<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style="max-height : 400px;"></img>';
-	var iframe = '<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>';
+	var thumb = `<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style='max-height : 400px;'></img>`;
+	var iframe = `<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>`;
 
 	for(;i<iLen;i++){
 		io = arr[ i ];
@@ -124,10 +124,10 @@ var make_card_html = function( arr, html ){
 			.replace( "<!=CNT_LIKE=!>", _like_col )
 			.replace( "<!=CNT_SHARE=!>", _share_col );
 
-		r += _html;
+		r += _html + "\n";
 	}
 
-	return r.toString("utf8");
+	return r;
 };
 
 //-------------------------------------------------------;
@@ -210,7 +210,7 @@ var make_kols_html = function( arr, html ){
 			.replace( "<!=GENDER_ICON=!>", gender_icon[ io[ "성별" ] ] )
 			.replace( "<!=FOLLOWER=!>", numberWithCommas( io[ "팔로워" ] ) );
 
-		r += _html
+		r += _html + "\n"
 	}
 	return r;
 };
@@ -245,7 +245,7 @@ var make_insight_html = function( arr, html ){
 
 			_html = html.replace( "<!=TITLE=!>", s  )
 				.replace( "<!=CONTENTS=!>", so.replace(/\r/g, "<br>").replace(/\n/g, "<br>") );
-			r += _html;
+			r += _html + "\n"
 		}
 	}
 	return r;
@@ -263,7 +263,7 @@ var make_ads_total_statistic_html = function( o, html ){
 		so = o[ s ];
 		_html = html.replace( "<!=LABEL=!>", s  )
 			.replace( "<!=VALUE=!>", numberWithCommas( so )  );
-		r += _html
+		r += _html + "\n"
 	}
 	return r;
 };
@@ -301,7 +301,7 @@ var make_statistic_html = function( arr, html ){
             {
                 _html = html.replace( "<!=LABEL=!>", s  )
                     .replace( "<!=VALUE=!>", numberWithCommas( so ) );
-                r += _html;
+                r += _html + "\n"
             }
         }
 	}
@@ -428,7 +428,7 @@ var make_location_html = function( data, html ){
 		_html =  html.replace( "<!=city=!>" , io[0].f )
 		.replace( "<!=reach=!>" , numberWithCommas( io[1] ) )
 		.replace( "<!=view=!>" , numberWithCommas ( io[2] ) );
-		r += _html;
+		r += _html + "\n";
 
 	}
 	return r;

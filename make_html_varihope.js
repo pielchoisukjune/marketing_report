@@ -140,13 +140,13 @@ var make_ads_list = function( o , html ){
 	for( s in o ){
 		so = o[ s ];
 		var _html = '<h3  class="ui left aligned header">' + s + ' ( ' + so.length +  ' 건 )</h3>';
-			_html += `<div class="ui grid">`;
-			_html += `<div class="sixteen wide column">`;
-			_html += `<div class="ui four stackable cards">`;
+			_html += '<div class="ui grid">';
+			_html += '<div class="sixteen wide column">';
+			_html += '<div class="ui four stackable cards">';
 			_html += make_card_html( so, html )
-			_html += `</div>\n`;
-			_html += `</div>\n`;
-			_html += `</div>\n`;
+			_html += '</div>';
+			_html += '</div>';
+			_html += '</div>';
 			r += _html;
 	}
 
@@ -180,11 +180,11 @@ var make_kols_html = function( arr, html ){
 	var r = "";
 	var _html;
 
-	var facebook_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="blue facebook square icon"></i></a></span>`;
-	var youtube_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="red youtube icon"></i></a></span>`;
-	var instagram_icon_html = `<span><a href="<!=LINK=!>" target="_blank"><i class="red instagram icon"></i></a></span>`;
+	var facebook_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="blue facebook square icon"></i></a></span>';
+	var youtube_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="red youtube icon"></i></a></span>';
+	var instagram_icon_html = '<span><a href="<!=LINK=!>" target="_blank"><i class="red instagram icon"></i></a></span>';
 
-	var thumb = `<img src="<!=THUMBNAIL=!>"></img>`;
+	var thumb = '<img src="<!=THUMBNAIL=!>"></img>';
 
 	for(;i<iLen;i++){
 		io = arr[ i ];
@@ -453,15 +453,15 @@ var make_monthly_table_html = function( data, html ){
 			io.forEach(function(item){
 				if( _tidx == 0 )
 				{
-					_html0 += "<th style='width:18%;font-weight: 400;font-size: 12px;'>" + item + "</th>";
+					_html0 += "<th style='width:18%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 				}
 				else if( _tidx == 1 ){
-					_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>" + item + "</th>";
+					_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 				}
 				else
 				{
-					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;font-weight: 400;font-size: 12px;'>" + item + "</th>";
-					else _html0 += "<th style='width:8%;font-weight: 400;font-size: 12px;'>" + item + "</th>";
+					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
+					else _html0 += "<th style='width:8%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
 
 				}
 				++_tidx;
@@ -474,8 +474,8 @@ var make_monthly_table_html = function( data, html ){
 			var _tidx = 0;
 			io.forEach(function(item){ 
 
-				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>";
-				else _html1 += "<td style='font-size:11px;'>" + item + "</td>"; 
+				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>\n";
+				else _html1 += "<td style='font-size:11px;'>" + item + "</td>\n"; 
 				++_tidx;
 			})
 			_html1 += "</tr>\n"
@@ -505,7 +505,7 @@ var logic = function(){
 		.replace( "<!=MONTHLY_TABLE=!>",_monthly_table)
 		.replace( "<!=INSIGHT=!>",_insight_html)
 		.replace( "<!=STATISTIC=!>",_statistic_html)
-		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ))
+		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ) )
 		.replace( "<!=AGES01_DATA=!>",JSON.stringify( ages_data.d01 ) )
 		.replace( "<!=AGES02_DATA=!>",JSON.stringify( ages_data.d02 ) )
 		.replace( "<!=AGES03_DATA=!>",JSON.stringify( ages_data.d03 ) )
@@ -514,7 +514,7 @@ var logic = function(){
 		.replace( "<!=LOCATION_TABLE=!>", _location_html )
 		.replace( "<!=STATISTIC_ADS_LIST=!>", _ads_total_statistic_html );
 
-    fs.writeFileSync( result_path + target_year_month + "____marketing_report.html", report_html,{ flag : "w", encoding : "utf8"})
+    fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w" })
 }
 
 logic();

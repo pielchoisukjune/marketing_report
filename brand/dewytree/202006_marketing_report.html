@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,6 +144,14 @@ var emptyPieChart = function( domId, title ){
 
 	series.labels.template.propertyFields.disabled = "disabled";
 	series.ticks.template.propertyFields.disabled = "disabled";
+
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var pie_chart_loader = window.document.getElementById( domId + "_loader" );
+		pie_chart_loader.classList.remove("active");
+	});
+	
+	return chart;
 };
 
 /*
@@ -162,9 +169,12 @@ var pieChartAge = function( domId, title, arr ){
 	title00.fontSize = 25;
 	title00.marginBottom = 30;
 	title00.marginTop = 30;
+
+	//loading;
+	chart.preloader.disabled = true;
 	
-	chart.data = pieChartData00;
-	
+	chart.data = arr;
+
 	// Add and configure Series
 	var pieSeries00 = chart.series.push(new am4charts.PieSeries());
 
@@ -195,6 +205,12 @@ var pieChartAge = function( domId, title, arr ){
 	  }
 	}
 
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var pie_chart_loader = window.document.getElementById( domId + "_loader" );
+		pie_chart_loader.classList.remove("active");
+	});
+	
 	return chart;
 }
 
@@ -205,10 +221,15 @@ var barChartTime = function( domId, title, arr ){
 
 	// Create chart instance
 	var chart = am4core.create( domId , am4charts.XYChart);
-	
+	var title00 = chart.titles.create();
+	title00.text = title;
+	title00.fontSize = 25;
+	title00.marginBottom = 30;
+	title00.marginTop = 30;
+
 	chart.legend = new am4charts.Legend();
 	// Export
-	
+
 	chart.exporting.menu = new am4core.ExportMenu();
 
 	/* Create axes */
@@ -262,7 +283,13 @@ var barChartTime = function( domId, title, arr ){
 	circle.strokeWidth = 3;
 
 	chart.data = arr;
-	
+
+	chart.events.on("ready", function(e){
+		//debugger;	
+		var bar_chart_loader = window.document.getElementById( domId + "_loader" );
+		bar_chart_loader.classList.remove("active");
+	});
+
 	return chart;
 };
 
@@ -307,7 +334,7 @@ am4core.ready(function() {
 	pieChartAge( "chartdiv03", "연령별 페이지 좋아요", pieChartData03 );
 
 	barChartTime( "chartdiv04", "", barChartData00 );
-	
+
 });
 
 google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
@@ -321,7 +348,7 @@ google.setOnLoadCallback(drawVisualization);
 		<!--h1 class="ui left aligned header">DEWYTREE 6월</h1-->
 		<!--h3 class="ui left aligned header">6월 Marketing Report</h3-->
 		<!--div class="ui divider"></div-->
-		
+
 		<!--월간진행수량-->
 		<h3  class="ui left aligned header">월간진행수량</h3>
 		<div class="ui grid">
@@ -466,35 +493,40 @@ google.setOnLoadCallback(drawVisualization);
   				CLEAN LAB HEALTHY 및 CLEAN LAB AC 고객반응 증가 <br>브랜드 홍보부족으로 인한 매출저하
 			</div>
 		  </div>
-		</div>		<h4 class="ui left aligned header">제품관련 </h4>
+		</div>
+		<h4 class="ui left aligned header">제품관련 </h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
   				DEWYBOX 이벤트 진행 (Facebook 미니게임 및 이벤트로 활용) 
 			</div>
 		  </div>
-		</div>		<h4 class="ui left aligned header">진행상황</h4>
+		</div>
+		<h4 class="ui left aligned header">진행상황</h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
   				오프라인매장 영업중<br>온라인 판매자 영업중 <br>드럭스토어 영업중 (메디케어, 파마시티, 가디언등)
 			</div>
 		  </div>
-		</div>		<h4 class="ui left aligned header">코멘트</h4>
+		</div>
+		<h4 class="ui left aligned header">코멘트</h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
   				영업관련 <br>-컨텐츠 노출 부족 제품홍보 부족으로 온/오프라인 영업이 쉽지 않음 <br>-드럭스토어 : 해당 바이어 ( COVID19 으로인한 영업미팅) 미팅이 딜레이 되고 있음
 			</div>
 		  </div>
-		</div>		<h4 class="ui left aligned header">요청사항</h4>
+		</div>
+		<h4 class="ui left aligned header">요청사항</h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
   				DEWYTREE 오피셜 계정 활성화증대 방안 (제품의 노출 및 홍보필요)<br>1.마케팅비 지원 : 현 마케팅비용으로 컨텐츠 및 홍보 어려움. <br>2.제품지원 : 매월 DEWYBOX 및 샘플 제품을 지속적으로 지원요청
 			</div>
 		  </div>
-		</div>		<h4 class="ui left aligned header">특이사항 </h4>
+		</div>
+		<h4 class="ui left aligned header">특이사항 </h4>
 		<div class="ui grid">
 		  <div class="sixteen wide column">
 		  	<div class="ui segment">
@@ -502,6 +534,7 @@ google.setOnLoadCallback(drawVisualization);
 			</div>
 		  </div>
 		</div>
+
 
 		<!--페이스북 광고 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 광고 통계</h3>
@@ -512,43 +545,48 @@ google.setOnLoadCallback(drawVisualization);
 		<div class="header" style="font-size : 12px;">도달 (명)</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>184</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">노출 수 (회)</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>203</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">페이지 좋아요</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>25</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">게시물 참여(번)</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>2,479</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">게시물 댓글 (개)</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>3</b></div>
 	</div>
-</div></div>
+</div>
+</div>
 			</div>
 		</div>
-		
+
 		<!--페이스북 연령별 통계-->
 		<h3 class="ui dividing header"><i class="large facebook square icon"></i>6월 페이스북 연령별 통계</h3>
 		<div class="ui grid">
-			<div class="eight wide column"><div id="chartdiv00"></div></div>
-			<div class="eight wide column"><div id="chartdiv01"></div></div>
-			<div class="eight wide column"><div id="chartdiv02"></div></div>
-			<div class="eight wide column"><div id="chartdiv03"></div></div>
+			<div class="eight wide column"><div id="chartdiv00_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv00"></div></div>
+			<div class="eight wide column"><div id="chartdiv01_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv01"></div></div>
+			<div class="eight wide column"><div id="chartdiv02_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv02"></div></div>
+			<div class="eight wide column"><div id="chartdiv03_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv03"></div></div>
 		</div>
 
 		<!--페이스북 연령별 통계-->
 		<h3  class="ui left aligned header"><i class="large facebook square icon"></i>6월 페이스북 시간별 통계</h3>
 		<div class="ui grid">
-			<div class="sixteen wide column"><div id="chartdiv04"></div></div>
+			<div class="sixteen wide column"><div id="chartdiv04_loader" class="ui active inverted dimmer"><div class="ui text loader">Loading</div></div><div id="chartdiv04"></div></div>
 		</div>
 
 
@@ -573,10 +611,11 @@ google.setOnLoadCallback(drawVisualization);
         노출 : 203
       </div>
     </div>
-  </div></div>
+  </div>
+</div>
 			</div>
 		</div>
-		
+
 		<!--KOLs-->
 		<h3 class="ui left aligned header">6월 KOLs</h3>
 		<div class="ui grid">
@@ -605,7 +644,8 @@ google.setOnLoadCallback(drawVisualization);
     </div>
 </div>
 
-			</div>
+			
+</div>
 			</div>
 		</div>
 
@@ -618,48 +658,56 @@ google.setOnLoadCallback(drawVisualization);
 		<div class="header" style="font-size : 12px;">컨텐츠 (이미지) : 비나피엘 제작</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>18</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">컨텐츠 (이미지) : 본사 미러링</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>11</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">언론사</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>1</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">인플루언서</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>12</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">컨텐츠 (영상) : 본사 미러링 - 번역</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>2</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">체험단 이벤트</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>3</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">컨텐츠 (영상) : 비나피엘 제작</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>1</b></div>
 	</div>
-</div><div class="card">
+</div>
+<div class="card">
 	<div class="content">
 		<div class="header" style="font-size : 12px;">뷰티유투버</div>
 		<div class="description" style="font-size : 20px;color:#000;"><b>1</b></div>
 	</div>
-</div></div>
+</div>
+</div>
 			</div>
 		</div>
-		
+
 		<h3  class="ui left aligned header">컨텐츠 (이미지) : 비나피엘 제작 ( 18 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102433127_177401250468179_6349215626434707456_n.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_oc=AQmj2_v3BPF0NIyNfh87U7fN0NQJxxbB98jau6QJCe0owNlNPZ5MZdahEKMj5ecU64jRNbXXMA71uUZEAvcr61_U&_nc_ht=scontent.fvca1-2.fna&oh=52e48cecd78a14ff1ffb4c3d083ee11b&oe=5F26E038" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102433127_177401250468179_6349215626434707456_n.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_oc=AQmj2_v3BPF0NIyNfh87U7fN0NQJxxbB98jau6QJCe0owNlNPZ5MZdahEKMj5ecU64jRNbXXMA71uUZEAvcr61_U&_nc_ht=scontent.fvca1-2.fna&oh=52e48cecd78a14ff1ffb4c3d083ee11b&oe=5F26E038" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -689,9 +737,10 @@ google.setOnLoadCallback(drawVisualization);
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/177401247134846/?type=3&__xts__%5B0%5D=68.ARALyGGEIIo8YUT7EXd_x0Bq4iVWKzkpmqCMkBkOaNavwc2n2okOA9r9I3dyAshq-bM2P26XTJVgYs2P_bpICSYd4c96QiX8Y60n304RLZm539SvnlJgbamaKj3bNbbf0LnEmFyuMQKePUG2kG-62w-NC6SGe8PJOm5aNtKefS7IYHjDz7aG3xAjzSwXKYtVpDaIuPN42zBFeg3QNU7wjPqp1qcF8Rx6xSukxAQY8ZEgEP0qYxw5N-g8nZpaMlX76HlXYejUboBJHnGhUrSVW3-61kJsFYafEaQ2q44C4aHU4KpyTYNbbcQThjPTPHt5ucOJlSSpsxaKdyZ3lv-fzYA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/101023174_177990900409214_3417975797820948480_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQmsVtuZWRufGV2Up3PQmmdH_T6bejQ4la3KH0mRRONXWG143lkkm3YCEKgGfwEkNbePsMnCiT7gCq7q-KnajSik&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=2e21d5d45b1bdcbb8ea0f65f2bf74bdd&oe=5F29D45D" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/101023174_177990900409214_3417975797820948480_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQmsVtuZWRufGV2Up3PQmmdH_T6bejQ4la3KH0mRRONXWG143lkkm3YCEKgGfwEkNbePsMnCiT7gCq7q-KnajSik&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=2e21d5d45b1bdcbb8ea0f65f2bf74bdd&oe=5F29D45D" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -722,9 +771,10 @@ google.setOnLoadCallback(drawVisualization);
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/177990897075881/?type=3&__xts__%5B0%5D=68.ARAoZn9Nteg0LWZdEVlduGsg0zGxFl1Aj2BycuGcyNAeibGOyLD__NaR-0yrqjT2WFYYGIJPd_4NQrxByt74FiVgvVfpf0fxnPylSDNz0t-arC1_sMC8imIeMkwQXVzP0P0xuyzmShVW53J6n3THVdhs_FrQr6llncc7fLHRgNdud85Iv2d0AOATXIS1WxLb58khGKNJri2vVv-tOPxT2GA2T-BPqEn_A8Nyks01YBuCpIBa5g07h3secLeUo3DgiIY-jsnc3i_eGWspwfFRSlj3GuYknitDOn6H0rVs6sDN4-cR63bg0G-iZ7GXJcKIJsrSLadCRXvt5QOlJDBTUuU&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/78105380_178606247014346_2034616168068677632_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQlUanXeshnqYIrAm8xgiBCJAJmacWamFWb000ldAK8JjEIjWNGip5yRC9hOIUH7zlfTxo63dGNZ2NClGmVcLKCH&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=d0e40ecd9ccae7390509c5a0cfa1c2dc&oe=5F29117D" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/78105380_178606247014346_2034616168068677632_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQlUanXeshnqYIrAm8xgiBCJAJmacWamFWb000ldAK8JjEIjWNGip5yRC9hOIUH7zlfTxo63dGNZ2NClGmVcLKCH&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=d0e40ecd9ccae7390509c5a0cfa1c2dc&oe=5F29117D" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -754,9 +804,10 @@ google.setOnLoadCallback(drawVisualization);
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/178606243681013/?type=3&__xts__%5B0%5D=68.ARB30F6MYqqGUCCybGLJsmgGjJxMFJ9BoxlpiIeyzhuIVFk0BAnmqy99V6S6W9p0StcxTD9azV3K_S4DbalHuwWq9_km4ujTFcq8pdOVG_GAN0xpyoIQELdFbxXwXKiYEkUBf8nriyr3V-7QGOHscrJtjgl-Q58GdHupp8VaK6kScB9LZconmszTgVjr695ueKb0_QRCkHPpwYjtDrPOWGpMGs0VejVC4InL1xAxBcGnLySPlSrLW5MkOqJw3WmPC1u-0ylly6dAz_IIbLu4Q9_AwM8e9F6-a-ME8eBKFdzp5hOj5tinmPVUm9bFTNnVEb9o0bKvpv41TvTFpmJAiV8&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/101413667_178609987013972_2749964862665785344_n.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQmiQ5RXf7sOEgoplMwbxHvqkqvf0_KNr55Ypgm2Z5CXqZuN4o3tgEZ5217JEm1ww5Li5kxUSTIkMRhf8I5xjkSz&_nc_ht=scontent.fhan3-2.fna&oh=fa1dc3dce8244f23be3e92dfc659f3c6&oe=5F26FDA9" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/101413667_178609987013972_2749964862665785344_n.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQmiQ5RXf7sOEgoplMwbxHvqkqvf0_KNr55Ypgm2Z5CXqZuN4o3tgEZ5217JEm1ww5Li5kxUSTIkMRhf8I5xjkSz&_nc_ht=scontent.fhan3-2.fna&oh=fa1dc3dce8244f23be3e92dfc659f3c6&oe=5F26FDA9" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -787,9 +838,10 @@ google.setOnLoadCallback(drawVisualization);
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/178609983680639/?type=3&__xts__%5B0%5D=68.ARBFDSd3ywZOWcAoau8tqlqNgwOkJuztIX5yCvz5TCsBFmbXdj-KZulYhPEKIBj4gHoxPYRb1vKh4AN4eXn_9A-mJl2roKvPQihRHgsd32GlTLl44xYJFqaL1_U17jv1OTyy9hNZsyY0yiQlOIRrkKSsoCykoNYk-voGADgH2Cv_Dh6KaLnb4fEsfywCJqrfYGKeNBp8N0C5JFpTmhXzSaB-nkP36Y_iokwz4UE3G8Ls7N0HPMfwWnIx8P_P6cGTyZ5saHEu2-HnuHc_IeUeaQGjrKrrwWgykxDfB5RD1Hui_s_G5gLfxBy-LehMpPHnXJBsOySKshlcKJ0RchqMzVI&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBR8CExps4s/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBR8CExps4s/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -820,9 +872,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBR8CExps4s/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102587219_181298793411758_3661441725981899795_n.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQmN6DL606hTLa7XBX3SMkBOt0aQAYe7jWkNznklnSxsjHm_uhLgImuUsOr1zdkSMdf49nImi9Q65hwgNLos2BCi&_nc_ht=scontent.fvca1-2.fna&oh=f049b8c052cebbf6714d85e6e4a2aaee&oe=5F2A4780" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102587219_181298793411758_3661441725981899795_n.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQmN6DL606hTLa7XBX3SMkBOt0aQAYe7jWkNznklnSxsjHm_uhLgImuUsOr1zdkSMdf49nImi9Q65hwgNLos2BCi&_nc_ht=scontent.fvca1-2.fna&oh=f049b8c052cebbf6714d85e6e4a2aaee&oe=5F2A4780" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -853,9 +906,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/181298786745092/?type=3&__xts__%5B0%5D=68.ARB6cgtveCP0Wt6ORgQSeTQwmGle6a8a4YZuxEc5Hib19kyIySZoLW80Aih0lOTkUjFbRxSO8hHePZKJivy1gYHMkIHTuZDH-5Tci-Hoyv7o54TLUpIkUeeRS-OVOQQESAsLt71SnTef-w5JcOxxvN1ti4UsPdb9gkcSZE6IGO5uETano2Nw1JH45nV9eghuwj1aQnhwdIL3k4jaT33pz70ahukFgriPsVJK8n2flQAZBIWsB6OTyf0JTGJYz4cfEQ_HS7uy5UHeY-qqQCinTc0WcB37tG80MtW9xmwa5AnzHm3wXgIJFJwAkroQihPUMGFuMkzarXrcFLARkS0u5Vg&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102959820_181718146703156_1641291813131882375_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQlAQkdoho9O10k4cbucdZ_hfQPKjN6z9UiwGXFvKR2kpSY6vECD-0xWBqvbUm36GPsfjS668EqCbPiYAARfK1Kt&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=76bd2fc7b39f68415bc2d843d6941132&oe=5F290A21" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102959820_181718146703156_1641291813131882375_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQlAQkdoho9O10k4cbucdZ_hfQPKjN6z9UiwGXFvKR2kpSY6vECD-0xWBqvbUm36GPsfjS668EqCbPiYAARfK1Kt&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=76bd2fc7b39f68415bc2d843d6941132&oe=5F290A21" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -885,7 +939,8 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/181718143369823/?type=3&__xts__%5B0%5D=68.ARAOwmaKORsH26YGiJTLmxwmXUocLgB1RHMgRMoXGYMWRkVrPKugaMHYpXPUtfULEsC7mCWDTC5WlGDtWcPy202_t24KTbewRU5s98opYH0IAkwIEfjidoyyxGN8IjJqsNPODNx5v3lVdu3vzYI_Iu058w0yGHEd7vHedeVY2bR5IJXXcIm0PdebKz-dj_vv_HImbcBBQ4t3QRH4OXFUFj1HxIMmfKAJzIbg1gGh4r5l_wcMEQpm3ApkkhyVs5KwEcMvOaj7Nap7xn1DZ6m0HTaBjXHFrlOoOraZmv76PTIMkla81ndyqjVlsdLqmS6fuJUCLjhpufZBdGIrjIf7pV0&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
         
     </div>
@@ -917,9 +972,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/1675869035885812/?__xts__%5B0%5D=68.ARDvwVONb1llfTp6LTMMMcWoxGnmH8s4rhJvRjmPR80yqZjafP4bI-qy3xfcSHUqWzrFilj84kY4Vf_L7B6bpnNgRsOlYAa9OS7CIibhBTjRV02XtWYdx0slIj9ypbXTtSy4KUhQTTr016OqgviWIgGRENMij-K8mzPy5K6YCOBnSIEs99KCophdvQdjy4iWNn1Qwor1pwYunuMuISU50kg7pO9uByNHenVavV23pMJGYtgSkAmUbHJ_k4LfVeE0BB2oqSUzwQ3blCmd2vzuH21t87b6dMnCq53Tevic5LoATJW9isgGtiGcSYrYIe5mls5f71kG9PTaEtG2x8CdDWVIa-zMliq7Eus&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBeqDkHJOD_/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBeqDkHJOD_/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -949,9 +1005,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBeqDkHJOD_/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103099792_183263409881963_2396077577488302261_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQkjflgD2FIoIiEY4C4XriXORnVdjDeVJhMm4esXQG-txGgLn0UjARfZ49E213Pxtcr8BAjE4cKtP61irQVdf2vw&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=6d19eaf8ed4a3f40b6ed0b364e3246d1&oe=5F28DF84" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103099792_183263409881963_2396077577488302261_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQkjflgD2FIoIiEY4C4XriXORnVdjDeVJhMm4esXQG-txGgLn0UjARfZ49E213Pxtcr8BAjE4cKtP61irQVdf2vw&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=6d19eaf8ed4a3f40b6ed0b364e3246d1&oe=5F28DF84" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -981,9 +1038,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/183263406548630/?type=3&__xts__%5B0%5D=68.ARCI4hyp4oqDSK3T-XCBE6RZVuSfIVwEA_hXvb71x_52einmdjv-epjNKWek0ZqHZmOUkh05pb_2bNfpNL6hGOl4j31-6Y4V-9Wof_oi85dLcrs7-DfWNdlNwGlblTtlL8LR0J2kapGKQK9oQcNVnKtPC0rbFkVUMlpK6vmNsMmCX6tW_9DoNy0ZRLdsv8JC1YKkEUY3vEkn6D_kEanVE-cony5KWUWlOBd5IR4Oov7wVQ3QgGIsY_0pW99UodBuXn7iX21EcAxbbtHK--EEYAkwshJ1gGlh4A60SMh7Wm9LitCi-zPwZQfqEEYpDnvThQsLyY6MjvH919A-bt8R8vE&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBhr9oIJOxu/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBhr9oIJOxu/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1014,9 +1072,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBhr9oIJOxu/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/s960x960/83065288_183634843178153_2518582722969241862_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQlpdwYR1DelGEq1yVNDe0YfHz0n-Bm7xW-gK-MiW6c6YeFBopwD3wJ30Wt1BEOCTZvt4WfCe2SPGqFMzcrtO8Oz&_nc_ht=scontent.fvca1-1.fna&_nc_tp=7&oh=5481774038977a6a62f9c06b2545bed9&oe=5F2A339B" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/s960x960/83065288_183634843178153_2518582722969241862_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQlpdwYR1DelGEq1yVNDe0YfHz0n-Bm7xW-gK-MiW6c6YeFBopwD3wJ30Wt1BEOCTZvt4WfCe2SPGqFMzcrtO8Oz&_nc_ht=scontent.fvca1-1.fna&_nc_tp=7&oh=5481774038977a6a62f9c06b2545bed9&oe=5F2A339B" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1047,9 +1106,10 @@ Có để lại #vệttrắng và gây #bílỗchânlông?</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/183634839844820/?type=3&__xts__%5B0%5D=68.ARBjIBmSVjGRQAWdCG309KKmHyWgYIX444o02ELzYNObBVAC_tZ4t9tGU-DlBNGBjU4arSQXmWbEVyc5erB74tuWPvwKhozxTB36R1UAM-6ntwBeuebt-RMH8fsmziCPgZw5a5yyqmmWEfvFjBKgChzgbw3iI88dJlJkAd537MfLpvkGIl-CuhJrWBTgLwSE-4KodS4V3O5GPNJMBAVHSeUjMNHiPSXNyl11QXHF1tjuK8QIpcvmh4xxx8x2gVzGIhH4ljyCEgT6gYWFM_vftdI6znYjPSMMgP75Mka0heBFGyGcNUY4xv5J3XF-avugm1cxXVL_ta081853gw2Qha8&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/104353442_183991376475833_9116458122418575263_o.jpg?_nc_cat=107&_nc_sid=8024bb&_nc_oc=AQnPprlwXYVfYwKYK8WnEzQXJA1GkiJOZy-cZfkatGz635gSrWsymOqogwjxgkPh6oj4G5phHsyZzd0P4sQqRxVp&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=49268f1eb99c824269b2d4a01c2ea8cb&oe=5F283485" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/104353442_183991376475833_9116458122418575263_o.jpg?_nc_cat=107&_nc_sid=8024bb&_nc_oc=AQnPprlwXYVfYwKYK8WnEzQXJA1GkiJOZy-cZfkatGz635gSrWsymOqogwjxgkPh6oj4G5phHsyZzd0P4sQqRxVp&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=49268f1eb99c824269b2d4a01c2ea8cb&oe=5F283485" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1080,9 +1140,10 @@ Chống nắng là chuyện phải làm nàng nha! 👌 👌 👌</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/183991373142500/?type=3&__xts__%5B0%5D=68.ARBXwntxHvqFNuqwNhwwIzssS0SJyH_EzG5gWTGPK8tX8apabbFuLfIo_VrDrZXXXQngiZJgraZs99PT5L5Nd09lfxEZCNEDh4ASEB7en-Xoto-_2ja19yAOaXo1pnVYNP8l8EiPQkn5H3NNgCdhN2oLJerOmU-hLIps83z8r-QmJXUGPPGbcmXJ0EI410Rr0ybo1J0oHYyUqfRW3l7QvDJ0fePMQ2VZR39gLlXkhixL-tUuxWhTMQ5ZjWI5yVLajHKt1w_bmNzErYOZPWlkfKEguGCLstIQ36kV3yRsGEaqgflgllfJUe7CpLOOeYGHgpD1vDEIbYQozL7Twg6Z2bA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/104482823_1168813150161763_8408503821230197347_o.jpg?_nc_cat=106&_nc_sid=730e14&_nc_oc=AQmYqXnhYwRxrouot5s8xju4YZQBmZ4QSaGJNdU2CQnn2boNljFzwJU7dFS1JaqL7FM&_nc_ht=scontent-ssn1-1.xx&oh=6cac117fdb63b9f6f69ebf1b0144bf1d&oe=5F29C994" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/104482823_1168813150161763_8408503821230197347_o.jpg?_nc_cat=106&_nc_sid=730e14&_nc_oc=AQmYqXnhYwRxrouot5s8xju4YZQBmZ4QSaGJNdU2CQnn2boNljFzwJU7dFS1JaqL7FM&_nc_ht=scontent-ssn1-1.xx&oh=6cac117fdb63b9f6f69ebf1b0144bf1d&oe=5F29C994" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1112,9 +1173,10 @@ Chống nắng là chuyện phải làm nàng nha! 👌 👌 👌</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/posts/184103456464625?__xts__%5B0%5D=68.ARDnDf_kEYxu_EFh8SjQq0iWE3B4KbbSu0ylKjE9i_rylYvIBdu6BbSKZJ5PsWnRVzDGnJnl14dV5pFoH2oVOUMgbCYUI3DHAgTDvEvOoU1GTfFDXLq203bWXKWsywogMbVbnL6XMknFRZdev_IzPHsKB2JEYc1XQtUtLrN8VbeETyZNrY0HJywpbPhHl6h6Zav8lKoRcn6MNBDw4I3bNoLM8etVZnNFFWfyEAF2dVEXTNQR_vfsNUrYdqVsMU4iAbPee83BFakGXTZ7O8b5aBk0shyoOId2HtMAKag93ZVYwnw1BvLaocSUcCQlAauEpRWmzZHfKkINwUkkoT4vn46yoE1thwVWr5mzVGP8wayvkRVcq6IKrRlisC6-FUL_ZegoFk4YFiTnDxWypULajMhNcd72JJ17tMtu10E0aycAPTkB_hL2fd_bRqN09BZjcaSqKGUb8r4FX_ZL7JFiNXL_78IBuvX2X4rQ04T5o7jWm3nF751WsQ&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBmVsoBJ-tf/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBmVsoBJ-tf/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1145,9 +1207,10 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBmVsoBJ-tf/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/s960x960/104281107_184117546463216_4248790626355945961_o.jpg?_nc_cat=109&_nc_sid=8024bb&_nc_oc=AQlIuj3787k3rIP0zC3_eQHP3K_RP2anBAd_G7C9feMDsz4EW1gzCl9aKml4KYe28XX1VEf2VDsIXZFjniDGhLD0&_nc_ht=scontent.fvca1-2.fna&_nc_tp=7&oh=da954e8836b02d447b0106fb7965a54c&oe=5F29098C" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/s960x960/104281107_184117546463216_4248790626355945961_o.jpg?_nc_cat=109&_nc_sid=8024bb&_nc_oc=AQlIuj3787k3rIP0zC3_eQHP3K_RP2anBAd_G7C9feMDsz4EW1gzCl9aKml4KYe28XX1VEf2VDsIXZFjniDGhLD0&_nc_ht=scontent.fvca1-2.fna&_nc_tp=7&oh=da954e8836b02d447b0106fb7965a54c&oe=5F29098C" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1177,9 +1240,10 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/184117543129883/?type=3&__xts__%5B0%5D=68.ARAKPp6RUJ1TKD15z7XqEkcXDzOiK_5EIF__cB7rPCllI20XFg0Zx0l4mOu91ado_UxIrZleAdHf0Tk02_Ncm22p34IY55ODpVeizACoMfP0tWFz_fd_egNef3JEOOrP_AK1C_2dj_3FR2KEAbV7WOMMAQNbHD1wzdW9ndEk7nffJzcBXRPL9XIP50sYzri2BdRexn1sqJDsOrbUbYXulhe0O7DT1DBOL3IgXpOvMidaGkT7jlmmXK3GuuOgt2V4JVZMLZ-CRKUU86Xrdbl-sXuqYesu--1Oxyq7Zz-YemXZGHUuy9GdEtOS4GsMK82X6Nxq_fov3Ud_9SRjO4-knRY&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/104943781_186107566264214_8709422040219564733_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQmZKWzj8nc0u8r2b6jUui3Mwz6AChJ3ac41RBOylHEGZK38zVAMXjKOU6N898dQM1xRew4RsfPta-SYlMVRAUTH&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=826a7ab96d2fbf06088de3c183f569b5&oe=5F29160F" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/104943781_186107566264214_8709422040219564733_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQmZKWzj8nc0u8r2b6jUui3Mwz6AChJ3ac41RBOylHEGZK38zVAMXjKOU6N898dQM1xRew4RsfPta-SYlMVRAUTH&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=826a7ab96d2fbf06088de3c183f569b5&oe=5F29160F" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1209,9 +1273,10 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/186107562930881/?type=3&__xts__%5B0%5D=68.ARBgsrTRNedFLCyhFL-AKeABDPMjX_jbEhYPpEqK_4_pPKbxvAlDtz-vQD8u-mdeJ9-KI8b7rxDeUGgjCfDi_AyQKqkZ0pMrMVABiK0K1mWc-ASwh9oHQ0BzG2aMSWjtic9Yi323R-fH0evRGKAtRTx9THvwwYWbdQiIsfBRKKI8JA2tT1Y5VVY4aCMvW3SvjOTrY-XnxAc75N9kd50_nsJZOuQxfEVfg9OZb0ChK_Oxokf1t0m68gEvVuBHtOpvqLtunwlrtQ7KtLCPM52Hkl45Y-55_2T9vv_TmJVNbZRKuunAF3a-zaH-q-iwMBOvQeWfq79T4YZqCr2ofeV1bvI&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CB2gC-xp9fd/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CB2gC-xp9fd/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1241,7 +1306,8 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CB2gC-xp9fd/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">컨텐츠 (이미지) : 본사 미러링 ( 11 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">컨텐츠 (이미지) : 본사 미러링 ( 11 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
     </div>
@@ -1273,9 +1339,10 @@ Chống nắng là chuyện phải làm nàng nha ~!</div>
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/663424527840925/?__xts__%5B0%5D=68.ARCMgGPapSkn9UA6UwGE2HbTrButqr3gdSsRfWt7sNFbfA7Nxld2QXkiXqR93uhX7WiiMEOiaB6Ik9a0s2YGaf3twcewVA7B-OsSeDp283Xp8rcpT-5p8pOKh1ucNFzBFJnR1e4AET_1DtOurIa0BkFbBTY6pHVQ2xTpJKj3V5o2E093ZbWwQBQP1EdxN9iuU5nALlUCSql-5kVzWhghzVWx92N6P3ywAEvoDlg1RWuV0Olkxl5le6akdwrD9ApIXycC3p5zHysZj9Txt1q0Aq3MLqx5urxP1qRNwykS_FFMb_jbhDb-_iV5qx5oEXA4vTzXeGvc7_Erw-fNxjS3lOpjK599ZfrRLlM&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/s960x960/101157373_177980050410299_6966167741266919424_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_oc=AQmAOkNPZnhypNPsRJF-u1Oyke2uCkPAu6-aU3VQvyN0uQ24-iTNLLz_haArWW9N0PHe65L7ZbvfJSLpccLg2ydG&_nc_ht=scontent.fvca1-1.fna&_nc_tp=7&oh=a1c8aae5f1a605684da8e7247561afeb&oe=5F27E6C2" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/s960x960/101157373_177980050410299_6966167741266919424_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_oc=AQmAOkNPZnhypNPsRJF-u1Oyke2uCkPAu6-aU3VQvyN0uQ24-iTNLLz_haArWW9N0PHe65L7ZbvfJSLpccLg2ydG&_nc_ht=scontent.fvca1-1.fna&_nc_tp=7&oh=a1c8aae5f1a605684da8e7247561afeb&oe=5F27E6C2" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1306,7 +1373,8 @@ Mặt nạ làm dịu da chiết xuất từ rau má 100% tự nhiên.🌿 🌿 
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/177980047076966/?type=3&__xts__%5B0%5D=68.ARC9dHOzUWqRUUge2Bv9ZXEvSxpxpyrErh3ZxAqjGslBrcd-_2TTM-H071BlG9prtfJ8KiO5zh4t-W9KYXYoltfNtGH3K1UN_mDy1060TfHkccII72qa_NX1bRSrhyWzwAGTXxYvwSla0dXxd8gdZpwzbNpUsiKgcqLpidVCMI36sSSEgGiWY8cr8q4JjZPRBJpUoU_Oth46YB_fm-OQsQkz1Sk7oAmt8S6kIZzCAAk94phRBlg43e6bLLYOMlbNw2c6O-M1LFySGLMrIOOuRqK7R31fcVhHFZXvoESmGn2f_kOUhHTaWfzNudtJfuXoM_3CfNQRYbQVi2CSN-m-vU0&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
         
     </div>
@@ -1338,9 +1406,10 @@ Mặt nạ làm dịu da chiết xuất từ rau má 100% tự nhiên.🌿 🌿 
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/738908183580693/?__xts__%5B0%5D=68.ARBf5hEdsJjQoo73iqZ9rxKfBnjbQ-TPZG0-gB7OABJyjzCzs-EVRBIdvlbNDySwVKT7TRoFMX9QcvOVHgn0VTNdDBeQM9Si_VYqQqZAMSVQJLcZgEObjvpdDGsclA4nKxUiron7P0QO9fcFXWcrcIetZfOfGFRrM4OtoqKR2hnCJKOvyRKwsQPhlSpL8nwpnvodaw9e1NSvM9lmAzgewHKVj0nYjH0TObCPANZvMipgFCG6M-N4UEmFTAeSd_px-KAAYD-kPsMtyp_GO1r4kFWb4Q_ARx5LJ-mtZCxy0CuqH4yHM_P2_y78wGTzbTIPXyHM2do2N625B2uYUE74_EszEvcjyAprwGo&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/82396921_179082930300011_5799586535556775936_n.png?_nc_cat=107&_nc_sid=8024bb&_nc_oc=AQmQDS7EGTMA4gDn0JF_PNoGrHYVfYtfkQxV_tRsfk7TSd_UxMyOx5y12_MwKco9TrqBGywasPfsfpyngTDD9YrI&_nc_ht=scontent.fvca1-2.fna&oh=fb7a40bdc7189edbdabb071d1104770c&oe=5F268F76" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/82396921_179082930300011_5799586535556775936_n.png?_nc_cat=107&_nc_sid=8024bb&_nc_oc=AQmQDS7EGTMA4gDn0JF_PNoGrHYVfYtfkQxV_tRsfk7TSd_UxMyOx5y12_MwKco9TrqBGywasPfsfpyngTDD9YrI&_nc_ht=scontent.fvca1-2.fna&oh=fb7a40bdc7189edbdabb071d1104770c&oe=5F268F76" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1371,9 +1440,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/179082926966678/?type=3&__xts__%5B0%5D=68.ARB84opdBa9O8OyZwucPcEfoUsx6M_K7QiYHENlySbewxXmicymZPvZuWcxMa4pHM6Is4pVrl79DFHXO_Ht41i4Sx9uyuuV1Lh3MrtQVeUaPeizOc5Z_pXrHxh7zrgX9rFKXg4Zb3R_9mbfOVNOJK36DDqSS5IuUe2OyfhKFP5h1SnZVUDRsuQKNXbRinOUegTN_w4aws2ziQmEVfl2OGhSEWU6RYD_xk9f5epvA6OVQcZDMw2RHQmRQlWiof0EgU83ZBJKIMunzWRIZLJKIiIZxt8NaSSBPmZR4PwtE3W2O9c7hSbSMB2HmMWvud0gS7fdx9jyzAIOzsIICwD6U4hY&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/101960418_179112533630384_6616675673886949376_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQny_MSR7ooklZx22PiZfaVCaNx8VFHnvx6i7CtV1nSVLkwPldC1DZ55ZwODT5mwTUo4Ip2QDoK8-qWxD9kqF8g2&_nc_ht=scontent.fvca1-1.fna&oh=37aec427162788322d1e4ebe5b846c3b&oe=5F29AF2A" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/101960418_179112533630384_6616675673886949376_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQny_MSR7ooklZx22PiZfaVCaNx8VFHnvx6i7CtV1nSVLkwPldC1DZ55ZwODT5mwTUo4Ip2QDoK8-qWxD9kqF8g2&_nc_ht=scontent.fvca1-1.fna&oh=37aec427162788322d1e4ebe5b846c3b&oe=5F29AF2A" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1403,9 +1473,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/179112530297051/?type=3&__xts__%5B0%5D=68.ARD6OGIC1BDdipJrG9VVx_twdRw1U2tdANXkDHk1fD3wUcsQqOcctb8g9MGiUAs3X8DDzvuj89ROFHmvQ5b-m10s4MT4QBpvqYWZOGE1C2sgtoJzgVrlg6gbIiaXaLB49aeyqLCqH2q3SNP5O9s4rr_cIWJ0Zbsbh_6VzYT42Rc_K6HD0sNx-jeIU2sCuNHAZUdvlavu2WkGsb13oh8eCA5K8P_i7CTFDP5XMdxUHyqTrBmLwXRh8mJCgxHjQI2SL8eXi3rj1FN53PhmXHw0qlSeJCTWCrn1VzHdilSks52lTE4IfO8qacHbLx7KyfDUv-BJimhyfHw09E3m8g-zpGA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102699985_180247913516846_7187896422777960382_n.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQkAgTprN-xP_MAV3WV2x5Ey-mSDWFG3bix5Bz7x7GbhoM4DwmKP9jK1qeJERjc_KINPgL2tT0a7ic9NT31GAD1F&_nc_ht=scontent.fvca1-2.fna&oh=2755c1363fe405f229e969f7e6b7b7df&oe=5F27AE60" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/102699985_180247913516846_7187896422777960382_n.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQkAgTprN-xP_MAV3WV2x5Ey-mSDWFG3bix5Bz7x7GbhoM4DwmKP9jK1qeJERjc_KINPgL2tT0a7ic9NT31GAD1F&_nc_ht=scontent.fvca1-2.fna&oh=2755c1363fe405f229e969f7e6b7b7df&oe=5F27AE60" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1435,9 +1506,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/180247910183513/?type=3&__xts__%5B0%5D=68.ARAaalBoq40VSpnlSSe9TcQjgIOf8r7eiwehs9IjyImm7C5hqds9rE0H5IhhxTMbPmuqVZCcfzyLZjxe3G_IpPPSmWnoPuGvOAjxPyOjZnbRp9HKTDPwZeTnpKj1IZd_C07tt8NY6lUitd8wwfKaBUrRbmod31ieKG9uc9yrCtKXF8PYDRI2b4i6pkK-c7RG9Hyf4yAy-6H50LxvWYY0u5ZkEfYhxuoPE-TM7qnCwkMQr3yUoLxZPaYytURYnNrqaJ1lHGdyiN6jf_6GEUf_t0Py5n_5VTcQ8cDX87ksnfS3jsLWpG0sPfylGaZK4pH455mhkHvuDzFE8igSOu1mX60&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103264987_180587976816173_3783494539116469420_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQkxs9B7KqD1Pu9wMG7SU5IdbT8M3Pn3OWNnf4-7sYUPKcbjqtTHgnYtwwUOQwO706xHfAapqGrNanR78WD1BPsg&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=f4ec4f50970817ace6518e6288e91ca5&oe=5F268D4C" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103264987_180587976816173_3783494539116469420_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQkxs9B7KqD1Pu9wMG7SU5IdbT8M3Pn3OWNnf4-7sYUPKcbjqtTHgnYtwwUOQwO706xHfAapqGrNanR78WD1BPsg&_nc_ht=scontent.fdad1-1.fna&_nc_tp=6&oh=f4ec4f50970817ace6518e6288e91ca5&oe=5F268D4C" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1467,9 +1539,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/180587973482840/?type=3&__xts__%5B0%5D=68.ARBD6PT3fAlx7oeg6_lR3zCVvZtxosXJ1TAY3Q7KvUq97kZ-SSUNT1dpkyz__eGYOifsqAai-1mpf8F64zeX0WOQ_3dDVY8_3JnBsfdo0RHd5aioipEcJz2Uuw3dMZZs4OolU9MkQQneMkkVG6x_s_aWDJb6qpQ0Ki_trrqqgNlzV436o4d40JPgc7Mje3uebt8u8JI8XxfPwlqNPtbm-Ifv7WPdvJIIDeOUj7jLi2XiAPyAPMt_w3aNVMVU8pcoTs6fY4YGtdwWCwINlxfUCF465A9zBjmDLs3Cv81qYKigsAWJ2porCxSnTyESgcOfYyLkA5v6Vx4VOm1Q5dwHt2k&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/103426924_182303613311276_6466454902916485437_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_oc=AQn2_KQkLPyVRYvsVHRoboLZImydVDG6RFuvzvdDLLjr2ZmxFy65H7MwsQXlMicbJX25bFOw9wQf-H1nqygr6mEg&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=92a4c19d6256e9313a0b40c970a0c8c1&oe=5F276596" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/103426924_182303613311276_6466454902916485437_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_oc=AQn2_KQkLPyVRYvsVHRoboLZImydVDG6RFuvzvdDLLjr2ZmxFy65H7MwsQXlMicbJX25bFOw9wQf-H1nqygr6mEg&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=92a4c19d6256e9313a0b40c970a0c8c1&oe=5F276596" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1499,9 +1572,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/182303609977943/?type=3&__xts__%5B0%5D=68.ARDPnKeyuo6xgCwR9BpAYYmSsdi5czn1vbaMSvK1dJj9cgiAGknnDgohZuqXFQ9pZVl1YGHSTkV1x2Mu8OfYPlK56WbLCQeIeJL3NEqoWsZBn4_0VKZFkdtTP5C3C0Uyp1wSxR3yhFy-pNbpvHX9tRqH5rcDvuzP6I0j2EJ7vFjlahikmIr_4cZ6DGXMiY-cXHo9KU4S7rAogB8aTKD37AiEh-YgtoVSArDovPfUwN-95ZPnAVj6zX2iebml3ivzZ_v_YREjPYYbe5ZLOI6y5_XViN1euu_-IQSlOfYqJtxy4DC3CAdav2D41r7FQ_N-wVaqIo804IIR5uQKdFQR00o&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103802066_182304769977827_2151175330845329489_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQmGYMomXoGhBlAO478zfxEB5io31JVx9Waz4oPXBvVh5bJ3UM1CRBZo60svnKTzsjZEi6dClYI77xHpZ7O8DrzD&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=bb42d70722a181fbbffeb68459e043d4&oe=5F2719FE" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/103802066_182304769977827_2151175330845329489_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQmGYMomXoGhBlAO478zfxEB5io31JVx9Waz4oPXBvVh5bJ3UM1CRBZo60svnKTzsjZEi6dClYI77xHpZ7O8DrzD&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=bb42d70722a181fbbffeb68459e043d4&oe=5F2719FE" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1532,9 +1606,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/182304766644494/?type=3&__xts__%5B0%5D=68.ARCY4o6Zd1leWdOMtDL1M49X7ZAKSKYL33nhgwrIba3MARNV3lqFpFvIfc7cefXv0vN2NtNg1WtOtisRTkPvLoKK7kAT5qRQYvUgXbb4VcDc3_8ndfbyBTZau2pQ6NUk1Y0QmVTB81tGyND8lubR0KXK0nTh4b7Ak0SxiXBdwCkc32RpcPh44rt_1psG7KPMgCzQL8cyqspIU0dpQPzYfvtnldIEF_S8R6E6Xj8S0C-35Mfsklhsbn1HKGottzm1_aQ6IOvNnNmd7QbM1YwYMZMbeinMeUIuwCwvo5VMKHfrSS4CtNrD75-hoVfqgsCMNF-9l3eJD-MWXl-RF3FAyoc&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102639975_182791829929121_9056724869901491362_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQnEPNtEzcVY_gJntuDbPZwQ1f-1FKAvXCaw9ZskiTBQ1i_xRaZwNcsnD6WRFRYsC7QWdUJFQiJeO-qJnzeySpTq&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=e165090377756684c013b90900f240ad&oe=5F294D4E" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/p960x960/102639975_182791829929121_9056724869901491362_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQnEPNtEzcVY_gJntuDbPZwQ1f-1FKAvXCaw9ZskiTBQ1i_xRaZwNcsnD6WRFRYsC7QWdUJFQiJeO-qJnzeySpTq&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=e165090377756684c013b90900f240ad&oe=5F294D4E" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1564,9 +1639,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/182791826595788/?type=3&__xts__%5B0%5D=68.ARA2d2CoEkXYh0FmEuiGED9gMJaJqyFVjlCpn7nrTdOHq8D4hBDnxTBW8-5dO5jrNKWkYnU6gJ7RQ1NjHV41TYcUYoxPxmwCuqssjxJJr-fPkQyLLQwpMsyQnFdlrKinOGFSLpogwVBKfDIsyTRfhCMAjl2ozy3aBa35VgKrfeZ74yrnXeNQFxrtRloPJTaUeFE_ewTVfeUTWwOXued-M6dPLHrZZXICQd5EWSzMLt1dhpwMFTdwq3isW1mGoY7_tAHyCKLFHT8UkFIpeedZ60AK8W5LYpPzTLjRcPpU405fL4cpo3RgjqFiFSD8X-0bOyzunTEZ9z_H4jpcSwF4hao&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CCH4vTzpqGc/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CCH4vTzpqGc/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1597,9 +1673,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CCH4vTzpqGc/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">언론사 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">언론사 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://channel.mediacdn.vn/2020/5/27/photo-1-15905902022901847811635.jpg" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://channel.mediacdn.vn/2020/5/27/photo-1-15905902022901847811635.jpg" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1629,9 +1706,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/posts/177994033742234?__xts__%5B0%5D=68.ARAK1jb9YIwpGxcxFyucOkmvijE-ex7OewZZvjUBnQqTeONwOj4Z07zvDEKeUola8ggOovLNcS6zpZBZd2YEhshoAZq8aBEcrbC5QzFxP-Wwn4FWgu17hcY3YDFhWKjoSDQfIi58zCdTqwDIWbuEyeWlufL04jvQoRJdE7uNGQRFrXKIsKpTuFCo2XQarD5jBBgUi6qJgqKFuUnBFFP7f9Xu2aKfmncwj2onIdpA_ljiLlDoCW1RVQT9TFxvIDxfQRu9XN0GLe8Fr2dD4JyqsKaPL2Vw8G4XQUBoQfqUU_cYR0uUzdWiz5Bvg-Gj8f4--6_3nsb_SZ6GdGg6XaVC02k&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">인플루언서 ( 12 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">인플루언서 ( 12 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fdad2-1.fna.fbcdn.net/v/t1.0-0/p640x640/83551550_178372217037749_2281428456598142976_o.jpg?_nc_cat=108&_nc_sid=8024bb&_nc_oc=AQl3Z-VoXmiBxjnzkb9RutDt_SXJqWoHqlMgWXwOB-GDUvKUukvFeNC7jScqw0ayeRku7hFdEl2No---uPFaP0wt&_nc_ht=scontent.fdad2-1.fna&_nc_tp=6&oh=2b2b0d3dc1be978f35b87ba8f33343b3&oe=5F271A16" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fdad2-1.fna.fbcdn.net/v/t1.0-0/p640x640/83551550_178372217037749_2281428456598142976_o.jpg?_nc_cat=108&_nc_sid=8024bb&_nc_oc=AQl3Z-VoXmiBxjnzkb9RutDt_SXJqWoHqlMgWXwOB-GDUvKUukvFeNC7jScqw0ayeRku7hFdEl2No---uPFaP0wt&_nc_ht=scontent.fdad2-1.fna&_nc_tp=6&oh=2b2b0d3dc1be978f35b87ba8f33343b3&oe=5F271A16" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1662,9 +1740,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/178372213704416/?type=3&__xts__%5B0%5D=68.ARCktv5gFVdypEO1CZ5rLyRJ7tiDNfMNFqO-JTIbEZ-QaTyS_hIhnIT6NjHBxUkeq-w6_LxwfCsgfr6i1PwosZO7n_1NYw2UecK1uEiq2kuCAGQ6qM3FOQ_8VEK8QqtP0oFdErZUhStLgCYtyPYrhHtudaSynmltulP9Z2zbj3LBFiNgg4HhnOWRL6g10ERs812SABF7dYravcY_a8FmIDSE9N-1uGlDO8SGDXrBiABWGvOYQ8LfsdPBw0PT0pQ1obNffICNllUEv9J4Ptv0J9XHpz2A7tvPBPrrB3a9dwV7dW8siqP8ou_67CU-Fwj-rUWNK4m312Eq-dryiqeCFKk&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBAOEvtJKou/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBAOEvtJKou/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1694,9 +1773,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBAOEvtJKou/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/101207727_179105590297745_8557736472017371136_o.jpg?_nc_cat=105&_nc_sid=8024bb&_nc_oc=AQnXfusJOHcilsseSGym8zte8OOxXsSig1i9hrdOXbMkGLGzxMWOOMI-r0XOEsv6P-iyPC3L-cqPypr61Ut9ZGNu&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=0e96c13acd8fec632d6296c9534a889f&oe=5F2A46E3" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/101207727_179105590297745_8557736472017371136_o.jpg?_nc_cat=105&_nc_sid=8024bb&_nc_oc=AQnXfusJOHcilsseSGym8zte8OOxXsSig1i9hrdOXbMkGLGzxMWOOMI-r0XOEsv6P-iyPC3L-cqPypr61Ut9ZGNu&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=0e96c13acd8fec632d6296c9534a889f&oe=5F2A46E3" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1727,9 +1807,10 @@ Mặt nạ rau má làm dịu làn da khó tính sau một ngày mệt mỏi.</d
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/179105586964412/?type=3&theater" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-0/p640x640/101025127_179106170297687_90244379649769472_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQk6Vx91BkIq2K5kRkrWSR2ByLkdjH1yUeDQWrUHuWxYedQQDw2tbDea0ftcjsZPfVZjFsPaLBjpA7sDGAjwR4Da&_nc_ht=scontent.fhan3-3.fna&_nc_tp=6&oh=f0cf633d58625fd1bfa845018a800820&oe=5F26CC40" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-0/p640x640/101025127_179106170297687_90244379649769472_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQk6Vx91BkIq2K5kRkrWSR2ByLkdjH1yUeDQWrUHuWxYedQQDw2tbDea0ftcjsZPfVZjFsPaLBjpA7sDGAjwR4Da&_nc_ht=scontent.fhan3-3.fna&_nc_tp=6&oh=f0cf633d58625fd1bfa845018a800820&oe=5F26CC40" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1760,9 +1841,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/179106166964354/?type=3&__xts__%5B0%5D=68.ARA8xPTTjiFzvLUr1xp1ufDdHPbluzcGmou80F42L9Pgnc9AjTwnVLlEjb8WmC_O61ptlAOSSpqzuokSAljDUNTd7j0waTawQyPxR6-nAmREXY5zoSd0avSW9LosOC5B8q2Sf6lrYJWxLPaleEGMrmWmKSe6HLuHLpNsrsZYzaYKRIxLDSOFUkm1rzIKjEYtnshApbL2vITTNnIKQRCgUSwuT1PvI3HiPPQTA0I1mXv5BmVh5nrw-s4JllBFNmKYnp5tDl0P1RzHdQikXtrbrn_0angMxJtQEyTr97m7RNNrIKutmeVutlSZRPZTp83wzA9VBPSUY5uURkTHYYAtLT4&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBMxNUZJXpV/media/?size=l" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://www.instagram.com/p/CBMxNUZJXpV/media/?size=l" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1792,9 +1874,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://www.instagram.com/p/CBMxNUZJXpV/" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/102419764_180563576818613_4482808976887372236_n.png?_nc_cat=108&_nc_sid=8024bb&_nc_oc=AQnxAoGPGVkzfWjECM_svAhY1fbusd7Uf_ulAsrugnjl701qvjUkzf8ZLBiRlvLCnW5Z3qoHklBrtqV8m1usLrri&_nc_ht=scontent.fvca1-1.fna&oh=ff198c23ae10a1a9e926e63739d9d97b&oe=5F28809D" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/102419764_180563576818613_4482808976887372236_n.png?_nc_cat=108&_nc_sid=8024bb&_nc_oc=AQnxAoGPGVkzfWjECM_svAhY1fbusd7Uf_ulAsrugnjl701qvjUkzf8ZLBiRlvLCnW5Z3qoHklBrtqV8m1usLrri&_nc_ht=scontent.fvca1-1.fna&oh=ff198c23ae10a1a9e926e63739d9d97b&oe=5F28809D" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1824,9 +1907,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/180563573485280/?type=3&__xts__%5B0%5D=68.ARB9fMN83FeVCiGWQXCtLrkP89PwTQXABPxmDIa4T9UEBoL7w_pKyzi81w_XqOWiOC8lma5Dpy5ekBk0xIIO_R-2Kwrl8YAAW8OpjJap-1r5DsdVOcwnbvmrw9tXwV3UD5D42x-k0iw3do3Nzb1kULMLto5t8gICxUGkw0x4I2vYqkYM79gxOq1Le7DYyLkYS0J_4sC6kB9vngyP316TlU_UQxC0eWk6xQkAsR8NcHnhshcUterTtfBbP5nSYgKuSn2fFCAL80MCOnElfHWO_dctSrYqf1OF2hlzTlUIPTAwtXsm3iCTNgC3lywlTpjzsMJREBr0fG8m-7sK9JAq2BU&__tn__=-RR" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/102405588_180906103451027_2774819562739286647_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQkWS664FeRSqNv5Fj-W-yODJVKrZM7oySvKu4EmfQJtD3-ABa_M8oYTQ4_L8wsYFAYLl2G6hBTsN-gQd-VkNfGP&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=42fd31c044d926c7aeec339e66c1f273&oe=5F28391F" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/102405588_180906103451027_2774819562739286647_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQkWS664FeRSqNv5Fj-W-yODJVKrZM7oySvKu4EmfQJtD3-ABa_M8oYTQ4_L8wsYFAYLl2G6hBTsN-gQd-VkNfGP&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=42fd31c044d926c7aeec339e66c1f273&oe=5F28391F" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1856,9 +1940,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/180906100117694/?type=3&__xts__%5B0%5D=68.ARD7_IOdvOXdhhM4M0j5Gn06zW9ndiRu4USpZP-ejc6-EhefqBiqxCnS0UY3XAKHM8ZM_FlfjQ2KQMYi0Tdqs_kV7pow3jJNwXkLR6fLHvuXiQsdSc9L-k1kXZTMrZluGPZq47LsHsvP8vG1sE9wW4fznA36hIbURWyin4crikVdfaNVKbLuIbW7IoHkZI5WRc6mPkP8f9M6YrgScA77hNPKVKNfyyt_m_SbZ4OgcVRMMD_yJG_2OFuGhJAdECQ5wXmNzoCk_3e2njCTvoYNLMbn7FeTOAhvoOB6HyypSjeJIIZhltnvweepgpj_46iM4UaNAf7FNblc4WN2Eu8ouuk&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/103616140_180967606778210_467151501273981986_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQnXHt5ErCIf5Qj910jPRi2jP3_urcWnQaISCR1-bplrJe1YGfWBz5SC1Ayf7DyStgtnEdPHTQ86hiwx8rW38WNM&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=f2b5cf360d4f28243140e2e2efd85413&oe=5F296CFB" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/103616140_180967606778210_467151501273981986_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQnXHt5ErCIf5Qj910jPRi2jP3_urcWnQaISCR1-bplrJe1YGfWBz5SC1Ayf7DyStgtnEdPHTQ86hiwx8rW38WNM&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=f2b5cf360d4f28243140e2e2efd85413&oe=5F296CFB" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1889,9 +1974,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/180967603444877/?type=3&__xts__%5B0%5D=68.ARAoSt_PJVywWWy2u-OZ-tu_hwZqwljcMqsaabehNYUb7sBZ6HtaSG7X8dwcWrytklwlfIHkUv0ad01ESM5DL_lk0diaPGdhkgbjefUMM3iQdAFcY7a4kb-Hm1Hn-meHb34cbxJW0TZg4DXfsknwwdpBcFoo23FIGZtnFwWvQpB-06OVKu4V8mZTDElLWn-sKR1tKvBSxHBTwDpRs1AeQLdj8rWVHH6eJP0zlMjreJJBAFNdkvovt1pYz7hsaZQ77AFvQvaNnr0Ilev45gD3RBzeM_q-eNKDo5GjlYupy9mqfPz8Jx6kZo2gUfG2Kj35J7V7vNLTyEO0lyWXGDclSTQ&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-0/p640x640/103558367_181321566742814_1497942069787789919_o.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_oc=AQkcTh5vpwSJ2C7ZaeGYSUCgKNJMQKVJoL6jLFS0xwz_kQycecp8dUzJU0ImArvjXjWN1D29PY8w_s-AqRjLYjUG&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=4c624656d71d780a2f40d3fd2d274d06&oe=5F27DAE5" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-0/p640x640/103558367_181321566742814_1497942069787789919_o.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_oc=AQkcTh5vpwSJ2C7ZaeGYSUCgKNJMQKVJoL6jLFS0xwz_kQycecp8dUzJU0ImArvjXjWN1D29PY8w_s-AqRjLYjUG&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=4c624656d71d780a2f40d3fd2d274d06&oe=5F27DAE5" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1921,9 +2007,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/181321563409481/?type=3&__xts__%5B0%5D=68.ARD0_lDZbw6z2ZA9vn66iOSauy-SjSrCoNHb-aFCbAFvUJs49l2xVOnxRHnYz0bjVSvV5SoDb3AAS90JTg-5tJIW-UpjzRkE1bP9JW47kCHm3_oH0oUdADvWK36P7ZslwP_h7WF7J1kiugLrU65QiZLvGgcCcpmoO3TVsq9AcYJasMuyiMvjLH2WUHrcYH2DdvnH2Pa-rt2SSSPXCFb6-73axHTdsmQhTOLeNSBFupnxufTbBugYGi7QOiHK5bCIkShI_pqbkKd33ztL7vBiDeltvf1VKPIOZgQ6UO7SZgSDO8Y3WI6YaJwBKprmqgsW92xvPN6v4iKPGYlkE5xpkkA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-0/p640x640/103136608_182790799929224_620272917687091931_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_oc=AQm-YHx0PoOcZfh2USTUphwT4YSRoTe-161_WFxTN0CXm_zaeDcCL23ALods9E0_g44sL5lPAVVFHYrOdyzAfgEa&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=9f01ba148d4b5abe4fef9ffdbce42421&oe=5F27F3CB" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-0/p640x640/103136608_182790799929224_620272917687091931_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_oc=AQm-YHx0PoOcZfh2USTUphwT4YSRoTe-161_WFxTN0CXm_zaeDcCL23ALods9E0_g44sL5lPAVVFHYrOdyzAfgEa&_nc_ht=scontent.fvca1-2.fna&_nc_tp=6&oh=9f01ba148d4b5abe4fef9ffdbce42421&oe=5F27F3CB" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1953,9 +2040,10 @@ Sẽ không hề khó khăn một chút nào đâu vì đã có 𝐃𝐞𝐰𝐲
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/182790796595891/?type=3&__xts__%5B0%5D=68.ARB0jyQd7UaanSsWVZM6xnwk2Bxsnn2ozdgqkRim-ZjKGHTUj7M2uJgX3iPtgK5lhIqrAq-E8zGI_YOBwZ3n570MD4Bvp569BGCCcab1LUMcIerbbF_Yw0L1q_BSJUHGNwvl3lWWO1o6iqbgMBtBm77sseIKwdi1oXj20i6dQqzK-Dqb1awXvbnfDPMgmQRF96fpYmU1YcBG_kmbGPlvIGOWeO5mCaN9RzRpw_NDFWpzWLO8drhH-3qsuqSRC0dXwh_9O2NxRyP8OK4Xwy9LXLYyhEU6vEGDZCUu0JWGAtEL3qV9FHmDDAnN2eNUD31lS2wsKRy6ifTlXMW4zYo-P8M&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/103612826_184123289795975_1755565625689240142_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_oc=AQnmgrtag15h3ftYWyc06htL21fYbTAcunXOelHZORxSAN2WrED7YA9CPuqvAs5PDvpRCdkpEUD953VCA0oUQFOk&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=25f9e9755046e08b1f183a5e3e68fdcf&oe=5F2878AD" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/103612826_184123289795975_1755565625689240142_o.jpg?_nc_cat=106&_nc_sid=8024bb&_nc_oc=AQnmgrtag15h3ftYWyc06htL21fYbTAcunXOelHZORxSAN2WrED7YA9CPuqvAs5PDvpRCdkpEUD953VCA0oUQFOk&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=25f9e9755046e08b1f183a5e3e68fdcf&oe=5F2878AD" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -1986,9 +2074,10 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/184123286462642/?type=3&__xts__%5B0%5D=68.ARBt1BnER4z6I3AKwV9y7K13FnlCbi25txxQ6a9cVa9g8NT9S_h9v-01_kq6ZXDEnHyGZhzZsmBhApCogGhD-VLS4uzSX8eD51zrT-NKCkFIvRYSstium2BxqlGbcxheH8ZvU7c08-Y2BXhjyset9VkZzAz5Ae2GrSS38-zMxhDJWAPqpU7ncEJRSpGle0qiqGxHJEqHv81d4simJDoc2We1LyEGasnCw0oADsCToXx7Z9_slhhgslEXEdP66JMjcIyV_hhqbijkDm_X1izoRGd3Eg7bwuucvtkhB8e7e-pakW2GeE-QIS5Ei5D7jyaqWEIvuVXuSlsxgugJEc_m630&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/104688459_184123756462595_724750466277453045_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQk0lMh3ZHe_6UEIoQu5SaDZgzJDnUXh1JNVwfFDQwwayBxLy7gEqocL5ZtkwCzjbz3RJZY_FzqnawSc1U-WuiNL&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=5f101b88aba0a251ad9d6b347ea81c46&oe=5F29BF19" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-0/p640x640/104688459_184123756462595_724750466277453045_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQk0lMh3ZHe_6UEIoQu5SaDZgzJDnUXh1JNVwfFDQwwayBxLy7gEqocL5ZtkwCzjbz3RJZY_FzqnawSc1U-WuiNL&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=5f101b88aba0a251ad9d6b347ea81c46&oe=5F29BF19" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -2018,7 +2107,8 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/184123753129262/?type=3&__xts__%5B0%5D=68.ARBzKVaOheYMl4yr8E8pLtYTBMNx0kaA3YcNOarxDaXnvN_3z33lO_95rcJrwOJXVJfqvlKvzXiRVMsSBP-hxMw0n8YaXhrAuUvselCbpEShUnGNu3DtEtO-Hv3yvhU2CdlYqllMAWrHRzeNO9w-mys72_bGKFl6R9AkWrQAm_C9yGc347rNF5fTz8F7LiGeFC4qPADUVjZfe-xfo9bZMQBcPtV5HdKI0LnH2ci8yVQRoV86-zAyrADA0y9nPrl1jXWqI-XoucF2pl95wJYV4WLxM6118lVeRTGAfR3cSm3LqIim9FqaesYALTWd_VWgFb6MZKuCaPc0gEktoPCLyzw&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">컨텐츠 (영상) : 본사 미러링 - 번역 ( 2 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">컨텐츠 (영상) : 본사 미러링 - 번역 ( 2 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
     </div>
@@ -2050,7 +2140,8 @@ Một trong những loại mặt nạ được yêu thích nhất của #Dewytre
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/390052615227113/?__xts__%5B0%5D=68.ARAEW20qEQv3NMG367x0T8BT3lpTQT1W_Nc_1E7r7fDfn67fm5eXdvzkhBZiU2f5vxV5AllM16prwqot300C24NhKRbpEHOXI-SL8QGKezUO__VmzqXTACC_AVGUO-_vokW1j0UvJtrFOYiJvA1SyKrq1Cy5TdI6jg-cfgwbrJ1BYUDu9tUDocNBljeBSGsdCl3auqNtaFTHCJQdQ824f6qMxThM8lY53D7p2YhXKb5AmEZyt__asDWsKIFJC68KvT0jtaZq7JUrthYYygJ8hvnSHrsjdYyDZvQR-qejccCLsl4xCKZPHwbcYcuRemdKGqMdmm5UJ-DsP39amxuNuXmOLLeifMrKUPA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
         
     </div>
@@ -2083,9 +2174,10 @@ Tấm khiên bảo vệ da trong thời tiết nóng ẩm 𝐃𝐞𝐰𝐲𝐭�
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/558362434822574/?__xts__%5B0%5D=68.ARAfJZwCVMrqIdta9lWc71YvZhikmibLB92JAnX7tVf0yYk1xPIFu0tDyh_vDgQlWx5JxaEL4J_PsgNPbZtY0iyGhDw9T7SW9Xakg-3R4eBFENYdfwP4o5Q-FN6ste6NxPXzJmZXxm7JAw1g0OimnOALb1wC7GfiEzOm95EAoAAIy73n-d8bcY14XCvUetXAuX7GMraGDuV3s6jQngxaU3OjHNGMxFBA4CJj8MOfz6ZCXk5c3LsdYfsV0mIYeeA21hpT3myvujbA_3miCKMrOGsUyqN21p2KIwBi2NbVVQY5kOr399d6XB9tKRkS1JiGO9d0mk6AGtFrwLzb2b3L7Rjo3ABGYD21Y2A&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">체험단 이벤트 ( 3 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">체험단 이벤트 ( 3 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/103480907_181797580028546_4609114538011673316_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQnuaE1M5UExoIMo2Ffec0LvsjEoLAYwhANPj6W68p5eC2kdFRH451J1peGuALIxhBQ&_nc_ht=scontent-ssn1-1.xx&oh=2aea3c9d622a7785d3a99093a01d74c7&oe=5F29AD5E" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/103480907_181797580028546_4609114538011673316_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQnuaE1M5UExoIMo2Ffec0LvsjEoLAYwhANPj6W68p5eC2kdFRH451J1peGuALIxhBQ&_nc_ht=scontent-ssn1-1.xx&oh=2aea3c9d622a7785d3a99093a01d74c7&oe=5F29AD5E" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -2116,9 +2208,10 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/posts/181797640028540?__xts__%5B0%5D=68.ARC29U-SXCqufhmfB0Ah7Kd446TQu3_TK1KiUnHdKASaomsITxuk8fznCBb3qnG9p_pZLWz7gNTqtHbTkeEON8RbaYTuP7-VKPzOaCCj4T4Qv-ER6252902Pcuteavto4WCmv9wc70U6iqAcytQs9v670A6WcOLBu_WI91YMtNd4X92aPB55eCZ8FcnTl3TH0iaELeQwm3lelx8Dco1_6xKLo8YzT4TlEN3sIm6ffEt8ukbm_Dp_HfFpb8O2Z1PdwNudAnSFJXasFYZD37xbVbVVnffHqSM4rKqXBYOqV1wz-k0hyOSs2D45M0Gv-fEP7vInueEMeE8Swq-_DfLQyZM&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/104791764_186841952857442_7413473475451435843_n.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQnXtDdnzVkd2UdwzGnhXi6UyurzDJ255kEiwo5it2AsxswnnsgXZdD_Ttuu-3PRwncG0iPlcmlwIhO3pbyEV5HJ&_nc_ht=scontent.fdad1-1.fna&oh=fdcbd98e86919a097e1acccf2a12a301&oe=5F285BE4" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.0-9/104791764_186841952857442_7413473475451435843_n.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_oc=AQnXtDdnzVkd2UdwzGnhXi6UyurzDJ255kEiwo5it2AsxswnnsgXZdD_Ttuu-3PRwncG0iPlcmlwIhO3pbyEV5HJ&_nc_ht=scontent.fdad1-1.fna&oh=fdcbd98e86919a097e1acccf2a12a301&oe=5F285BE4" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -2148,9 +2241,10 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/186841949524109/?type=3&__xts__%5B0%5D=68.ARB5idsM4DQLbf_4CyF_Zp9pg1TQfl_b5UFg7I9gKvRNrJ-DvqbA7fm9j3e-NxKtpQxx3r-Z04mlCzTzS8vXXwbZtY_eQ9ltltwiSOXDSOS9Wic4kUiUaYqc4eGr9R69h_mutWl5WRjPEgrm6w1whV6pR5-4M5X2FOXsyApxMv5-4jDV7-ulE-3wPrNI8pYEFffl5ZoBWltOaNStYrnyAcbg7EWCnGnPn2se_TZNC93Xz8cJTOovIIig8SFgaiWmNVWv4WcbeV0MXCyuGNm1GFD2EMKjn1v9FWmeHzgkU7mfQoFI2e68RuW45f5xyb5ZmJK1JjFrF6PAPCksLkRRoNI&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div><div class="card">
+</div>
+<div class="card">
     <div class="image">
-        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/105478028_188314582710179_8499042521466369867_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQm9CihuVUMLCMrk5yVfvnpIjQa7iMZ1Qm_lrOcvyRME4FJrNUbk7b9Oy5Ig6TqoxoIvIHKF1zYivRxZcUJi8Hwv&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=98bd37d7d32f1a6c133a3ffbf61d7b67&oe=5F268C53" style="max-height : 400px;"></img>
+        <img class="ads_list_thumb" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/p960x960/105478028_188314582710179_8499042521466369867_o.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_oc=AQm9CihuVUMLCMrk5yVfvnpIjQa7iMZ1Qm_lrOcvyRME4FJrNUbk7b9Oy5Ig6TqoxoIvIHKF1zYivRxZcUJi8Hwv&_nc_ht=scontent.fvca1-1.fna&_nc_tp=6&oh=98bd37d7d32f1a6c133a3ffbf61d7b67&oe=5F268C53" style='max-height : 400px;'></img>
     </div>
     
     <div class="content">
@@ -2180,7 +2274,8 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/photos/a.112267123648259/188314579376846/?type=3&__xts__%5B0%5D=68.ARD9HvCAYIl71tRlLvlt8bvCLJ_8K4ICQO-kfLGA1Kw-QR_6iSG9h9c6KVDUjlzhrKojiW0fJylQ1mqeqbgyQKrkvcOxCydxW3i9v1BZOOnzEJHSDgvKAvc0s81nArEojxrZfF8dsoR6TM6GLD-977BV9bmoWCUpXpd4atTa9xKvKaU78bZDeZdXVfjrWIZnTXLcl-FHUZGSTxlrUsJY7chNcUR_B0Wchg09W-hQKAVfxCV9-5QELchuNG3NQEsAC76yLEutYVUCCqcNOa2dw8b5gjxy_soguKCJtmlk6dRLeVaPAUaspg981m0EFBzG_JH87oEfQvI7sk-90iYsOTw&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">컨텐츠 (영상) : 비나피엘 제작 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">컨텐츠 (영상) : 비나피엘 제작 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
     </div>
@@ -2212,7 +2307,8 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <span class="right floated"></span>
         <span><a href="https://facebook.com/dewytree.vn/videos/591436488471063/?__xts__%5B0%5D=68.ARB_p7Ubzj7UnhKmQcPgAxfFO4nYaa7mWjTWr00QAkDWBj86xeyGoSakxzbH36dS33xgF5e--vzw4f2h73sMq4CvL02HCiZJ24uZaZjNVkJfspBKu8_-b_B5KplYuLYShttRwR7xF1Dml2aTJ28uyd_BhN1zHrTdPO38stw-WVbimk0jSk9fmWRTtEMcavrr4NQ4v-laBdtR4nHBMIQT7lNJgCs1XnkBODAVEPKCEXFyx0KB1JBsRFTR9pG40epGfHNUMcBcupfdZwK39dM32UKxGrwgjBC1vjVbxWEtZQYxeUUhvaWnfeuPQ76IXJN3u0LnWqpA8R7P327V7bK3KnsiCEshGcb6QzA&__tn__=-R" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div><h3  class="ui left aligned header">뷰티유투버 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
+</div>
+</div></div></div><h3  class="ui left aligned header">뷰티유투버 ( 1 건 )</h3><div class="ui grid"><div class="sixteen wide column"><div class="ui four stackable cards"><div class="card">
     <div class="image">
         
     </div>
@@ -2244,7 +2340,8 @@ Mặc dù đã nổi tiếng và được nhiều người biết đến tại #
         <span class="right floated"></span>
         <span><a href="https://www.youtube.com/watch?v=WEdOUx1ZWgc" target="_blank"><button class="mini ui button">바로가기</button></a></span>
     </div>
-</div></div></div></div>
+</div>
+</div></div></div>
 
 	</div>
 </body>
