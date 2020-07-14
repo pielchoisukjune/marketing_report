@@ -12,7 +12,7 @@ var THTML_PATHS = {
 	cards : "./THTML/card.thtml"
 	, ads_total : "./THTML/ads_total.thtml"
     , insight : "./THTML/insight.thtml"
-    , report : "./THTML/report.thtml"
+    , report : "./THTML/report_dewytree.thtml"
 	, statistic : "./THTML/statistic.thtml"
 	, location : "./THTML/location.thtml"
 	, kols : "./THTML/kols.thtml"
@@ -29,6 +29,7 @@ var thumnail_icon = {
 	, "언론사노출" : "red newspaper outline"
 	, "언론사 노출" : "red newspaper outline"
 	, "Fime.vn" : "red edit outline"
+	, "Google Top SEO" : "red google outline"
 };
 //-------------------------------------------------------;
 // FILEPATH;
@@ -485,36 +486,242 @@ var make_monthly_table_html = function( data, html ){
 	return r;
 };
 
+
+//-------------------------------------------------------;
+//구글전체통계 생성;
+//-------------------------------------------------------;
+var make_statistic_google_html = function( o, html ){
+
+	var _html0 = "";
+	var _html1 = "";
+	var r = "";
+	var s,so;
+	var i = 0;
+	var _bg_check = -1;
+	_html0 += "<tr>"
+	for( s in o ){
+		so = o[ s ];
+			
+			var k,ko;
+			_html1 += "<tr>"
+
+			for( k in so ){
+				ko = so[ k ]
+				if( i == 0 )
+				{
+					if( k != "월" ) _html0 += "<th style='width:20%;font-weight: 400;font-size: 12px;'>" + k + "</th>\n";
+				}
+				if( k == "키워드") var value = ko.replace(/\n/g,"<br>");
+				else var value = ko;
+
+				if( k != "월" )
+				{
+					_html1 += "<td style='font-size:11px;'>" + value + "</td>\n";
+
+				}
+
+			}
+			_html1 += "<td style='font-size:11px;'>" + data.google_total[ target_month ][ s ][ "노출수" ] + "</td>\n";
+			_html1 += "<td style='font-size:11px;'>" + data.google_total[ target_month ][ s ][ "클릭수" ] + "</td>\n";
+			_html1 += "</tr>\n"
+			
+		++i;
+	}
+
+	_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>노출</th>\n";
+	_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>클릭</th>\n";
+	_html0 += "</tr>\n"
+	
+	r = html.replace( "<!=TABLE_HEAD=!>", _html0 ).replace( "<!=TABLE_BODY=!>", _html1 )
+	return r;
+};
+
+//-------------------------------------------------------;
+//구글 연령통계 생성;
+//-------------------------------------------------------;
+var make_google_ages_data = function( arr ){
+	
+	if( arr.length == 0 ) return null;
+	var i = 0,iLen = arr.length,io;
+	var r = {};
+	var o;
+    for(;i<iLen;i++){
+		io = arr[ i ];
+		var key = io[ "구분" ] + "----" + io[ "설명" ];
+		if( !r[ key ] ) r[ key ] = [];
+		o = {"ages" : io[ "연령" ], value : Number( io[ "노출수" ] )}
+
+		if( Number( io[ "노출수" ] ) ) r[ key ].push( o );
+        
+	}
+	return r;
+};
+
+//-------------------------------------------------------;
+//구글 시간별통계 생성;
+//-------------------------------------------------------;
+var make_google_time_data = function( arr ){
+	
+	if( arr.length == 0 ) return null;
+	var i = 0,iLen = arr.length,io;
+	var r = [];
+	/*
+	"시간": "09:00:00 - 09:59:59",
+	"노출 수": "155615",
+	"회수": "",
+	"지출 금액\n (VND)": "",
+	"페이지 참여": "",
+	"게시물 참여": "4019739.71",
+	"게시물 댓글": "18567",
+	"게시물 반응": "18460",
+	"페이지 좋아요": "10",
+	"동영상 50% 시간 보기": "524",
+	"동영상 100% 보기": "107",
+	"새로운 메시지 연결": "18",
+	"새로운 메시지 한번 연결에 금액": "223,318.87"
+	*/
+    for(;i<iLen;i++){
+		io = arr[ i ];
+        var o00 = {"time" : io[ "시간대" ], view : Number( io[ "노출수" ] ), click : Number( io[ "클릭수" ] )};
+        r.push( o00 );
+	}
+	return r;
+};
+
+
+//-------------------------------------------------------;
+//구글 SEO 리스트카드생성;
+//-------------------------------------------------------;
+var make_google_seo_html = function( arr, html ){
+	if( arr.length == 0 ) return null;
+	var i = 0,iLen = arr.length,io;
+	var r = "";
+	var _html;
+
+	var view_col = '<tr><td><span class="font12px"><i class="eye icon"></i>View</span></td><td><span class="font12px"><!=CNT_VIEW=!></span></td></tr>';
+//	var click_col = '<tr><td><span class="font12px"><i class="hand point down outline icon"></i>Click</span></td><td><span class="font12px"><!=CNT_CLICK=!></span><br></td></tr>';
+//	var comment_col = '<tr><td><span class="font12px"><i class="comment icon"></i>Comment</span></td><td><span class="font12px"><!=CNT_COMMENT=!></span></td></tr>';
+//	var like_col = '<tr><td><span class="font12px"><i class="heart icon"></i>Like</span></td><td><span class="font12px"><!=CNT_LIKE=!></span></td></tr>';
+//	var share_col = '<tr><td><span class="font12px"><i class="share alternate icon"></i>Share</span></td><td><span class="font12px"><!=CNT_SHARE=!></span></td></tr>';
+	var update_col = '<tr><td><span class="font12px"><i class="calendar alternate alternate icon"></i>Update Date</span></td><td><span class="font12px"><!=DATE=!></span></td></tr>';
+
+	var thumb = `<img class="ads_list_thumb" src="<!=THUMBNAIL=!>" style='max-height : 400px;'></img>`;
+	var iframe = `<iframe src="https://www.facebook.com/plugins/video.php?height=266&href=<!=FB_URL=!>&show_text=0"  height="266" style="border:none;overflow:hidden;min-height:266px;" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>`;
+
+	for(;i<iLen;i++){
+		io = arr[ i ];
+		_html = "";
+		var bigo = "";
+		if( io[ "비고" ] ) bigo = io[ "비고" ];
+
+		var _update_col = "";
+		var _share_col = "";
+		var _like_col = "";
+		var _comment_col = "";
+		var _click_col = "";
+		var _view_col = "";
+
+		if( io[ "업데이트날짜" ] ) _update_col = update_col.replace( "<!=DATE=!>", io[ "업데이트날짜" ] )
+		if( io[ "조회건수" ] ) _view_col = view_col.replace( "<!=CNT_VIEW=!>", numberWithCommas( io[ "조회건수" ] ) )
+//		if( io[ "클릭률" ] ) _click_col = click_col.replace( "<!=CNT_CLICK=!>", numberWithCommas( io[ "클릭률" ] ) )
+//		if( io[ "댓글수" ] ) _comment_col = comment_col.replace( "<!=CNT_COMMENT=!>", numberWithCommas( io[ "댓글수" ] ) )
+//		if( io[ "좋아요" ] ) _like_col = like_col.replace( "<!=CNT_LIKE=!>", numberWithCommas( io[ "좋아요" ] ) )
+//		if( io[ "공유" ] ) _share_col = share_col.replace( "<!=CNT_SHARE=!>", numberWithCommas( io[ "공유" ] ) )
+
+		var thumb_url = thumb.replace( "<!=THUMBNAIL=!>", io[ "이미지" ] );
+		var iframe_url = "";
+
+		if( io[ "구분" ] == "인스타그램" )
+		{
+			thumb_url = thumb.replace( "<!=THUMBNAIL=!>", io[ "해당링크" ] +  "media/?size=l" );
+		}
+
+
+		if( io[ "이미지" ].indexOf( "<iframe" ) != -1 )
+		{
+			//iframe_url = iframe.replace( "<!=FB_URL=!>", io[ "해당링크" ] )
+			iframe_url = io[ "이미지" ];
+			thumb_url = "";
+		}
+
+		_html = html.replace( "<!=THUMNAIL_CONTENTS=!>", thumb_url )
+			.replace( "<!=IFRAME_CONTENTS=!>", iframe_url )
+			.replace( "<!=CATEGORY=!>", io[ "구분" ] )
+			.replace( "<!=COMMENT=!>", bigo )
+			.replace( "<!=LINK=!>", io[ "해당링크" ] )
+			.replace( "<!=TITLE=!>", io[ "제목" ] )
+			.replace( "<!=TYPE=!>", io[ "타입" ] )
+			.replace( "<!=CATE_ICON=!>", thumnail_icon[ io[ "구분" ] ] )
+			.replace( "<!=DATE=!>", _update_col )
+			.replace( "<!=CNT_VIEW=!>", _view_col )
+			.replace( "<!=CNT_CLICK=!>", _click_col )
+			.replace( "<!=CNT_COMMENT=!>", _comment_col )
+			.replace( "<!=CNT_LIKE=!>", _like_col )
+			.replace( "<!=CNT_SHARE=!>", _share_col );
+
+		r += _html + "\n";
+	}
+
+	return r;
+};
+
+//-------------------------------------------------------;
+// 구글 SEO 리스트생성;
+//-------------------------------------------------------;
+var make_google_seo_list = function( o , html ){
+
+	var r = "";
+	var s,so;
+	for( s in o ){
+		so = o[ s ];
+		var _html = '<h3  class="ui left aligned header">' + s + ' ( ' + so.length +  ' 건 )</h3>';
+			_html += '<div class="ui grid">';
+			_html += '<div class="sixteen wide column">';
+			_html += '<div class="ui four stackable cards">';
+			_html += make_google_seo_html( so, html )
+			_html += '</div>';
+			_html += '</div>';
+			_html += '</div>';
+			r += _html;
+	}
+
+	return r;
+
+};
+
 var logic = function(){
-    var _cards_html = make_ads_list( data.ads_list[ target_month ], cards_thtml );
     var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml );
-    var _statistic_html = make_statistic_html( data.total[ target_month ], statistic_thtml );
-	var _ads_total_statistic_html = make_ads_total_statistic_html( data.ads_total[ target_month ], ads_total_thtml );
-	var _kols_html = make_kols_html( data.kols[ target_month ], kols_thtml );
-	var _monthly_table = make_monthly_table_html( data.statistic_monthly, statistic_monthly_thtml );
-    var ages_data = make_ages_data( data.ages[ target_month ] );
-    var time_data = make_time_data( data.time[ target_month ] );
-    var location_data = make_location_data( data.location[ target_month ],data.geocode );
-
-	var _location_html = make_location_html( location_data, location_thtml );
-
+	var _ages_data = make_ages_data( data.ages[ target_month ] );
+    var _time_data = make_time_data( data.time[ target_month ] );
+	var _location_data = make_location_data( data.location[ target_month ],data.geocode );
+	
+//	var _google_ages_data = make_google_ages_data( data.google_ages[ target_month ] );
+//	var _google_time_data = make_google_time_data( data.google_time[ target_month ] );
+	
     var report_html = report_thtml.replace(/<!=BRAND_NM=!>/g,brand_nm )
 		.replace( /<!=TARGET_MONTH=!>/g,target_month )
-		.replace( "<!=CARDS=!>",_cards_html)
-		.replace( "<!=KOLS=!>",_kols_html)
-		.replace( "<!=MONTHLY_TABLE=!>",_monthly_table)
+		.replace( "<!=MARKETING_LIST_DATA=!>", JSON.stringify( data.ads_list[ target_month ] ) ) 
+		.replace( "<!=KOLS_DATA=!>", JSON.stringify( data.kols[ target_month ] ) )
+		.replace( "<!=MONTHLY_PLANNIN_DATA=!>", JSON.stringify( data.statistic_monthly ))
 		.replace( "<!=INSIGHT=!>",_insight_html)
-		.replace( "<!=STATISTIC=!>",_statistic_html)
-		.replace( "<!=AGES00_DATA=!>",JSON.stringify( ages_data.d00 ) )
-		.replace( "<!=AGES01_DATA=!>",JSON.stringify( ages_data.d01 ) )
-		.replace( "<!=AGES02_DATA=!>",JSON.stringify( ages_data.d02 ) )
-		.replace( "<!=AGES03_DATA=!>",JSON.stringify( ages_data.d03 ) )
-		.replace( "<!=TIME_DATA=!>",JSON.stringify( time_data ) )
-		.replace( "<!=MAP_DATA_00=!>",JSON.stringify( location_data ) )
-		.replace( "<!=LOCATION_TABLE=!>", _location_html )
-		.replace( "<!=STATISTIC_ADS_LIST=!>", _ads_total_statistic_html );
+		.replace( "<!=AGES00_DATA=!>",JSON.stringify( _ages_data.d00 ) )
+		.replace( "<!=AGES01_DATA=!>",JSON.stringify( _ages_data.d01 ) )
+		.replace( "<!=AGES02_DATA=!>",JSON.stringify( _ages_data.d02 ) )
+		.replace( "<!=AGES03_DATA=!>",JSON.stringify( _ages_data.d03 ) )
+		.replace( "<!=TIME_DATA=!>",JSON.stringify( _time_data ) )
+		.replace( "<!=MAP_DATA_00=!>",JSON.stringify( _location_data ) )
+
+		.replace( "<!=ADS_TOTAL_DATA=!>", JSON.stringify( data.ads_total[ target_month ] ) )
+		.replace("<!=MONTHLY_FACEBOOK_STASTICS_DATA=!>", JSON.stringify(data.total[ target_month ]) )
+//		.replace( "<!=GOOGLE_SEO_LIST_DATA=!>", JSON.stringify(data.google_seo_list[ target_month ]) )
+			
+//		.replace( "<!=GOOGLE_STATISTIC_DATA=!>",JSON.stringify( data.google_ad_info_list[ target_month ] ) )
+//		.replace( "<!=GOOGLE_TOTAL_DATA=!>",JSON.stringify( data.google_total[ target_month ] ) )
+//		.replace( "<!=AGES_DATA_GOOGLE=!>",JSON.stringify( _google_ages_data ) )
+//		.replace( "<!=GOOGLE_TIME_DATA=!>",JSON.stringify( _google_time_data ) )
 
     fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w" })
 }
 
 logic();
+

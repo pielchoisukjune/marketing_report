@@ -98,8 +98,6 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	drawCards__monthly_facebook_stastics( "monthly_facebook_stastics", monthly_facebook_stastic_data, target_month );
 	drawCards__make_facebook_location_html( "facebook_map_cards", mapData, target_month );
 	drawCards__make_kols_html( "kols_cards", kols_data, target_month )
-	drawTable__make_statistic_google_html( "statistic_google", google_statistic_data, target_month )
-	drawCards__google_seo_list( "google_seo_list_data", google_seo_list_data, target_month )
 	drawCards__make_marketing_list( "marketing_list", marketing_list_data, target_month )
 	drawCards__make_ads_total_statistic( "ads_total", ads_total_data, target_month )
 
@@ -908,19 +906,13 @@ var pieChartData00 = <!=AGES00_DATA=!>;
 var pieChartData01 = <!=AGES01_DATA=!>;
 var pieChartData02 = <!=AGES02_DATA=!>;
 var pieChartData03 = <!=AGES03_DATA=!>;
-var pieChartDataGoogle = <!=AGES_DATA_GOOGLE=!>;
 
 var barChartData00 = <!=TIME_DATA=!>;
-var barChartDataGoogle = <!=GOOGLE_TIME_DATA=!>
 
 var monthly_planning_data = <!=MONTHLY_PLANNIN_DATA=!>;
 var monthly_facebook_stastic_data = <!=MONTHLY_FACEBOOK_STASTICS_DATA=!>;
 
 var kols_data = <!=KOLS_DATA=!>;
-
-var google_statistic_data = <!=GOOGLE_STATISTIC_DATA=!>;
-var google_total_data = <!=GOOGLE_TOTAL_DATA=!>;
-var google_seo_list_data = <!=GOOGLE_SEO_LIST_DATA=!>
 
 var marketing_list_data = <!=MARKETING_LIST_DATA=!>;
 var ads_total_data = <!=ADS_TOTAL_DATA=!>;
@@ -935,15 +927,7 @@ am4core.ready(function() {
 	pieChartAge( "chartdiv02", ["연령별 게시물 참여"], pieChartData02 );
 	pieChartAge( "chartdiv03", ["연령별 페이지 좋아요"], pieChartData03 );
 
-	var s,so,_idx = 7;
-	for( s in pieChartDataGoogle ){
-		so = pieChartDataGoogle[ s ];
-		pieChartAge( "chartdiv" + pad( _idx, 2 ), s.split("----"), so );
-		++_idx;
-	}
-
 	barChartTime( "chartdiv04", { title : "",label0 : "time",label1 : "view",label2 : "like" }, barChartData00 );
-	barChartTime( "chartdiv13", { title : "",label0 : "time",label1 : "view",label2 : "click" }, barChartDataGoogle );
 
 });
 
