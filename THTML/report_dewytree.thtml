@@ -101,6 +101,21 @@ window.addEventListener('DOMContentLoaded', function( e ){
 	drawCards__make_marketing_list( "marketing_list", marketing_list_data, target_month )
 	drawCards__make_ads_total_statistic( "ads_total", ads_total_data, target_month )
 
+	am4core.ready(function() {
+		am4core.useTheme(am4themes_animated);
+
+		pieChartAge( "chartdiv00", ["연령별 도달"], pieChartData00 );
+		pieChartAge( "chartdiv01", ["연령별 노출"], pieChartData01 );
+		pieChartAge( "chartdiv02", ["연령별 게시물 참여"], pieChartData02 );
+		pieChartAge( "chartdiv03", ["연령별 페이지 좋아요"], pieChartData03 );
+
+		barChartTime( "chartdiv04", { title : "",label0 : "time",label1 : "view",label2 : "like" }, barChartData00 );
+
+	});
+
+	google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
+	google.setOnLoadCallback(drawVisualization);
+
 	var arr = window.document.getElementsByTagName("iframe");
 	arr.forEach(function(item){
 
@@ -374,21 +389,28 @@ var drawTable__monthly_marketing_plan = function( domId, data, target_month ){
 	for(;i<iLen;i++){
 		io = data[ i ];
 		if( i == 0 ){
-			_bg_check = io.indexOf( target_month );
+			_bg_check00 = io.indexOf( target_month );
+			_bg_check01 = io.indexOf( target_month ) + 1;
+
 			_html0 += "<tr>"
 			var _tidx = 0;
 			io.forEach(function(item){
+
+				var _item = item.replace( /\n/gi, "<br>" ).replace( /\r/gi, "<br>" ).replace( /\r\n/gi, "<br>" );
+
 				if( _tidx == 0 )
 				{
-					_html0 += "<th style='width:18%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
+					_html0 += "<th style='width:18%;font-weight: 400;font-size: 12px;'>" + _item + "</th>\n";
 				}
 				else if( _tidx == 1 ){
-					_html0 += "<th style='width:26%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
+					_html0 += "<th style='width:19%;font-weight: 400;font-size: 12px;'>" + _item + "</th>\n";
 				}
 				else
 				{
-					if( _bg_check == _tidx ) _html0 += "<th style='width:8%;background-color : red;color:#fff;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
-					else _html0 += "<th style='width:8%;font-weight: 400;font-size: 12px;'>" + item + "</th>\n";
+					
+					if( _bg_check00 == _tidx ) _html0 += "<th style='width:9%;background-color : red;color:#fff;font-weight: 400;font-size: 12px;'>" + _item + "</th>\n";
+					else if( _bg_check01 == _tidx ) _html0 += "<th style='width:9%;background-color : yellow;color:red;font-weight: 400;font-size: 12px;'>" + _item + "</th>\n";
+					else _html0 += "<th style='width:9%;font-weight: 400;font-size: 12px;'>" + _item + "</th>\n";
 				}
 				++_tidx;
 			})
@@ -399,8 +421,10 @@ var drawTable__monthly_marketing_plan = function( domId, data, target_month ){
 			_html1 += "<tr>"
 			var _tidx = 0;
 			io.forEach(function(item){ 
-				if( _bg_check == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + item + "</td>\n";
-				else _html1 += "<td style='font-size:11px;'>" + item + "</td>\n"; 
+				var _item = item.replace( /\n/gi, "<br>" ).replace( /\r/gi, "<br>" ).replace( /\r\n/gi, "<br>" );
+				if( _bg_check00 == _tidx ) _html1 += "<td style='font-size:11px;background-color : red;color:#fff;'>" + _item + "</td>\n";
+				else if( _bg_check01 == _tidx ) _html1 += "<td style='width:8%;background-color : yellow;color:red;font-weight: 400;font-size: 12px;'>" + _item + "</td>\n";
+				else _html1 += "<td style='font-size:11px;'>" + _item + "</td>\n"; 
 				++_tidx;
 			})
 			_html1 += "</tr>\n"
@@ -916,23 +940,6 @@ var kols_data = <!=KOLS_DATA=!>;
 
 var marketing_list_data = <!=MARKETING_LIST_DATA=!>;
 var ads_total_data = <!=ADS_TOTAL_DATA=!>;
-</script>
-
-<script>
-am4core.ready(function() {
-	am4core.useTheme(am4themes_animated);
-
-	pieChartAge( "chartdiv00", ["연령별 도달"], pieChartData00 );
-	pieChartAge( "chartdiv01", ["연령별 노출"], pieChartData01 );
-	pieChartAge( "chartdiv02", ["연령별 게시물 참여"], pieChartData02 );
-	pieChartAge( "chartdiv03", ["연령별 페이지 좋아요"], pieChartData03 );
-
-	barChartTime( "chartdiv04", { title : "",label0 : "time",label1 : "view",label2 : "like" }, barChartData00 );
-
-});
-
-google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' });
-google.setOnLoadCallback(drawVisualization);
 </script>
 
 </head>

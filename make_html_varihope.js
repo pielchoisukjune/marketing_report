@@ -21,16 +21,7 @@ var THTML_PATHS = {
 var brand_nm = "VARIL:HOPE";
 var target_year_month = "202006";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
-var thumnail_icon = {
-	"뷰티유튜버" : "red youtube"
-	, "페이스북그룹" : "blue facebook square"
-	, "페이스북" : "blue facebook square"
-	, "인스타그램" : "red instagram"
-	, "언론사노출" : "red newspaper outline"
-	, "언론사 노출" : "red newspaper outline"
-	, "Fime.vn" : "red edit outline"
-	, "Google Top SEO" : "red google outline"
-};
+
 //-------------------------------------------------------;
 // FILEPATH;
 //-------------------------------------------------------;
@@ -251,37 +242,31 @@ var make_google_time_data = function( arr ){
 
 
 var logic = function(){
-    var _insight_html = make_insight_html( data.insight[ target_month ], insight_thtml );
-	var _ages_data = make_ages_data( data.ages[ target_month ] );
-    var _time_data = make_time_data( data.time[ target_month ] );
-	var _location_data = make_location_data( data.location[ target_month ],data.geocode );
+ 
 	
-	var _google_ages_data = make_google_ages_data( data.google_ages[ target_month ] );
-	var _google_time_data = make_google_time_data( data.google_time[ target_month ] );
 	
-    var report_html = report_thtml.replace(/<!=BRAND_NM=!>/g,brand_nm )
-		.replace( /<!=TARGET_MONTH=!>/g,target_month )
-		.replace( "<!=MARKETING_LIST_DATA=!>", JSON.stringify( data.ads_list[ target_month ] ) ) 
-		.replace( "<!=KOLS_DATA=!>", JSON.stringify( data.kols[ target_month ] ) )
-		.replace( "<!=MONTHLY_PLANNIN_DATA=!>", JSON.stringify( data.statistic_monthly ))
-		.replace( "<!=INSIGHT=!>",_insight_html)
-		.replace( "<!=AGES00_DATA=!>",JSON.stringify( _ages_data.d00 ) )
-		.replace( "<!=AGES01_DATA=!>",JSON.stringify( _ages_data.d01 ) )
-		.replace( "<!=AGES02_DATA=!>",JSON.stringify( _ages_data.d02 ) )
-		.replace( "<!=AGES03_DATA=!>",JSON.stringify( _ages_data.d03 ) )
-		.replace( "<!=TIME_DATA=!>",JSON.stringify( _time_data ) )
-		.replace( "<!=MAP_DATA_00=!>",JSON.stringify( _location_data ) )
+	var d  = {};
+	d.brand_nm = brand_nm;
+	d.target_month = target_month;
+	d.ads_list = data.ads_list[ target_month ];
+	d.ads_total = data.ads_total[ target_month ];
+	d.insight = data.insight[ target_month ]
+	d.kols = data.kols[ target_month ];
+	
+	d.statistic_monthly = data.statistic_monthly;
+	
+	d.total = data.total[ target_month ];
+	d.ages = make_ages_data( data.ages[ target_month ] );
+	d.time = make_time_data( data.time[ target_month ] );
+	d.location_data = make_location_data( data.location[ target_month ],data.geocode );
 
-		.replace( "<!=ADS_TOTAL_DATA=!>", JSON.stringify( data.ads_total[ target_month ] ) )
-		.replace("<!=MONTHLY_FACEBOOK_STASTICS_DATA=!>", JSON.stringify(data.total[ target_month ]) )
-		.replace( "<!=GOOGLE_SEO_LIST_DATA=!>", JSON.stringify(data.google_seo_list[ target_month ]) )
-			
-		.replace( "<!=GOOGLE_STATISTIC_DATA=!>",JSON.stringify( data.google_ad_info_list[ target_month ] ) )
-		.replace( "<!=GOOGLE_TOTAL_DATA=!>",JSON.stringify( data.google_total[ target_month ] ) )
-		.replace( "<!=AGES_DATA_GOOGLE=!>",JSON.stringify( _google_ages_data ) )
-		.replace( "<!=GOOGLE_TIME_DATA=!>",JSON.stringify( _google_time_data ) )
+	d.google_time_data = make_google_time_data( data.google_time[ target_month ] )
+	d.google_ages_data = make_google_ages_data( data.google_ages[ target_month ] )
+	d.google_ad_info_list = data.google_ad_info_list[ target_month ]
+	d.google_seo_list = data.google_seo_list[ target_month ]
+	d.google_total =  data.google_total[ target_month ]
 
-    fs.writeFileSync( result_path + target_year_month + "_marketing_report.html", report_html,{ flag : "w" })
+    fs.writeFileSync( result_path + target_year_month + "_data.json", JSON.stringify( d ),{ flag : "w" })
 }
 
 logic();
