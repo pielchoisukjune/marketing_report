@@ -19,7 +19,7 @@ var THTML_PATHS = {
 	, table : "./THTML/table.thtml"
 };
 var brand_nm = "DEWYTREE";
-var target_year_month = "202006";
+var target_year_month = "202007";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 
 //-------------------------------------------------------;
