@@ -193,7 +193,7 @@ var make_location_data = function( arr, o ){
 };
 
 //-------------------------------------------------------;
-//구글 연령통계 생성;
+//구글 연령통계 생성 -- 사용하지않음;
 //-------------------------------------------------------;
 var make_google_ages_data = function( arr ){
 	var i = 0,iLen = arr.length,io;
@@ -215,8 +215,41 @@ var make_google_ages_data = function( arr ){
 //구글 시간별통계 생성;
 //-------------------------------------------------------;
 var make_google_time_data = function( arr ){
-	var i = 0,iLen = arr.length,io;
 	var r = [];
+	if( !arr ) return r;
+	
+	var i = 0,iLen = arr.length,io;
+	/*
+	"시간": "09:00:00 - 09:59:59",
+	"노출 수": "155615",
+	"회수": "",
+	"지출 금액\n (VND)": "",
+	"페이지 참여": "",
+	"게시물 참여": "4019739.71",
+	"게시물 댓글": "18567",
+	"게시물 반응": "18460",
+	"페이지 좋아요": "10",
+	"동영상 50% 시간 보기": "524",
+	"동영상 100% 보기": "107",
+	"새로운 메시지 연결": "18",
+	"새로운 메시지 한번 연결에 금액": "223,318.87"
+	*/
+    for(;i<iLen;i++){
+		io = arr[ i ];
+        var o00 = {"time" : io[ "시간대" ], view : Number( io[ "노출수" ] ), click : Number( io[ "클릭수" ] )};
+        r.push( o00 );
+	}
+	return r;
+};
+
+//-------------------------------------------------------;
+//구글 쇼핑 시간별통계 생성;
+//-------------------------------------------------------;
+var make_google_time_shopping_data = function( arr ){
+	var r = [];
+	if( !arr ) return r;
+	
+	var i = 0,iLen = arr.length,io;
 	/*
 	"시간": "09:00:00 - 09:59:59",
 	"노출 수": "155615",
@@ -261,6 +294,7 @@ var logic = function(){
 	d.location_data = make_location_data( data.location[ target_month ],data.geocode );
 
 	d.google_time_data = make_google_time_data( data.google_time[ target_month ] )
+	d.google_time_shopping_data = make_google_time_shopping_data( data.google_time_shopping[ target_month ] )
 	d.google_ages_data = make_google_ages_data( data.google_ages[ target_month ] )
 	d.google_ad_info_list = data.google_ad_info_list[ target_month ]
 	d.google_seo_list = data.google_seo_list[ target_month ]

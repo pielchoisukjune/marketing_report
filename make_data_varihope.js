@@ -114,6 +114,11 @@ var OPTIONS = {
 		spreadsheetId : spreadsheetId
 		, range : '구글광고키워드!A:Z'
 	}
+	, FUNC14 : {
+		spreadsheetId : spreadsheetId
+		, range : '구글 시간대 보고서_쇼핑!A:Z'
+	}
+
 }
 
 var d = {
@@ -129,6 +134,7 @@ var d = {
 	, statistic_monthly : []
 	, google_total : {}
 	, google_time : {}
+	, google_time_shopping : {}
 	, google_ages : {}
 	, google_seo_list : {}
 	, google_ad_info_list : {}
@@ -728,6 +734,47 @@ var FUNC13 = function( auth ){
 			}
 		}
 		console.log( "[ E ] - FUNC13();" )
+		FUNC14( auth )
+	});
+}
+
+/**
+ * Prints the names and majors of students in a sample spreadsheet:
+ * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
+ */
+var FUNC14 = function( auth ){
+	var key = "FUNC14"
+
+	console.log( "[ S ] - FUNC14();" )
+
+	google.sheets({version: 'v4', auth}).spreadsheets.values.get( OPTIONS[ key ], function(err, res){
+		if (err) return console.log('The API returned an error: ' + err);
+		const rows = res.data.values;
+		if (rows.length == 0 ) return console.log('ads list - No data found.');
+
+		var i = 0,iLen = rows.length,io;
+		var _header = [];
+		for(;i<iLen;++i){
+			io = rows[ i ];
+			if( i == 0 )
+			{
+				io.forEach(function( item ){ _header.push( item ) });
+				//console.log( _header )
+			}
+			else
+			{
+				var z = 0,zLen = io.length,zo;
+				var o = {};
+				for(;z<zLen;++z){
+					zo = io[ z ];
+					o[ _header[ z ] ] = zo;
+				}
+				if( !d.google_time_shopping[ io[0] ] ) d.google_time_shopping[ io[0] ] = [];
+				d.google_time_shopping[ io[0] ].push( o )
+			}
+		}
+		console.log( "[ E ] - FUNC14();" )
 		fs.writeFileSync( result_path + "data.json", JSON.stringify( d, null, 4 ), { flag : "w"});
 	});
 }
