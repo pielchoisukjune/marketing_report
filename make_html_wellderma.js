@@ -19,7 +19,7 @@ var THTML_PATHS = {
 	, table : "./THTML/table.thtml"
 };
 var brand_nm = "WELLDERMA";
-var target_year_month = "202009";
+var target_year_month = "202010";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 
 //-------------------------------------------------------;

@@ -6,7 +6,7 @@ var fs = require( "fs" );
 //-------------------------------------------------------;
 // VARIABLE;
 //-------------------------------------------------------;
-var result_path = "./brand/varihope/"
+var result_path = "./brand/aheads/"
 var FILE_PATH = result_path + "data.json";
 var THTML_PATHS = {
 	cards : "./THTML/card.thtml"
@@ -18,7 +18,7 @@ var THTML_PATHS = {
 	, kols : "./THTML/kols.thtml"
 	, table : "./THTML/table.thtml"
 };
-var brand_nm = "VARIL:HOPE";
+var brand_nm = "aheads";
 var target_year_month = "202010";
 var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
 
@@ -188,6 +188,7 @@ var make_location_data = function( arr, o ){
 			, Number( io[ "도달" ] )
 			, Number( io[ "노출 수" ] )
 		]
+		console.log( _ta )
 		r.push( _ta );
 	}
 	return r;
