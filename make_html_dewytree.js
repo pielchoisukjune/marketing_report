@@ -19,8 +19,9 @@ var THTML_PATHS = {
 	, table : "./THTML/table.thtml"
 };
 var brand_nm = "DEWYTREE";
-var target_year_month = "202007";
-var target_month = Number( target_year_month.substr( 4,2 ) ).toString();
+var _id = "202010";
+var target_year =  Number( _id.substr( 0,4 ) ).toString();
+var target_month = Number( _id.substr( 4,2 ) ).toString();
 
 //-------------------------------------------------------;
 // FILEPATH;
@@ -266,7 +267,7 @@ var logic = function(){
 //	d.google_seo_list = data.google_seo_list[ target_month ]
 //	d.google_total =  data.google_total[ target_month ]
 
-    fs.writeFileSync( result_path + target_year_month + "_data.json", JSON.stringify( d ),{ flag : "w" })
+    fs.writeFileSync( result_path + _id + "_data.json", JSON.stringify( d ),{ flag : "w" })
 }
 
 logic();
