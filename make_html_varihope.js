@@ -19,7 +19,7 @@ var THTML_PATHS = {
 	, table : "./THTML/table.thtml"
 };
 var brand_nm = "VARIL:HOPE";
-var _id = "202010";
+var _id = "202011";
 var target_year =  Number( _id.substr( 0,4 ) ).toString();
 var target_month = Number( _id.substr( 4,2 ) ).toString();
 
@@ -282,6 +282,7 @@ var logic = function(){
 	
 	var d  = {};
 	d.brand_nm = brand_nm;
+	d.target_year = target_year;
 	d.target_month = target_month;
 	d.ads_list = data.ads_list[ target_month ];
 	d.ads_total = data.ads_total[ target_month ];
