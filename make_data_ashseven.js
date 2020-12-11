@@ -55,8 +55,8 @@ var getNewToken = function getNewToken( oAuth2Client, callback ){
 	});
   }
 
-var spreadsheetId = "1-zuzh-fxl56pc6OUtRCygSvzsiJM6bSMIhoheGbe1Uw";
-var result_path = "./brand/aheads/"
+var spreadsheetId = "1a_ouz5DVtqYZLA8nEb65wjpaALejON7RRfEdHURGnmw";
+var result_path = "./brand/ashseven/"
 var OPTIONS = {
 	FUNC00 : {
 		spreadsheetId : spreadsheetId
@@ -64,7 +64,7 @@ var OPTIONS = {
 	}
 	, FUNC01 : {
 		spreadsheetId : spreadsheetId
-		, range : '페이스북 STATISTIC!A:Z'
+		, range : '페이스북 STATISTIC!A:U'
 	}
 	, FUNC02 : {
 		spreadsheetId : spreadsheetId
@@ -225,7 +225,7 @@ var FUNC01 = function( auth ){
 			if( i == 0 )
 			{
 				io.forEach(function( item ){ _header.push( item ) });
-				//console.log( _header )
+				console.log( _header )
 			}
 			else
 			{

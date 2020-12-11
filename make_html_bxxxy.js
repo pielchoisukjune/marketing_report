@@ -6,7 +6,7 @@ var fs = require( "fs" );
 //-------------------------------------------------------;
 // VARIABLE;
 //-------------------------------------------------------;
-var result_path = "./brand/varihope/"
+var result_path = "./brand/bxxxy/"
 var FILE_PATH = result_path + "data.json";
 var THTML_PATHS = {
 	cards : "./THTML/card.thtml"
@@ -18,8 +18,8 @@ var THTML_PATHS = {
 	, kols : "./THTML/kols.thtml"
 	, table : "./THTML/table.thtml"
 };
-var brand_nm = "VARIL:HOPE";
-var _id = "202006";
+var brand_nm = "bxxxy";
+var _id = "202011";
 var target_year =  Number( _id.substr( 0,4 ) ).toString();
 var target_month = Number( _id.substr( 4,2 ) ).toString();
 
@@ -298,7 +298,7 @@ var logic = function(){
 
 	d.google_time_data = make_google_time_data( data.google_time[ target_month ] )
 	d.google_time_shopping_data = make_google_time_shopping_data( data.google_time_shopping[ target_month ] )
-	d.google_ages_data = make_google_ages_data( data.google_ages[ target_month ] )
+	//d.google_ages_data = make_google_ages_data( data.google_ages[ target_month ] )
 	d.google_ad_info_list = data.google_ad_info_list[ target_month ]
 	d.google_seo_list = data.google_seo_list[ target_month ]
 	d.google_total =  data.google_total[ target_month ]

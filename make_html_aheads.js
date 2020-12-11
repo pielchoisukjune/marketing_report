@@ -189,7 +189,6 @@ var make_location_data = function( arr, o ){
 			, Number( io[ "도달" ] )
 			, Number( io[ "노출 수" ] )
 		]
-		console.log( _ta )
 		r.push( _ta );
 	}
 	return r;
@@ -283,6 +282,7 @@ var logic = function(){
 	
 	var d  = {};
 	d.brand_nm = brand_nm;
+	d.target_year = target_year;
 	d.target_month = target_month;
 	d.ads_list = data.ads_list[ target_month ];
 	d.ads_total = data.ads_total[ target_month ];

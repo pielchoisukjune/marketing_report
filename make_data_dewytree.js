@@ -60,43 +60,43 @@ var spreadsheetId = "1Vuf7pGTgOTpXVu6Lxq9g8HVLCkgCezL4HB62p_po7sA";
 var OPTIONS = {
 	FUNC00 : {
 		spreadsheetId : spreadsheetId
-		, range : '마케팅집행리스트!A:M'
+		, range : '마케팅집행리스트!A:Z'
 	}
 	, FUNC01 : {
 		spreadsheetId : spreadsheetId
-		, range : '페이스북 STATISTIC!A:M'
+		, range : '페이스북 STATISTIC!A:U'
 	}
 	, FUNC02 : {
 		spreadsheetId : spreadsheetId
-		, range : '페이스북 연령 통계!A:M'
+		, range : '페이스북 연령 통계!A:Z'
 	}
 	, FUNC03 : {
 		spreadsheetId : spreadsheetId
-		, range : '페이스북 지역별 통계!A:M'
+		, range : '페이스북 지역별 통계!A:Z'
 	}
 	, FUNC04 : {
 		spreadsheetId : spreadsheetId
-		, range : '페이스북 시간대별 통계!A:M'
+		, range : '페이스북 시간대별 통계!A:Z'
 	}
 	, FUNC05 : {
 		spreadsheetId : spreadsheetId
-		, range : 'Manger Insight!A:M'
+		, range : 'Manger Insight!A:Z'
 	}
 	, FUNC06 : {
 		spreadsheetId : spreadsheetId
-		, range : '지역코드!A:M'
+		, range : '지역코드!A:Z'
 	}
 	, FUNC07 : {
 		spreadsheetId : spreadsheetId
-		, range : 'KOLs!A:M'
+		, range : 'KOLs!A:Z'
 	}
 	, FUNC08 : {
 		spreadsheetId : spreadsheetId
-		, range : '월간진행수량!A:M'
+		, range : '월간진행수량!A:Z'
 	}
 	, FUNC09 : {
 		spreadsheetId : spreadsheetId
-		, range : '구글광고통계!A:M'
+		, range : '구글광고통계!A:Z'
 	}
 	, FUNC10 : {
 		spreadsheetId : spreadsheetId

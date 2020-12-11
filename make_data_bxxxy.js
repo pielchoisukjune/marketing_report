@@ -55,8 +55,8 @@ var getNewToken = function getNewToken( oAuth2Client, callback ){
 	});
   }
 
-var spreadsheetId = "1-zuzh-fxl56pc6OUtRCygSvzsiJM6bSMIhoheGbe1Uw";
-var result_path = "./brand/aheads/"
+var spreadsheetId = "1P5Zsd91to1oYIP24zg4D4JnT9Y9LXaLe_p6qDjzgF2o";
+var result_path = "./brand/bxxxy/"
 var OPTIONS = {
 	FUNC00 : {
 		spreadsheetId : spreadsheetId
